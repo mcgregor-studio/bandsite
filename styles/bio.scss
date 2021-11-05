@@ -1,0 +1,26 @@
+@use 'partials/global';
+
+/* About */
+.about {
+    padding: 5vw;
+    &__image {
+        max-width: 90vw;
+    }
+}
+
+/* Gallery */
+.gallery {
+    background-color: global.$Mercury;
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &--image {
+            max-width: 90vw;
+            margin-bottom: 5vw;
+        }
+    }
+    &__title {
+        margin-left: 5vw;
+    }
+}

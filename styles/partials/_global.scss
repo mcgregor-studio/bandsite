@@ -1,0 +1,55 @@
+/* Fonts */
+@font-face {
+    font-family: Avenir Next Bold;
+    src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf);
+}
+@font-face {
+    font-family: Avenir Next Demi;
+    src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf);
+}
+@font-face {
+    font-family: Avenir Next Regular;
+    src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf);
+}
+/* Variables */
+$BandSite-Black: #323232;
+$BandSite-DarkBlack: #000000;
+$Silver: #AFAFAF;
+$Mercury: #E1E1E1;
+$White: #FFFFFF;
+$Alabaster: #FAFAFA;
+
+/* Mixins */
+@mixin title {
+    margin: 0;
+    color: $BandSite-Black;
+    font-family: Avenir Next Bold;
+    @content
+}
+
+/* Global Elements */
+body {
+    margin: 0;
+}
+.title {
+    &--header {
+        @include title {
+        color: $White;
+        text-align: center;
+        }
+    }
+    &--section {
+        @include title;
+    }
+}
+
+/* Header */
+.header {
+    background-color: $BandSite-Black;
+}
+
+/* Footer */
+.footer {
+    padding: 5vw;
+    background-color: $BandSite-Black;
+}
