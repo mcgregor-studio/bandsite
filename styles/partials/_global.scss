@@ -20,10 +20,25 @@ $White: #FFFFFF;
 $Alabaster: #FAFAFA;
 
 /* Mixins */
-@mixin title {
+@mixin text-bold {
     margin: 0;
     font-family: Avenir Next Bold;
-    @content
+    @content;
+}
+@mixin text-demi {
+    font-family: Avenir Next Demi;
+    @content;
+}
+@mixin text-reg {
+    font-family: Avenir Next Regular;
+    @content;
+}
+@mixin label-button {
+    @include text-bold() {
+    font-size: 0.625rem;
+    line-height: 1.25rem;
+    }
+    @content;
 }
 
 /* Global Elements */
@@ -31,27 +46,31 @@ body {
     margin: 0;
 }
 li {
-    font-family: Avenir Next Demi;
+    @include label-button {
     list-style-type: none;
-}
-a {
-    font-family: Avenir Next Demi;
-    text-decoration: none;
-}
-.title {
-    &--header {
-        @include title {
-        color: $White;
-        text-align: center;
-        }
     }
+}
+.logo {
+    &--header {
+        
+    }
+    &--footer {
+
+    }
+}
+
+
+
+.header {
     &--section {
-        @include title {
+        @include text-bold {
         color: $BandSite-Black;
+        font-size: 1.25rem;
+        line-height: 2rem;
         }
     }
     &--footer {
-        @include title {
+        @include text-bold {
         color: $White;
         }
     }
@@ -85,9 +104,15 @@ a {
         color: $White;
     }
     &__text {
+        @include text-reg {
+        font-size: 0.8125rem;
+        line-height: 1.125rem;
         color: $White;
+        margin-bottom: 1rem;
+        }
     }
     &__email {
-        color: $White;
+        text-decoration: none;
+        @extend .footer__text;
     }
 }

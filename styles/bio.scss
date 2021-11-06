@@ -7,18 +7,30 @@
         align-items: center;
         background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
         height: 50vw;
+        &--overlay {
+            color: global.$BandSite-Black;
+            
+        }
     }
     &__title {
         color: global.$White;
-        margin-left: 5vw;
+        margin-left: 1rem;
+        z-index: 10;
     }
 }
 
 /* About */
 .about {
-    padding: 5vw;
+    padding: 1rem;
     &__image {
         max-width: 90vw;
+    }
+    &__text {
+        @include global.text-reg {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: global.$White;
+            }
     }
 }
 
@@ -31,10 +43,10 @@
         align-items: center;
         &--image {
             max-width: 90vw;
-            margin-bottom: 5vw;
+            margin-bottom: 1rem;
         }
     }
     &__title {
-        margin-left: 5vw;
+        margin-left: 1rem;
     }
 }

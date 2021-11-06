@@ -19,27 +19,21 @@ body {
 }
 
 li {
-  font-family: Avenir Next Demi;
+  margin: 0;
+  font-family: Avenir Next Bold;
+  font-size: 0.625rem;
+  line-height: 1.25rem;
   list-style-type: none;
 }
 
-a {
-  font-family: Avenir Next Demi;
-  text-decoration: none;
-}
-
-.title--header {
-  margin: 0;
-  font-family: Avenir Next Bold;
-  color: #FFFFFF;
-  text-align: center;
-}
-.title--section {
+.header--section {
   margin: 0;
   font-family: Avenir Next Bold;
   color: #323232;
+  font-size: 1.25rem;
+  line-height: 2rem;
 }
-.title--footer {
+.header--footer {
   margin: 0;
   font-family: Avenir Next Bold;
   color: #FFFFFF;
@@ -72,11 +66,15 @@ a {
 .footer__image {
   color: #FFFFFF;
 }
-.footer__text {
+.footer__text, .footer__email {
+  font-family: Avenir Next Regular;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
   color: #FFFFFF;
+  margin-bottom: 1rem;
 }
 .footer__email {
-  color: #FFFFFF;
+  text-decoration: none;
 }
 
 /* Hero */
@@ -86,17 +84,27 @@ a {
   background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
   height: 50vw;
 }
+.hero__image--overlay {
+  color: #323232;
+}
 .hero__title {
   color: #FFFFFF;
-  margin-left: 5vw;
+  margin-left: 1rem;
+  z-index: 10;
 }
 
 /* About */
 .about {
-  padding: 5vw;
+  padding: 1rem;
 }
 .about__image {
   max-width: 90vw;
+}
+.about__text {
+  font-family: Avenir Next Regular;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #FFFFFF;
 }
 
 /* Gallery */
@@ -110,8 +118,8 @@ a {
 }
 .gallery__container--image {
   max-width: 90vw;
-  margin-bottom: 5vw;
+  margin-bottom: 1rem;
 }
 .gallery__title {
-  margin-left: 5vw;
+  margin-left: 1rem;
 }/*# sourceMappingURL=bio.css.map */
