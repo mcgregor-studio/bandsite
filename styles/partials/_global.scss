@@ -22,7 +22,6 @@ $Alabaster: #FAFAFA;
 /* Mixins */
 @mixin title {
     margin: 0;
-    color: $BandSite-Black;
     font-family: Avenir Next Bold;
     @content
 }
@@ -30,6 +29,14 @@ $Alabaster: #FAFAFA;
 /* Global Elements */
 body {
     margin: 0;
+}
+li {
+    font-family: Avenir Next Demi;
+    list-style-type: none;
+}
+a {
+    font-family: Avenir Next Demi;
+    text-decoration: none;
 }
 .title {
     &--header {
@@ -39,17 +46,48 @@ body {
         }
     }
     &--section {
-        @include title;
+        @include title {
+        color: $BandSite-Black;
+        }
+    }
+    &--footer {
+        @include title {
+        color: $White;
+        }
     }
 }
 
 /* Header */
 .header {
     background-color: $BandSite-Black;
+    &__nav {
+        &-list {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0;
+            padding: 0;
+            &--item {
+                padding: 1rem 25%;
+                color: $White;
+            }
+        }
+    }
+}
+.active-link {
+    border-bottom: .25rem solid $White;
 }
 
 /* Footer */
 .footer {
     padding: 5vw;
     background-color: $BandSite-Black;
+    &__image {
+        color: $White;
+    }
+    &__text {
+        color: $White;
+    }
+    &__email {
+        color: $White;
+    }
 }

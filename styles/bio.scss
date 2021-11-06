@@ -1,5 +1,19 @@
 @use 'partials/global';
 
+/* Hero */
+.hero {
+    &__image {
+        display: flex;
+        align-items: center;
+        background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
+        height: 50vw;
+    }
+    &__title {
+        color: global.$White;
+        margin-left: 5vw;
+    }
+}
+
 /* About */
 .about {
     padding: 5vw;
