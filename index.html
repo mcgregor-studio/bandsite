@@ -4,13 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="styles/bio.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/bio.css" />
     <title>Band Site</title>
   </head>
   <body>
     <!-- Header -->
     <header class="header">
-      <img class="logo--header" src="assets/logo/Logo-bandsite.svg" alt="Bandsite Logo" />
+      <img
+        class="logo--header"
+        src="assets/logo/Logo-bandsite.svg"
+        alt="Bandsite Logo"
+      />
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="header__nav-list--item active-link">Biography</li>
@@ -19,16 +23,16 @@
       </nav>
     </header>
     <section class="hero">
-      <div class="hero__image--overlay">
-        <div class="hero__image">
-          <h2 class="header--section hero__title">The Bees Knees</h2>
-        </div>
+      <div class="hero__container">
+        <div class="hero__container--overlay"></div>
+        <h1 class="header--page">The Bees Knees</h1>
+        <img class="hero__container--image" src="assets/images/hero-bio.jpg" alt="Bee on flower"/>
       </div>
     </section>
 
     <!-- About -->
     <section class="about">
-      <h2 class="header--section about__title">About the Musicians</h2>
+      <h1 class="header--section about__title">About the Musicians</h1>
       <img class="about__image" src="assets/images/band.jpg" alt="Bio image" />
       <h3 class="about__subtitle">
         “We push each other to be the best. It’s not uncommon for one of us to
@@ -45,7 +49,10 @@
         unsigned act, drawing attention from manager Cam Adams. Having worked
         with other popular acts (The Elephant In The Room, One Trick Pony, The
         Cat’s Meow), Adams was confident the band could succeed even further,
-        pushing them to sign with Magenta Records. From there, the band has
+        pushing them to sign with Magenta Records. 
+        <br />
+        <br />
+        From there, the band has
         soared, gaining international recognition and ranking in the top 10 on
         the Poster Charts. New fans immediately fell in love with the band’s
         original and organic attitude, solidifying their place as one of the
@@ -59,7 +66,7 @@
 
     <!-- Gallery -->
     <section class="gallery">
-      <h2 class="header--section gallery__title">Photo Gallery</h2>
+      <h1 class="header--section">Photo Gallery</h1>
       <div class="gallery__container">
         <img
           class="gallery__container--image"
@@ -111,63 +118,75 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <h2 class="header--footer">Get in Touch</h2>
-      <img
-        class="footer__image"
-        src="assets/icons/SVG/Icon-instagram.svg"
-        alt="Instagram icon"
-      />
-      <img
-        class="footer__image"
-        src="assets/icons/SVG/Icon-facebook.svg"
-        alt="Facebook icon"
-      />
-      <img
-        class="footer__image"
-        src="assets/icons/SVG/Icon-twitter.svg"
-        alt="Twitter Icon"
-      />
-      <h5 class="footer__text">
-        Cam Adams
-        <br />
-        The Bees Knees Management
-      </h5>
-      <p class="footer__text">
-        503 Broadway Penthouse,
-        <br />
-        New York, NY 10012, USA
-      </p>
-      <a class="footer__email" href="mailto:info@thebeesknees.com"
-        >info@thebeesknees.com</a
-      >
-      <h5 class="footer__text">
-        Pearl Gregg
-        <br />
-        Limitless Artist Group
-      </h5>
-      <p class="footer__text">
-        Booking Agent for
-        <br />
-        US/South America/Japan
-      </p>
-      <a class="footer__email" href="mailto:pearl.gregg@limitlessag.com"
-        >pearl.gregg@limitlessag.com</a
-      >
-      <h5 class="footer__text">
-        Carson Whyte
-        <br />
-        ARCH Entertainment
-      </h5>
-      <p class="footer__text">
-        Booking Agent for
-        <br />
-        UK/EU/AU
-      </p>
-      <a class="footer__email" href="mailto:cwhyte@archentertainment.com"
-        >cwhyte@archentertainment.com
-      </a>
+      <h1 class="header--footer">Get in Touch</h1>
+      <div class="footer__image--container">
+        <img
+          class="footer__image"
+          src="assets/icons/SVG/Icon-instagram.svg"
+          alt="Instagram icon"
+        />
+        <img
+          class="footer__image"
+          src="assets/icons/SVG/Icon-facebook.svg"
+          alt="Facebook icon"
+        />
+        <img
+          class="footer__image"
+          src="assets/icons/SVG/Icon-twitter.svg"
+          alt="Twitter Icon"
+        />
+      </div>
+      <div class="footer__text--container">
+        <h5 class="footer__text">
+          Cam Adams
+          <br />
+          The Bees Knees Management
+        </h5>
+        <p class="footer__text">
+          503 Broadway Penthouse,
+          <br />
+          New York, NY 10012, USA
+        </p>
+        <a class="footer__email" href="mailto:info@thebeesknees.com"
+          >info@thebeesknees.com</a
+        >
+      </div>
+      <div class="footer__text--container">
+        <h5 class="footer__text">
+          Pearl Gregg
+          <br />
+          Limitless Artist Group
+        </h5>
+        <p class="footer__text">
+          Booking Agent for
+          <br />
+          US/South America/Japan
+        </p>
+        <a class="footer__email" href="mailto:pearl.gregg@limitlessag.com"
+          >pearl.gregg@limitlessag.com</a
+        >
+      </div>
+      <div class="footer__text--container">
+        <h5 class="footer__text">
+          Carson Whyte
+          <br />
+          ARCH Entertainment
+        </h5>
+        <p class="footer__text">
+          Booking Agent for
+          <br />
+          UK/EU/AU
+        </p>
+        <a class="footer__email" href="mailto:cwhyte@archentertainment.com"
+          >cwhyte@archentertainment.com
+        </a>
+      </div>
 
-      <img class="logo--footer" src="assets/logo/Logo-bandsite.svg" alt="Bandsite Logo"/>
+      <img
+        class="logo--footer"
+        src="assets/logo/Logo-bandsite.svg"
+        alt="Bandsite Logo"
+      />
       <p class="footer__text">
         Copyright The Bees Knees &copy; 2021 All Rights Reserved
       </p>

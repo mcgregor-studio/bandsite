@@ -1,15 +1,15 @@
 /* Fonts */
 @font-face {
-    font-family: Avenir Next Bold;
-    src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf);
+    font-family: 'Avenir Next Bold';
+    src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
 }
 @font-face {
-    font-family: Avenir Next Demi;
-    src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf);
+    font-family: 'Avenir Next Demi';
+    src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
 }
 @font-face {
-    font-family: Avenir Next Regular;
-    src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf);
+    font-family: 'Avenir Next Regular';
+    src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
 }
 /* Variables */
 $BandSite-Black: #323232;
@@ -22,15 +22,15 @@ $Alabaster: #FAFAFA;
 /* Mixins */
 @mixin text-bold {
     margin: 0;
-    font-family: Avenir Next Bold;
+    font-family: 'Avenir Next Bold';
     @content;
 }
 @mixin text-demi {
-    font-family: Avenir Next Demi;
+    font-family: 'Avenir Next Demi';
     @content;
 }
 @mixin text-reg {
-    font-family: Avenir Next Regular;
+    font-family: 'Avenir Next Regular';
     @content;
 }
 @mixin label-button {
@@ -40,6 +40,21 @@ $Alabaster: #FAFAFA;
     }
     @content;
 }
+@mixin header-styling-mobile {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+@mixin header-section-spacing {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem; 
+    }
+@mixin component-vertical-spacing {
+    margin: 1rem 0;
+}
+@mixin component-horizontal-spacing {
+    padding: 0 1rem;
+}
+
 
 /* Global Elements */
 body {
@@ -50,34 +65,28 @@ li {
     list-style-type: none;
     }
 }
-.logo {
-    &--header {
-        
-    }
-    &--footer {
-
-    }
+h5, p {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
-
-
-
-.header {
-    &--section {
-        @include text-bold {
-        color: $BandSite-Black;
-        font-size: 1.25rem;
-        line-height: 2rem;
-        }
+.logo {
+    max-height: 1.25rem;
+    max-width: 7.5rem;
+    &--header {
+        @extend .logo;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     &--footer {
-        @include text-bold {
-        color: $White;
-        }
+        @extend .logo;
+        margin-top: 2.25rem;
     }
 }
 
 /* Header */
 .header {
+    padding-top: 1rem;
     background-color: $BandSite-Black;
     &__nav {
         &-list {
@@ -86,10 +95,41 @@ li {
             margin: 0;
             padding: 0;
             &--item {
-                padding: 1rem 25%;
+                padding: 1rem 22%;
                 color: $White;
             }
         }
+    }
+    &--page {
+        @include text-bold {
+            color: $White;
+        }
+        @include header-styling-mobile;
+        @include component-horizontal-spacing;
+        position: absolute;
+        top: 50%;
+        z-index: 10;
+    }
+    &--section {
+        @include text-bold {
+        color: $BandSite-Black;
+        }
+        @include header-styling-mobile;
+        @include header-section-spacing;
+    }
+    &--sub {
+        @include text-demi {
+            color: $BandSite-DarkBlack;
+            font-size: 0.875rem;
+            line-height: 1.375rem; 
+        }
+    }
+    &--footer {
+        @include text-bold {
+        color: $White;
+        }
+        @include header-styling-mobile;
+        @include header-section-spacing;
     }
 }
 .active-link {
@@ -98,21 +138,27 @@ li {
 
 /* Footer */
 .footer {
-    padding: 5vw;
+    @include component-horizontal-spacing;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     background-color: $BandSite-Black;
+    padding-bottom: 1rem;
     &__image {
         color: $White;
+        margin-right: 1rem;
     }
     &__text {
         @include text-reg {
         font-size: 0.8125rem;
         line-height: 1.125rem;
         color: $White;
-        margin-bottom: 1rem;
         }
+        margin-top: 1rem;
     }
     &__email {
-        text-decoration: none;
         @extend .footer__text;
+        display: block;
+        text-decoration: none;   
     }
 }
