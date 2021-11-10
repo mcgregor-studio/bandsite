@@ -86,6 +86,7 @@ h5, p {
   color: #000000;
   font-size: 0.875rem;
   line-height: 1.375rem;
+  font-weight: bold;
 }
 .header--footer {
   margin: 0;
@@ -126,25 +127,95 @@ h5, p {
   text-decoration: none;
 }
 
+/* Global Breakpoints */
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .header {
+    display: flex;
+  }
+  .header__nav-list {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+  }
+  .header__nav-list--item {
+    padding: 1rem 22%;
+  }
+  .header--page {
+    padding: 0 2.25rem;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+  }
+  .header--section {
+    margin: 0;
+    font-family: "Avenir Next Bold";
+    color: #323232;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  .header--sub {
+    font-family: "Avenir Next Demi";
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: bold;
+  }
+  .header--footer {
+    margin: 0;
+    font-family: "Avenir Next Bold";
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .footer {
+    padding: 0 2.25rem;
+    position: relative;
+  }
+  .footer__image--container-desktop-tablet {
+    display: flex;
+  }
+  .footer__text, .footer__email {
+    font-family: "Avenir Next Regular";
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .logo--header {
+    display: inline-block;
+    margin: 0;
+  }
+  .logo--footer {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+/* Desktop */
 /* Hero */
-.hero__container {
+.hero {
   position: relative;
 }
-.hero__container--image {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  height: 65vw;
-}
-.hero__container--overlay {
+.hero__overlay {
   position: relative;
   z-index: 5;
   height: 65vw;
   overflow: hidden;
   background: #323232;
   opacity: 50%;
+}
+.hero__image {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: 65vw;
 }
 
 /* About */
@@ -159,7 +230,7 @@ h5, p {
   font-size: 0.875rem;
   line-height: 1.375rem;
 }
-.about__text {
+.about__container--text {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -180,4 +251,69 @@ h5, p {
 .gallery__container--image {
   max-width: 100%;
   margin-bottom: 1rem;
+}
+
+/* Local Breakpoints */
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .about {
+    padding: 0 2.25rem;
+  }
+  .about__subtitle {
+    font-family: "Avenir Next Demi";
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .about__container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .about__container--text {
+    font-family: "Avenir Next Regular";
+    font-size: 0.8125rem;
+    line-height: 1.375rem;
+    color: #323232;
+    margin: 2.25rem 0;
+    max-width: 50%;
+  }
+
+  .gallery {
+    padding: 0 2.25rem;
+  }
+  .gallery__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .gallery__container--image {
+    max-width: 30%;
+    margin-bottom: 1rem;
+  }
+}
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .about {
+    padding: 0 auto;
+  }
+  .about__image {
+    max-width: 100%;
+  }
+  .about__subtitle {
+    font-family: "Avenir Next Demi";
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+  .about__container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .about__container--text {
+    font-family: "Avenir Next Regular";
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    color: #323232;
+    margin: 2.25rem 0;
+    max-width: 33vw;
+  }
 }/*# sourceMappingURL=bio.css.map */

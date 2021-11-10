@@ -11,6 +11,7 @@
     font-family: 'Avenir Next Regular';
     src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
 }
+
 /* Variables */
 $BandSite-Black: #323232;
 $BandSite-DarkBlack: #000000;
@@ -33,8 +34,8 @@ $Alabaster: #FAFAFA;
     font-family: 'Avenir Next Regular';
     @content;
 }
-@mixin label-button {
-    @include text-bold() {
+@mixin label-button-mobile {
+    @include text-bold {
     font-size: 0.625rem;
     line-height: 1.25rem;
     }
@@ -44,24 +45,43 @@ $Alabaster: #FAFAFA;
     font-size: 1.5rem;
     line-height: 2rem;
 }
-@mixin header-section-spacing {
+@mixin header-spacing-mobile {
     padding-top: 1.5rem;
     padding-bottom: 1rem; 
     }
-@mixin component-vertical-spacing {
+@mixin vertical-spacing-mobile {
     margin: 1rem 0;
 }
-@mixin component-horizontal-spacing {
+@mixin horizontal-spacing-mobile {
     padding: 0 1rem;
 }
-
+@mixin label-button-desktop-tablet {
+    @include text-bold {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    }
+    @content;
+}
+@mixin header-spacing-desktop-tablet {
+    padding-top: 3rem;
+    padding-bottom: 2.25rem; 
+    }
+@mixin vertical-spacing-desktop-tablet {
+    margin: 2.25rem 0;
+}
+@mixin horizontal-spacing-tablet {
+    padding: 0 2.25rem;
+}
+@mixin horizontal-spacing-desktop {
+    padding: 0 auto;
+}
 
 /* Global Elements */
 body {
     margin: 0;
 }
 li {
-    @include label-button {
+    @include label-button-mobile {
     list-style-type: none;
     }
 }
@@ -72,12 +92,14 @@ h5, p {
 .logo {
     max-height: 1.25rem;
     max-width: 7.5rem;
+
     &--header {
         @extend .logo;
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
+
     &--footer {
         @extend .logo;
         margin-top: 2.25rem;
@@ -88,48 +110,56 @@ h5, p {
 .header {
     padding-top: 1rem;
     background-color: $BandSite-Black;
+
     &__nav {
+
         &-list {
             display: flex;
             justify-content: space-evenly;
             margin: 0;
             padding: 0;
+
             &--item {
                 padding: 1rem 22%;
                 color: $White;
             }
         }
     }
+
     &--page {
         @include text-bold {
             color: $White;
         }
         @include header-styling-mobile;
-        @include component-horizontal-spacing;
+        @include horizontal-spacing-mobile;
         position: absolute;
         top: 50%;
         z-index: 10;
     }
+
     &--section {
         @include text-bold {
         color: $BandSite-Black;
         }
         @include header-styling-mobile;
-        @include header-section-spacing;
+        @include header-spacing-mobile;
     }
+
     &--sub {
         @include text-demi {
             color: $BandSite-DarkBlack;
             font-size: 0.875rem;
-            line-height: 1.375rem; 
+            line-height: 1.375rem;
+            font-weight: bold; 
         }
     }
+
     &--footer {
         @include text-bold {
         color: $White;
         }
         @include header-styling-mobile;
-        @include header-section-spacing;
+        @include header-spacing-mobile;
     }
 }
 .active-link {
@@ -138,16 +168,18 @@ h5, p {
 
 /* Footer */
 .footer {
-    @include component-horizontal-spacing;
+    @include horizontal-spacing-mobile;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     background-color: $BandSite-Black;
     padding-bottom: 1rem;
+
     &__image {
         color: $White;
         margin-right: 1rem;
     }
+
     &__text {
         @include text-reg {
         font-size: 0.8125rem;
@@ -156,9 +188,94 @@ h5, p {
         }
         margin-top: 1rem;
     }
+
     &__email {
         @extend .footer__text;
         display: block;
         text-decoration: none;   
     }
+}
+
+/* Global Breakpoints */
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+    .header {
+        display: flex;
+    
+        &__nav {
+    
+            &-list {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 0;
+                padding: 0;
+    
+                &--item {
+                    padding: 1rem 22%;
+                }
+            }
+        }
+    
+        &--page {
+            @include horizontal-spacing-tablet;
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+        }
+    
+        &--section {
+            @include header-spacing-tablet;
+        }
+    
+        &--sub {
+            @include text-demi {
+                font-size: 0.875rem;
+                line-height: 1.375rem;
+                font-weight: bold; 
+            }
+        }
+    
+        &--footer {
+            @include header-spacing-tablet;
+        }
+    }
+    
+    .footer {
+        @include horizontal-spacing-tablet;
+        position: relative;
+    
+        &__image {
+
+            &--container-desktop-tablet {
+                display: flex;
+            }
+        }
+    
+        &__text {
+            @include text-reg {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            }
+        }
+    
+    }
+
+    .logo {
+        &--header {
+            display: inline-block;
+            margin: 0;
+        }
+        &--footer {
+            position: absolute;
+            top: 0; 
+            right: 0;
+        }
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+ 
+    
 }

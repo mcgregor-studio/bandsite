@@ -2,17 +2,10 @@
 
 /* Hero */
 .hero {
-    &__container {
-        position: relative;
-        &--image {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            max-width: 100%;
-            height: 65vw;
-        }
-        &--overlay {
+
+    position: relative;
+
+    &__overlay {
         position: relative;
         z-index: 5;
         height: 65vw;
@@ -20,42 +13,138 @@
         background: global.$BandSite-Black;
         opacity: 50%;
         }
-    }
+
+        &__image {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            height: 65vw;
+        }
+
 }
 
 /* About */
 .about {
-    @include global.component-horizontal-spacing;
+    @include global.horizontal-spacing-mobile;
+
     &__image {
         max-width: 100%;
     }
+
     &__subtitle {
         @include global.text-demi {
         font-size: 0.875rem;
         line-height: 1.375rem;
         }
     }
-    &__text {
-        @include global.text-reg {
-            font-size: 0.8125rem;
-            line-height: 1.125rem;
-            color: global.$BandSite-Black;
-            }
-        @include global.component-vertical-spacing;
+
+    &__container {
+        &--text {
+            @include global.text-reg {
+                font-size: 0.8125rem;
+                line-height: 1.125rem;
+                color: global.$BandSite-Black;
+                }
+            @include global.vertical-spacing-mobile;
+        }
     }
 }
 
 /* Gallery */
 .gallery {
-    @include global.component-horizontal-spacing;
+    @include global.horizontal-spacing-mobile;
     background-color: global.$Mercury;
+
     &__container {
         display: flex;
         flex-direction: column;
         align-items: center;
+
         &--image {
             max-width: 100%;
             margin-bottom: 1rem;
+        }
+    }
+}
+
+/* Local Breakpoints */
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+    .about {
+        @include global.horizontal-spacing-tablet;
+    
+        &__subtitle {
+            @include global.text-demi {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            }
+        }
+    
+        &__container {
+            display: flex;
+            justify-content: space-evenly;
+
+            &--text {
+                @include global.text-reg {
+                    font-size: 0.8125rem;
+                    line-height: 1.375rem;
+                    color: global.$BandSite-Black;
+                    }
+                @include global.vertical-spacing-desktop-tablet;
+                max-width: 50%;
+            }
+        }
+    }
+
+    .gallery {
+        @include global.horizontal-spacing-tablet;
+    
+        &__container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+    
+            &--image {
+                max-width: 30%;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+    .about {
+        @include global.horizontal-spacing-desktop;
+    
+        &__image {
+            max-width: 100%;
+        }
+    
+        &__subtitle {
+            @include global.text-demi {
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+            }
+        }
+    
+        &__container {
+            display: flex;
+            justify-content: space-evenly;
+
+            &--text {
+                @include global.text-reg {
+                    font-size: 0.8125rem;
+                    line-height: 1.125rem;
+                    color: global.$BandSite-Black;
+                    }
+                @include global.vertical-spacing-desktop-tablet;
+                max-width: 33vw;
+            }
         }
     }
 }
