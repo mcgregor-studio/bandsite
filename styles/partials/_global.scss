@@ -53,7 +53,7 @@ $Alabaster: #FAFAFA;
     margin: 1rem 0;
 }
 @mixin horizontal-spacing-mobile {
-    padding: 0 1rem;
+    margin: 0 1rem;
 }
 @mixin label-button-desktop-tablet {
     @include text-bold {
@@ -70,13 +70,14 @@ $Alabaster: #FAFAFA;
     margin: 2.25rem 0;
 }
 @mixin horizontal-spacing-tablet {
-    padding: 0 2.25rem;
+    margin: 0 2.25rem;
 }
 @mixin horizontal-spacing-desktop {
-    padding: 0 auto;
+    margin: 0 auto;
 }
 
 /* Global Elements */
+/* All font sizing is based on the root font size in the body element (16px) */
 body {
     margin: 0;
 }
@@ -106,6 +107,63 @@ h5, p {
     }
 }
 
+.text {
+    &--page-header {
+        @include text-bold {
+            color: $White;
+        }
+        @include header-styling-mobile;
+        position: absolute;
+        top: 50%;
+        z-index: 10;
+    }
+
+    &--section-header {
+        @include text-bold {
+        color: $BandSite-Black;
+        }
+        @include header-styling-mobile;
+        @include header-spacing-mobile;
+    }
+
+    &--subheader {
+        @include text-demi {
+            color: $BandSite-DarkBlack;
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+            font-weight: bold; 
+        }
+    }
+
+    &--body {
+        @include text-reg {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: $BandSite-Black;
+            }
+        @include vertical-spacing-mobile;
+    }
+    &--footer-title {
+        @include text-bold {
+        color: $White;
+        }
+        @include header-styling-mobile;
+        @include header-spacing-mobile;
+    }
+
+    &--footer {
+        @include text-reg {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: $White;
+            }
+            margin-top: 1rem;
+    }
+}
+.margin {
+    @include horizontal-spacing-mobile;
+}
+
 /* Header */
 .header {
     padding-top: 1rem;
@@ -126,41 +184,6 @@ h5, p {
         }
     }
 
-    &--page {
-        @include text-bold {
-            color: $White;
-        }
-        @include header-styling-mobile;
-        @include horizontal-spacing-mobile;
-        position: absolute;
-        top: 50%;
-        z-index: 10;
-    }
-
-    &--section {
-        @include text-bold {
-        color: $BandSite-Black;
-        }
-        @include header-styling-mobile;
-        @include header-spacing-mobile;
-    }
-
-    &--sub {
-        @include text-demi {
-            color: $BandSite-DarkBlack;
-            font-size: 0.875rem;
-            line-height: 1.375rem;
-            font-weight: bold; 
-        }
-    }
-
-    &--footer {
-        @include text-bold {
-        color: $White;
-        }
-        @include header-styling-mobile;
-        @include header-spacing-mobile;
-    }
 }
 .active-link {
     border-bottom: .25rem solid $White;
@@ -168,10 +191,6 @@ h5, p {
 
 /* Footer */
 .footer {
-    @include horizontal-spacing-mobile;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     background-color: $BandSite-Black;
     padding-bottom: 1rem;
 
@@ -180,17 +199,8 @@ h5, p {
         margin-right: 1rem;
     }
 
-    &__text {
-        @include text-reg {
-        font-size: 0.8125rem;
-        line-height: 1.125rem;
-        color: $White;
-        }
-        margin-top: 1rem;
-    }
-
     &__email {
-        @extend .footer__text;
+        @extend .text--footer;
         display: block;
         text-decoration: none;   
     }
@@ -200,11 +210,52 @@ h5, p {
 
 /* Tablet */
 @media screen and (min-width: 768px) {
+    .margin {
+        @include horizontal-spacing-tablet;
+    }
+    .text {
+        &--page-header {
+            font-size: 3.75rem;
+            line-height: 4.25rem;
+        }
+
+        &--section-header {
+            @include header-spacing-desktop-tablet;
+            font-size: 2.25rem;
+            line-height: 2.75rem;
+        }
+
+        &--subheader {
+                font-size: 0.875rem;
+                line-height: 1.375rem;
+                font-weight: bold; 
+
+        }
+    
+        &--footer-title {
+            @include header-spacing-desktop-tablet;
+            margin-right: 1.5rem;
+        }
+
+        &--footer {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+    }
+
     .header {
-        display: flex;
-    
+        padding-top: 0;
+
+        &__positioning {
+            display: flex;
+            align-items: center;
+            }
+            
         &__nav {
-    
+            display: flex;
+
             &-list {
                 display: flex;
                 justify-content: space-evenly;
@@ -212,70 +263,61 @@ h5, p {
                 padding: 0;
     
                 &--item {
-                    padding: 1rem 22%;
+                    padding: 1rem 0;
+                    margin-right: 2.25rem;
                 }
             }
         }
-    
-        &--page {
-            @include horizontal-spacing-tablet;
-            position: absolute;
-            top: 50%;
-            z-index: 10;
-        }
-    
-        &--section {
-            @include header-spacing-tablet;
-        }
-    
-        &--sub {
-            @include text-demi {
-                font-size: 0.875rem;
-                line-height: 1.375rem;
-                font-weight: bold; 
-            }
-        }
-    
-        &--footer {
-            @include header-spacing-tablet;
-        }
     }
-    
     .footer {
-        @include horizontal-spacing-tablet;
-        position: relative;
-    
-        &__image {
+        padding-bottom: 0.75rem;
 
-            &--container-desktop-tablet {
-                display: flex;
+        &__container {
+
+            &--desktop-tablet {
+            display: flex;
+            align-items: center;
+            }
+
+            &--positioning {
+                position: relative;
             }
         }
-    
+
         &__text {
-            @include text-reg {
-            font-size: 0.875rem;
-            line-height: 1.25rem;
+            &--container {
+                margin-right: 3rem;
             }
         }
-    
-    }
 
+        &__email {
+            margin-bottom: 2.25rem;
+        }
+
+        &__image {
+            @include header-spacing-desktop-tablet;
+            margin-right: 1.5rem;
+        }
+
+    }
     .logo {
         &--header {
-            display: inline-block;
-            margin: 0;
+            margin-left: 0;
+            margin-right: 2.25rem;
         }
         &--footer {
             position: absolute;
-            top: 0; 
+            top: 0;
             right: 0;
+            margin-top: 3rem;
         }
     }
 }
 
 /* Desktop */
 @media screen and (min-width: 1280px) {
- 
+  .margin {
+    @include horizontal-spacing-desktop;
+  }
     
 }
