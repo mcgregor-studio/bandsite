@@ -1,5 +1,23 @@
 @use 'partials/global';
 
+
+/* Text */
+
+.text {
+    &--quote {
+        @include global.text-demi {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        color: global.$BandSite-Black;
+        }
+        margin-block-start: 0;
+        margin-block-end: 0;
+        &-person {
+            @extend .text--quote;
+        }
+    }
+}
+
 /* Hero */
 .hero {
     position: relative;
@@ -8,7 +26,6 @@
         position: relative;
         z-index: 5;
         height: 65vw;
-        overflow: hidden;
         background: global.$BandSite-Black;
         opacity: 50%;
         } 
@@ -33,14 +50,9 @@
 
     &__image {
         max-width: 100%;
+        margin-bottom: 1rem;
     }
 
-    &__subtitle {
-        @include global.text-demi {
-        font-size: 0.875rem;
-        line-height: 1.375rem;
-        }
-    }
 }
 
 /* Gallery */
@@ -55,6 +67,12 @@
         &--image {
             max-width: 100%;
             margin-bottom: 1rem;
+            filter: grayscale(1);
+            transition: filter 0.2s;
+
+            &:hover {
+                filter: grayscale(0);
+            }
         }
     }
 }
@@ -62,21 +80,27 @@
 /* Local Breakpoints */
 
 /* Tablet */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
     .text {
+
         &--body {
             font-size: 0.875rem;
             line-height: 1.375rem;
-            max-width: 48%;
+            max-width: 47%;
         }
-    }
-    .about {
     
-        &__subtitle {
+        &--quote {
             font-size: 1.5rem;
             line-height: 2rem;
+            &-person {
+                font-size: 1rem;
+                line-height: 1.5rem;
+                margin-top: 1rem;
+            }
         }
-    
+    }
+
+.about {
         &__container {
             padding: 0 4.5rem;
 
@@ -85,6 +109,10 @@
                 justify-content: space-between;
             }
         }
+        &__image {
+            margin-bottom: 2.25rem;
+        }
+    
     }
 
     .gallery {
@@ -102,9 +130,4 @@
             }
         }
     }
-}
-
-/* Desktop */
-@media screen and (min-width: 1280px) {
-
 }

@@ -22,3 +22,8 @@ This is the second project that I created during the Brainstation web developmen
   that can help improve the code.
 - Class naming for all styling must use BEM.
 - Layout of the site must use Flexbox. 
+
+# Additional Skills
+I have also included the following: 
+- Photo Gallery Hover: Use of the filter property to have the images of the gallery grayscale by default, and when the user hovers over each image it returns to color.
+- Mailto Link: Located in the footer of the web page is the contact information for several agents. Clicking on the email addresses listed should open up a user's mail account where they can begin to draft a message to the specific contact.

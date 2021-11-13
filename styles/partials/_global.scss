@@ -22,7 +22,6 @@ $Alabaster: #FAFAFA;
 
 /* Mixins */
 @mixin text-bold {
-    margin: 0;
     font-family: 'Avenir Next Bold';
     @content;
 }
@@ -34,9 +33,9 @@ $Alabaster: #FAFAFA;
     font-family: 'Avenir Next Regular';
     @content;
 }
-@mixin label-button-mobile {
-    @include text-bold {
-    font-size: 0.625rem;
+@mixin label-button {
+    @include text-reg() {
+    font-size: 1rem;
     line-height: 1.25rem;
     }
     @content;
@@ -55,13 +54,6 @@ $Alabaster: #FAFAFA;
 @mixin horizontal-spacing-mobile {
     margin: 0 1rem;
 }
-@mixin label-button-desktop-tablet {
-    @include text-bold {
-    font-size: 0.75rem;
-    line-height: 1.25rem;
-    }
-    @content;
-}
 @mixin header-spacing-desktop-tablet {
     padding-top: 3rem;
     padding-bottom: 2.25rem; 
@@ -73,7 +65,7 @@ $Alabaster: #FAFAFA;
     margin: 0 2.25rem;
 }
 @mixin horizontal-spacing-desktop {
-    margin: 0 auto;
+    margin: auto;
 }
 
 /* Global Elements */
@@ -82,11 +74,12 @@ body {
     margin: 0;
 }
 li {
-    @include label-button-mobile {
+    @include label-button {      
+    color: $White;
     list-style-type: none;
     }
 }
-h5, p {
+h1, h5, p {
     margin-block-start: 0;
     margin-block-end: 0;
 }
@@ -127,12 +120,13 @@ h5, p {
     }
 
     &--subheader {
-        @include text-demi {
+        @include text-reg {
             color: $BandSite-DarkBlack;
             font-size: 0.875rem;
             line-height: 1.375rem;
             font-weight: bold; 
         }
+        @include header-spacing-mobile;
     }
 
     &--body {
@@ -141,7 +135,7 @@ h5, p {
             line-height: 1.125rem;
             color: $BandSite-Black;
             }
-        @include vertical-spacing-mobile;
+        margin-bottom: 1rem;
     }
     &--footer-title {
         @include text-bold {
@@ -163,6 +157,9 @@ h5, p {
 .margin {
     @include horizontal-spacing-mobile;
 }
+header > .margin {
+    margin: 0;
+}
 
 /* Header */
 .header {
@@ -170,16 +167,23 @@ h5, p {
     background-color: $BandSite-Black;
 
     &__nav {
+        overflow: hidden;
 
         &-list {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
             margin: 0;
             padding: 0;
 
             &--item {
-                padding: 1rem 22%;
-                color: $White;
+                text-align: center;
+                padding: 1rem 20vw;
+                
+                &:hover {
+                    font-family: 'Avenir Next Bold';
+                    border-bottom: .25rem solid $White;
+                    transition: border-bottom 0.05s, font-family 0.05s;
+                }
             }
         }
     }
@@ -209,8 +213,11 @@ h5, p {
 /* Global Breakpoints */
 
 /* Tablet */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
     .margin {
+        @include horizontal-spacing-tablet;
+    }
+    header > .margin {
         @include horizontal-spacing-tablet;
     }
     .text {
@@ -226,10 +233,15 @@ h5, p {
         }
 
         &--subheader {
-                font-size: 0.875rem;
-                line-height: 1.375rem;
-                font-weight: bold; 
+            @include text-bold {
+            font-size: 1.5rem;
+            line-height: 2rem;  
+            }
+            @include header-spacing-desktop-tablet;
+        }
 
+        &--body {
+            margin-bottom: 2.25rem;
         }
     
         &--footer-title {
@@ -315,9 +327,49 @@ h5, p {
 }
 
 /* Desktop */
-@media screen and (min-width: 1280px) {
-  .margin {
-    @include horizontal-spacing-desktop;
-  }
+@media (min-width: 1280px) {
+    .margin {
+        @include horizontal-spacing-desktop;
+        width: 80vw;
+    }
+
+    header > .margin {
+        @include horizontal-spacing-desktop;
+        width: 80vw;
+    }
+
+    .header {
+        &__nav {
+            &-list {
+                &--item {
+                    padding: 2.25rem 0;
+                }
+            }
+        }
+    }
+
+    .text {
+        &--footer-title {
+            margin-right: 3rem;
+        }
+}
+    .logo {
+        &--header {
+            margin-left: 0;
+            margin-right: 3rem;
+    }
+}
+    .footer {
+        &__text {
+            &--container {
+                margin-right: 4.5rem;
+        }
+    }
+
+    &__email {
+        margin-bottom: 3rem;
+    }
+
+}
     
 }

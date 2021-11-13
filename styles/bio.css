@@ -20,14 +20,14 @@ body {
 }
 
 li {
-  margin: 0;
-  font-family: "Avenir Next Bold";
-  font-size: 0.625rem;
+  font-family: "Avenir Next Regular";
+  font-size: 1rem;
   line-height: 1.25rem;
+  color: #FFFFFF;
   list-style-type: none;
 }
 
-h5, p {
+h1, h5, p {
   -webkit-margin-before: 0;
           margin-block-start: 0;
   -webkit-margin-after: 0;
@@ -48,7 +48,6 @@ h5, p {
 }
 
 .text--page-header {
-  margin: 0;
   font-family: "Avenir Next Bold";
   color: #FFFFFF;
   font-size: 1.5rem;
@@ -58,7 +57,6 @@ h5, p {
   z-index: 10;
 }
 .text--section-header {
-  margin: 0;
   font-family: "Avenir Next Bold";
   color: #323232;
   font-size: 1.5rem;
@@ -67,21 +65,22 @@ h5, p {
   padding-bottom: 1rem;
 }
 .text--subheader {
-  font-family: "Avenir Next Demi";
+  font-family: "Avenir Next Regular";
   color: #000000;
   font-size: 0.875rem;
   line-height: 1.375rem;
   font-weight: bold;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
 }
 .text--body {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 .text--footer-title {
-  margin: 0;
   font-family: "Avenir Next Bold";
   color: #FFFFFF;
   font-size: 1.5rem;
@@ -101,20 +100,32 @@ h5, p {
   margin: 0 1rem;
 }
 
+header > .margin {
+  margin: 0;
+}
+
 /* Header */
 .header {
   padding-top: 1rem;
   background-color: #323232;
 }
+.header__nav {
+  overflow: hidden;
+}
 .header__nav-list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 0;
   padding: 0;
 }
 .header__nav-list--item {
-  padding: 1rem 22%;
-  color: #FFFFFF;
+  text-align: center;
+  padding: 1rem 20vw;
+}
+.header__nav-list--item:hover {
+  font-family: "Avenir Next Bold";
+  border-bottom: 0.25rem solid #FFFFFF;
+  transition: border-bottom 0.05s, font-family 0.05s;
 }
 
 .active-link {
@@ -137,8 +148,12 @@ h5, p {
 
 /* Global Breakpoints */
 /* Tablet */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .margin {
+    margin: 0 2.25rem;
+  }
+
+  header > .margin {
     margin: 0 2.25rem;
   }
 
@@ -153,9 +168,14 @@ h5, p {
     line-height: 2.75rem;
   }
   .text--subheader {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-    font-weight: bold;
+    font-family: "Avenir Next Bold";
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
+  }
+  .text--body {
+    margin-bottom: 2.25rem;
   }
   .text--footer-title {
     padding-top: 3rem;
@@ -224,10 +244,47 @@ h5, p {
   }
 }
 /* Desktop */
-@media screen and (min-width: 1280px) {
+@media (min-width: 1280px) {
   .margin {
-    margin: 0 auto;
+    margin: auto;
+    width: 80vw;
   }
+
+  header > .margin {
+    margin: auto;
+    width: 80vw;
+  }
+
+  .header__nav-list--item {
+    padding: 2.25rem 0;
+  }
+
+  .text--footer-title {
+    margin-right: 3rem;
+  }
+
+  .logo--header {
+    margin-left: 0;
+    margin-right: 3rem;
+  }
+
+  .footer__text--container {
+    margin-right: 4.5rem;
+  }
+  .footer__email {
+    margin-bottom: 3rem;
+  }
+}
+/* Text */
+.text--quote, .text--quote-person {
+  font-family: "Avenir Next Demi";
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  color: #323232;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
 }
 /* Hero */
 .hero {
@@ -237,7 +294,6 @@ h5, p {
   position: relative;
   z-index: 5;
   height: 65vw;
-  overflow: hidden;
   background: #323232;
   opacity: 50%;
 }
@@ -257,11 +313,7 @@ h5, p {
 }
 .about__image {
   max-width: 100%;
-}
-.about__subtitle {
-  font-family: "Avenir Next Demi";
-  font-size: 0.875rem;
-  line-height: 1.375rem;
+  margin-bottom: 1rem;
 }
 
 /* Gallery */
@@ -276,27 +328,40 @@ h5, p {
 .gallery__container--image {
   max-width: 100%;
   margin-bottom: 1rem;
+  filter: grayscale(1);
+  transition: filter 0.2s;
+}
+.gallery__container--image:hover {
+  filter: grayscale(0);
 }
 
 /* Local Breakpoints */
 /* Tablet */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .text--body {
     font-size: 0.875rem;
     line-height: 1.375rem;
-    max-width: 48%;
+    max-width: 47%;
   }
-
-  .about__subtitle {
+  .text--quote, .text--quote-person {
     font-size: 1.5rem;
     line-height: 2rem;
   }
+  .text--quote-person {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+  }
+
   .about__container {
     padding: 0 4.5rem;
   }
   .about__container--text {
     display: flex;
     justify-content: space-between;
+  }
+  .about__image {
+    margin-bottom: 2.25rem;
   }
 
   .gallery {
@@ -312,5 +377,4 @@ h5, p {
     max-width: 31%;
     margin-bottom: 1.5rem;
   }
-}
-/* Desktop *//*# sourceMappingURL=bio.css.map */
+}/*# sourceMappingURL=bio.css.map */
