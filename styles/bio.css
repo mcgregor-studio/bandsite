@@ -125,6 +125,7 @@ header > .margin {
 .header__nav-list--item:hover {
   font-family: "Avenir Next Bold";
   border-bottom: 0.25rem solid #FFFFFF;
+  padding: 1rem 19.66vw;
   transition: border-bottom 0.05s, font-family 0.05s;
 }
 
@@ -209,6 +210,10 @@ header > .margin {
     padding: 1rem 0;
     margin-right: 2.25rem;
   }
+  .header__nav-list--item:hover {
+    padding: 1rem 0;
+    margin-right: 1.925rem;
+  }
 
   .footer {
     padding-bottom: 0.75rem;
@@ -256,6 +261,9 @@ header > .margin {
   }
 
   .header__nav-list--item {
+    padding: 2.25rem 0;
+  }
+  .header__nav-list--item:hover {
     padding: 2.25rem 0;
   }
 
