@@ -131,3 +131,24 @@
         }
     }
 }
+
+/* Desktop */
+
+@media (min-width: 1280px) {
+
+    .gallery {
+        padding-bottom: 1rem;
+
+        &__container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+    
+            &--image {
+                max-width: 31%;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}

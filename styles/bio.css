@@ -377,4 +377,20 @@ header > .margin {
     max-width: 31%;
     margin-bottom: 1.5rem;
   }
+}
+/* Desktop */
+@media (min-width: 1280px) {
+  .gallery {
+    padding-bottom: 1rem;
+  }
+  .gallery__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .gallery__container--image {
+    max-width: 31%;
+    margin-bottom: 2rem;
+  }
 }/*# sourceMappingURL=bio.css.map */
