@@ -27,7 +27,7 @@ li {
   list-style-type: none;
 }
 
-h1, h5, p {
+h1, h3, h5, p {
   -webkit-margin-before: 0;
           margin-block-start: 0;
   -webkit-margin-after: 0;
@@ -53,7 +53,7 @@ h1, h5, p {
   font-size: 1.5rem;
   line-height: 2rem;
   position: absolute;
-  top: 50%;
+  top: 45%;
   z-index: 10;
 }
 .text--section-header {
@@ -247,6 +247,10 @@ header > .margin {
     right: 0;
     margin-top: 3rem;
   }
+
+  .remove-margin {
+    margin: 0;
+  }
 }
 /* Desktop */
 @media (min-width: 1280px) {
@@ -289,10 +293,6 @@ header > .margin {
   font-size: 0.875rem;
   line-height: 1.375rem;
   color: #323232;
-  -webkit-margin-before: 0;
-          margin-block-start: 0;
-  -webkit-margin-after: 0;
-          margin-block-end: 0;
 }
 /* Hero */
 .hero {
@@ -301,16 +301,17 @@ header > .margin {
 .hero__overlay {
   position: relative;
   z-index: 5;
-  height: 65vw;
+  height: 55vw;
   background: #323232;
   opacity: 50%;
 }
 .hero__image {
+  background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  height: 65vw;
+  height: 55vw;
   width: 100%;
 }
 

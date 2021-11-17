@@ -10,8 +10,6 @@
         line-height: 1.375rem;
         color: global.$BandSite-Black;
         }
-        margin-block-start: 0;
-        margin-block-end: 0;
         &-person {
             @extend .text--quote;
         }
@@ -25,17 +23,18 @@
     &__overlay {
         position: relative;
         z-index: 5;
-        height: 65vw;
+        height: 55vw;
         background: global.$BandSite-Black;
         opacity: 50%;
         } 
 
         &__image {
+            background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
             position: absolute;
             z-index: 1;
             top: 0;
             left: 0;
-            height: 65vw;
+            height: 55vw;
             width: 100%;
         }
 
