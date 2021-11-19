@@ -12,6 +12,7 @@
         }
         &-person {
             @extend .text--quote;
+            margin-top: 0.25rem;
         }
     }
 }
