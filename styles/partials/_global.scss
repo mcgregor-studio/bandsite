@@ -158,6 +158,10 @@ h1, h3, h5, p, blockquote {
 }
 .margin {
     @include horizontal-spacing-mobile;
+
+    &--spacer {
+        margin-top: 55vw;
+    }
 }
 header > .margin {
     margin: 0;
