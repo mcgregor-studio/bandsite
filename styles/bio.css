@@ -38,6 +38,23 @@ h1, h3, h5, p, blockquote {
           margin-inline-end: 0;
 }
 
+a {
+  text-decoration: none;
+}
+a:link {
+  color: #FFFFFF;
+}
+a:visited {
+  color: #AFAFAF;
+}
+a:hover {
+  color: #FFFFFF;
+}
+a:active {
+  margin-right: -0.33rem;
+  font-family: "Avenir Next Bold";
+}
+
 .logo, .logo--footer, .logo--header {
   max-height: 1.25rem;
   max-width: 7.5rem;
@@ -130,10 +147,8 @@ header > .margin {
   padding: 1rem 20vw;
 }
 .header__nav-list--item:hover {
-  font-family: "Avenir Next Bold";
   border-bottom: 0.25rem solid #FFFFFF;
-  padding: 1rem 19.66vw;
-  transition: border-bottom 0.05s, font-family 0.05s;
+  transition: border-bottom 0.05s;
 }
 
 .active-link {
@@ -219,7 +234,6 @@ header > .margin {
   }
   .header__nav-list--item:hover {
     padding: 1rem 0;
-    margin-right: 1.925rem;
   }
 
   .footer {
