@@ -85,6 +85,12 @@ h1, h3, h5, p, blockquote {
     margin-inline-start: 0;
     margin-inline-end: 0;
 }
+a {
+    text-decoration: none;
+    &:visited {
+        color: $Silver;
+    }
+}
 .logo {
     max-height: 1.25rem;
     max-width: 7.5rem;
@@ -186,10 +192,13 @@ header > .margin {
                 padding: 1rem 20vw;
                 
                 &:hover {
-                    font-family: 'Avenir Next Bold';
+                    color: $White;
                     border-bottom: .25rem solid $White;
                     padding: 1rem 19.66vw;
                     transition: border-bottom 0.05s, font-family 0.05s;
+                }
+                &:active {
+                    font-family: 'Avenir Next Bold';
                 }
             }
         }
