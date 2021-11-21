@@ -46,15 +46,14 @@
     &__container {
         display: flex; 
         flex-direction: column;
-    }
 
-    &__image {
-        max-width: 100%;
-        clip-path: inset(10vw 0 5vw 0);
-        margin-top: -10vw;
-        margin-bottom: -5vw;
+        &--image {
+            max-width: 100%;
+            clip-path: inset(10vw 0 5vw 0);
+            margin-top: -10vw;
+            margin-bottom: -5vw;
+        }
     }
-
 }
 
 /* Gallery */
@@ -67,8 +66,8 @@
         align-items: center;
 
         &--image {
+            @include global.vertical-spacing-mobile;
             max-width: 100%;
-            margin-bottom: 1rem;
             filter: grayscale(1);
             transition: filter 0.2s;
 
@@ -80,7 +79,6 @@
 }
 
 /* Local Breakpoints */
-
 /* Tablet */
 @media (min-width: 768px) {
     .text {
@@ -105,16 +103,16 @@
 .about {
         &__container {
             padding: 0 4.5rem;
+            &--image {
+                margin-bottom: calc(2.25rem - 5vw);
+            }
+        
 
             &--text {
                 display: flex;
                 justify-content: space-between;
             }
         }
-        &__image {
-            margin-bottom: calc(2.25rem - 5vw);
-        }
-    
     }
 
     .gallery {

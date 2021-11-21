@@ -342,7 +342,7 @@ header > .margin {
   display: flex;
   flex-direction: column;
 }
-.about__image {
+.about__container--image {
   max-width: 100%;
   -webkit-clip-path: inset(10vw 0 5vw 0);
           clip-path: inset(10vw 0 5vw 0);
@@ -360,8 +360,8 @@ header > .margin {
   align-items: center;
 }
 .gallery__container--image {
-  max-width: 100%;
   margin-bottom: 1rem;
+  max-width: 100%;
   filter: grayscale(1);
   transition: filter 0.2s;
 }
@@ -390,12 +390,12 @@ header > .margin {
   .about__container {
     padding: 0 4.5rem;
   }
+  .about__container--image {
+    margin-bottom: calc(2.25rem - 5vw);
+  }
   .about__container--text {
     display: flex;
     justify-content: space-between;
-  }
-  .about__image {
-    margin-bottom: calc(2.25rem - 5vw);
   }
 
   .gallery {
