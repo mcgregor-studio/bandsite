@@ -1,6 +1,6 @@
 @use 'partials/global';
 
-
+/* Local Elements */
 /* Text */
 
 .text {
@@ -83,7 +83,16 @@
     &__container {
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
     }
+
+    &__image {
+        max-height: 4rem;
+        max-width: 4rem;
+        clip-path: circle(35% at 40% 50%);
+        margin-top: 1.6rem;
+    }
+
     &__form {
         width: 80%;
         display: flex;
@@ -96,7 +105,7 @@
                 text-transform: uppercase;
                 color: global.$Silver;
             }
-            @include global.vertical-spacing-mobile;
+            margin-bottom: 0.25rem;
         }
 
         &--name {
@@ -104,9 +113,28 @@
                 font-size: 0.625rem;
                 line-height: 1.25rem;
             }
+            @include global.form-field-border-padding;
             @include global.vertical-spacing-mobile;
+            &:active {
+                border-color: global.$BandSite-Black;
+            }
         }
-        
+
+        &--text {
+            @include global.text-reg {
+                font-size: 0.625rem;
+                line-height: 1.25rem;
+            }
+            @include global.vertical-spacing-mobile;
+            @include global.form-field-border-padding;
+            min-height: 2.25rem;
+            resize: none;
+
+            &:active {
+                border-color: global.$BandSite-Black;
+            }
+        }
+
         &--button {
             @include global.label-button {
                 height: 2.5rem;
@@ -125,24 +153,41 @@
                 transition: color, 0.2s;
             }
         }
-
-        &--text {
-            @include global.text-reg {
-                font-size: 0.625rem;
-                line-height: 1.25rem;
-            }
-        }
     }
 
-    &__image {
-        max-width: 25%;
-        clip-path: circle(35% at 40% 50%);
+    &__display {
+        @extend .comments__form;
+        position: relative;
+
+        &--image {
+            height: 3rem;
+            width: 3rem;
+            clip-path: circle();
+            background-color: global.$Mercury;
+        }
+
+        &--name {
+            @include global.text-bold {
+                color: global.$BandSite-Black;
+            }
+            @include global.vertical-spacing-mobile;
+        }
+
+        &--date {
+            @include global.text-reg {
+                color: global.$Mercury;
+            }
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
     }
 
     &--divider {
         @include global.vertical-spacing-mobile;
-        height: 0.25rem;
-        background-color: global.$Silver; 
+        height: 0.0625rem;
+        background-color: global.$Mercury; 
     }
 }
 

@@ -27,7 +27,7 @@ li {
   list-style-type: none;
 }
 
-h1, h3, h5, p, blockquote {
+h1, h3, h4, h5, p, blockquote {
   -webkit-margin-before: 0;
           margin-block-start: 0;
   -webkit-margin-after: 0;
@@ -308,6 +308,7 @@ header > .margin {
     margin-bottom: 3rem;
   }
 }
+/* Local Elements */
 /* Text */
 .text--quote, .text--quote-person {
   font-family: "Avenir Next Demi";
@@ -373,8 +374,16 @@ header > .margin {
 .comments__container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
-.comments__form {
+.comments__image {
+  max-height: 4rem;
+  max-width: 4rem;
+  -webkit-clip-path: circle(35% at 40% 50%);
+          clip-path: circle(35% at 40% 50%);
+  margin-top: 1.6rem;
+}
+.comments__form, .comments__display {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -385,13 +394,33 @@ header > .margin {
   line-height: 1.25rem;
   text-transform: uppercase;
   color: #AFAFAF;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 .comments__form--name {
   font-family: "Avenir Next Regular";
   font-size: 0.625rem;
   line-height: 1.25rem;
+  border: 0.0625rem solid #E1E1E1;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
   margin-bottom: 1rem;
+}
+.comments__form--name:active {
+  border-color: #323232;
+}
+.comments__form--text {
+  font-family: "Avenir Next Regular";
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
+  border: 0.0625rem solid #E1E1E1;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  min-height: 2.25rem;
+  resize: none;
+}
+.comments__form--text:active {
+  border-color: #323232;
 }
 .comments__form--button {
   font-family: "Avenir Next Regular";
@@ -410,20 +439,32 @@ header > .margin {
   background-color: #000000;
   transition: color, 0.2s;
 }
-.comments__form--text {
-  font-family: "Avenir Next Regular";
-  font-size: 0.625rem;
-  line-height: 1.25rem;
+.comments__display {
+  position: relative;
 }
-.comments__image {
-  max-width: 25%;
-  -webkit-clip-path: circle(35% at 40% 50%);
-          clip-path: circle(35% at 40% 50%);
+.comments__display--image {
+  height: 3rem;
+  width: 3rem;
+  -webkit-clip-path: circle();
+          clip-path: circle();
+  background-color: #E1E1E1;
+}
+.comments__display--name {
+  font-family: "Avenir Next Bold";
+  color: #323232;
+  margin-bottom: 1rem;
+}
+.comments__display--date {
+  font-family: "Avenir Next Regular";
+  color: #E1E1E1;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .comments--divider {
   margin-bottom: 1rem;
-  height: 0.25rem;
-  background-color: #AFAFAF;
+  height: 0.0625rem;
+  background-color: #E1E1E1;
 }
 
 /* Local Breakpoints */
