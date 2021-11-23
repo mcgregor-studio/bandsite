@@ -40,10 +40,14 @@ let commentsInputText = newElem(`textarea`, `comments__form--text`);
   inputAtt(commentsInputText, `type`, `text`, `comment`);
 let commentsButton = newElem(`button`, `comments__form--button`);
   inputAtt(commentsButton, `type`, `button`);
+  commentsButton.style.cursor = `pointer`;
 let commentsImage = newElem(`img`, `comments__image`);
   inputAtt(commentsImage,  `src`, `assets/images/Mohan-muruge.jpg`);
   //Previous Comments Card
 let commentsCard = newElem(`card`, `commments__card`);
+  //Date
+let currentDate = new Date();
+let commentsDate = (currentDate.getMonth()+1) + `/` + currentDate.getDate() + `/` + currentDate.getFullYear();
 
 //Reference variables
 let gallery = document.querySelector(`.gallery`);
@@ -76,12 +80,19 @@ document.body.insertBefore(commentsTitle, comments);
 //Adding the element variables declared in the 'Element Variables' section to the HTML
   //Adding container and image elements
 comments.appendChild(divMargin);
-divMargin.append(commentsHeader, commentsContainer);
+divMargin.append(
+  commentsHeader, 
+  commentsContainer);
 commentsHeader.innerText = `Join the Conversation`;
 commentsContainer.appendChild(commentsImage);
   //Adding form elements
 commentsContainer.appendChild(commentsForm);
-commentsForm.append(commentsLabelName, commentsInputName, commentsLabelText, commentsInputText, commentsButton);
+commentsForm.append(
+  commentsLabelName, 
+  commentsInputName, 
+  commentsLabelText, 
+  commentsInputText, 
+  commentsButton);
 commentsLabelName.innerText = `Name`;
 commentsLabelText.innerText = `Comment`;
 commentsInputText.innerText = `Add a new comment`
@@ -107,9 +118,28 @@ function displayComment(arr) {
     commentEl.innerText = arr[i].comment;
 
     divMargin.appendChild(cardEl);
-    cardEl.append(imageEl, displayEl);
-    displayEl.append(nameEl, dateEl, commentEl);
+    cardEl.append(
+      imageEl, 
+      displayEl);
+    displayEl.append(
+      nameEl, 
+      dateEl, 
+      commentEl);
     divMargin.appendChild(dividerEl);
     }
   }
-  displayComment(commentsArray);
+
+displayComment(commentsArray);
+//Function to create new object and add it to array based on HTML input
+commentsButton.addEventListener(`click`, function() {
+    let commentsObj = {};
+    commentsObj.name = commentsInputName.innerHTML;
+    commentsObj.date = commentsDate;
+    commentsObj.comment = commentsInputText.innerHTML;
+    for (let i = 0; i < commentsArray.length; i++) {
+      comments.removeChild(comments.lastChild);
+    }
+    commentsArray.unshift(commentsObj);
+    displayComment(commentsArray);
+});
+
