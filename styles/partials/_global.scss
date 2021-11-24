@@ -160,6 +160,9 @@ a {
             }
         @include vertical-spacing-mobile;
     }
+    &--comments {
+        @extend .text--body;
+    }
     &--footer-title {
         @include text-bold {
         color: $White;

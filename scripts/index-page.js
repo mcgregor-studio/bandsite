@@ -48,8 +48,7 @@ let commentsCard = newElem(`card`, `commments__card`);
   //Date
 let currentDate = new Date();
 let commentsDate = (currentDate.getMonth()+1) + `/` + currentDate.getDate() + `/` + currentDate.getFullYear();
-
-//Reference variables
+  //References
 let gallery = document.querySelector(`.gallery`);
 
 //Comments array
@@ -100,16 +99,16 @@ commentsButton.innerText = `Comment`;
   //Adding divider
 divMargin.appendChild(commentsDivider);
 
-
-console.log(commentsArray[1])
 //displayComments function
 function displayComment(arr) {
+  let containerEl = newElem(`div`,`comments--previous`);
+  divMargin.appendChild(containerEl);
   for (let i = 0; i < arr.length; i++) {
     let cardEl = newElem(`card`, `comments__container`);
     let displayEl = newElem(`div`, `comments__display`);
     let nameEl = newElem(`h4`, `comments__display--name`);
     let dateEl = newElem(`p`, `comments__display--date`)
-    let commentEl = newElem(`p`, `text--body`);
+    let commentEl = newElem(`p`, `text--comments`);
     let imageEl = newElem(`img`, `comments__display--image`);
     let dividerEl = newElem(`div`, `comments--divider`);
 
@@ -117,7 +116,7 @@ function displayComment(arr) {
     dateEl.innerText = arr[i].date;
     commentEl.innerText = arr[i].comment;
 
-    divMargin.appendChild(cardEl);
+    containerEl.appendChild(cardEl);
     cardEl.append(
       imageEl, 
       displayEl);
@@ -125,20 +124,21 @@ function displayComment(arr) {
       nameEl, 
       dateEl, 
       commentEl);
-    divMargin.appendChild(dividerEl);
+    containerEl.appendChild(dividerEl);
     }
   }
 
+console.log(divMargin.lastChild)
 displayComment(commentsArray);
 //Function to create new object and add it to array based on HTML input
 commentsButton.addEventListener(`click`, function() {
     let commentsObj = {};
-    commentsObj.name = commentsInputName.innerHTML;
+    commentsObj.name = commentsInputName.value;
     commentsObj.date = commentsDate;
-    commentsObj.comment = commentsInputText.innerHTML;
-    for (let i = 0; i < commentsArray.length; i++) {
-      comments.removeChild(comments.lastChild);
-    }
+    commentsObj.comment = commentsInputText.value;
+
+    let arrDelete = document.querySelector(`.comments--previous`);
+    arrDelete.remove();
     commentsArray.unshift(commentsObj);
     displayComment(commentsArray);
 });

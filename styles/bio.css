@@ -94,7 +94,7 @@ a:active {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
-.text--body {
+.text--body, .text--comments {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -197,7 +197,7 @@ header > .margin {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
   }
-  .text--body {
+  .text--body, .text--comments {
     margin-bottom: 2.25rem;
   }
   .text--footer-title {
