@@ -6,14 +6,15 @@ function newElem(elem, className) {
 }
 //Function to add attributes
 function inputAtt(elem, att, value, idName, inputText) {
-  elem.setAttribute(att, value)
-if (elem.nodeName === `INPUT`){
+  elem.setAttribute(att, value);
+  if ((idName || inputText) !== undefined) {
     elem.id = idName;
     elem.setAttribute(`name`, idName);
+  } 
+  //Should I remove this and run the function multiple times?
+  if (elem.nodeName === `INPUT`){
     elem.setAttribute(`value`, inputText);
  } else if (elem.nodeName === `TEXTAREA`) {
-   elem.id = idName;
-   elem.setAttribute(`name`, idName);
    elem.setAttribute(`rows`, 4);
  }
  return elem;
@@ -34,17 +35,15 @@ let commentsLabelName = newElem(`label`, `comments__form--label`);
   inputAtt(commentsLabelName, `for`, `name`);
 let commentsInputName = newElem(`input`, `comments__form--name`);
   inputAtt(commentsInputName, `type`, `text`, `name`, `Enter your name`);
-let commentsLabelText = newElem(`label`, `comments__form--label`);
-  inputAtt(commentsLabelText, `for`, `name`);
-let commentsInputText = newElem(`textarea`, `comments__form--text`);
-  inputAtt(commentsInputText, `type`, `text`, `comment`);
+let commentsLabelComment = newElem(`label`, `comments__form--label`);
+  inputAtt(commentsLabelComment, `for`, `name`);
+let commentsInputComment = newElem(`textarea`, `comments__form--text`);
+  inputAtt(commentsInputComment, `type`, `text`, `comment`);
 let commentsButton = newElem(`button`, `comments__form--button`);
   inputAtt(commentsButton, `type`, `button`);
   commentsButton.style.cursor = `pointer`;
 let commentsImage = newElem(`img`, `comments__image`);
   inputAtt(commentsImage,  `src`, `assets/images/Mohan-muruge.jpg`);
-  //Previous Comments Card
-let commentsCard = newElem(`card`, `commments__card`);
   //Date
 let currentDate = new Date();
 let commentsDate = (currentDate.getMonth()+1) + `/` + currentDate.getDate() + `/` + currentDate.getFullYear();
@@ -79,32 +78,34 @@ document.body.insertBefore(commentsTitle, comments);
 //Adding the element variables declared in the 'Element Variables' section to the HTML
   //Adding container and image elements
 comments.appendChild(divMargin);
-divMargin.append(
-  commentsHeader, 
-  commentsContainer);
-commentsHeader.innerText = `Join the Conversation`;
-commentsContainer.appendChild(commentsImage);
+  divMargin.append(
+    commentsHeader, 
+    commentsContainer);
+
+    commentsHeader.innerText = `Join the Conversation`;
+      commentsContainer.appendChild(commentsImage);
   //Adding form elements
-commentsContainer.appendChild(commentsForm);
-commentsForm.append(
-  commentsLabelName, 
-  commentsInputName, 
-  commentsLabelText, 
-  commentsInputText, 
-  commentsButton);
-commentsLabelName.innerText = `Name`;
-commentsLabelText.innerText = `Comment`;
-commentsInputText.innerText = `Add a new comment`
-commentsButton.innerText = `Comment`;
+    commentsContainer.appendChild(commentsForm);
+      commentsForm.append(
+        commentsLabelName, 
+        commentsInputName, 
+        commentsLabelComment, 
+        commentsInputComment, 
+        commentsButton);
+
+        commentsLabelName.innerText = `Name`;
+        commentsLabelComment.innerText = `Comment`;
+        commentsInputComment.innerText = `Add a new comment`
+        commentsButton.innerText = `Comment`;
   //Adding divider
 divMargin.appendChild(commentsDivider);
 
 //displayComments function
 function displayComment(arr) {
-  let containerEl = newElem(`div`,`comments--previous`);
-  divMargin.appendChild(containerEl);
+  let arrayEl = newElem(`div`,`comments--array`);
+  divMargin.appendChild(arrayEl);
   for (let i = 0; i < arr.length; i++) {
-    let cardEl = newElem(`card`, `comments__container`);
+    let containerEl = newElem(`card`, `comments__container`);
     let displayEl = newElem(`div`, `comments__display`);
     let nameEl = newElem(`h4`, `comments__display--name`);
     let dateEl = newElem(`p`, `comments__display--date`)
@@ -116,20 +117,20 @@ function displayComment(arr) {
     dateEl.innerText = arr[i].date;
     commentEl.innerText = arr[i].comment;
 
-    containerEl.appendChild(cardEl);
-    cardEl.append(
+    arrayEl.appendChild(containerEl);
+    containerEl.append(
       imageEl, 
       displayEl);
     displayEl.append(
       nameEl, 
       dateEl, 
       commentEl);
-    containerEl.appendChild(dividerEl);
+    arrayEl.appendChild(dividerEl);
     }
   }
 
-console.log(divMargin.lastChild)
 displayComment(commentsArray);
+
 //Function to create new object and add it to array based on HTML input
 commentsButton.addEventListener(`click`, function() {
     let commentsObj = {};
@@ -137,9 +138,11 @@ commentsButton.addEventListener(`click`, function() {
     commentsObj.date = commentsDate;
     commentsObj.comment = commentsInputText.value;
 
-    let arrDelete = document.querySelector(`.comments--previous`);
+    let arrDelete = document.querySelector(`.comments--array`);
     arrDelete.remove();
     commentsArray.unshift(commentsObj);
     displayComment(commentsArray);
+    commentsForm.reset();
+    return false;
 });
 

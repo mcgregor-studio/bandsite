@@ -124,16 +124,6 @@ a {
 }
 
 .text {
-    &--page-header {
-        @include text-bold {
-            color: $White;
-        }
-        @include header-styling-mobile;
-        position: absolute;
-        top: 45%;
-        z-index: 10;
-    }
-
     &--section-header {
         @include text-bold {
         color: $BandSite-Black;
@@ -250,11 +240,6 @@ header > .margin {
         @include horizontal-spacing-tablet;
     }
     .text {
-        &--page-header {
-            font-size: 3.75rem;
-            line-height: 4.25rem;
-        }
-
         &--section-header {
             @include header-spacing-desktop-tablet;
             font-size: 2.25rem;

@@ -4,6 +4,16 @@
 /* Text */
 
 .text {
+    &--page-header {
+        @include global.text-bold {
+            color: $White;
+        }
+        @include global.header-styling-mobile;
+        position: absolute;
+        top: 45%;
+        z-index: 10;
+    }
+    
     &--quote {
         @include global.text-demi {
         font-size: 0.875rem;
@@ -196,6 +206,10 @@
 /* Tablet */
 @media (min-width: 768px) {
     .text {
+        &--page-header {
+            font-size: 3.75rem;
+            line-height: 4.25rem;
+        }
 
         &--body {
             font-size: 0.875rem;
