@@ -34,7 +34,7 @@ $Alabaster: #FAFAFA;
     @content;
 }
 @mixin label-button {
-    @include text-reg() {
+    @include text-reg {
     font-size: 1rem;
     line-height: 1.25rem;
     }
@@ -179,6 +179,11 @@ a {
 }
 header > .margin {
     margin: 0;
+}
+.divider {
+    @include vertical-spacing-mobile;
+    height: 0.0625rem;
+    background-color: $Mercury; 
 }
 
 /* Header */

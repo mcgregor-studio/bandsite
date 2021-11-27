@@ -4,12 +4,28 @@
 .text {
     &--page-header {
         @include global.text-bold {
-            color: $White;
+            color: global.$White;
         }
         @include global.header-styling-mobile;
         position: absolute;
         top: 30%;
         z-index: 10;
+    }
+
+    &--show-date {
+        @include global.text-bold {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: global.$BandSite-Black;
+            }
+    }
+
+    &--show-array {
+        @include global.text-reg {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: global.$BandSite-Black;
+            }
     }
 }
 
@@ -37,10 +53,48 @@
 
         &__soundcloud {
             position: absolute;
-            top: 0;
+            top: calc(30% + 2.5rem);
+            left: 1rem;
+            z-index: 10;
+            width: calc(100% - 2rem)
         }
 
 }
+
+/* Shows */
+
+.shows {
+    &__table {
+    
+        &--row {
+            display: flex;
+            flex-direction: column;
+            width: calc(100vw - 3rem);
+        }
+
+        &--button {
+            @include global.label-button {
+                height: 2.5rem;
+                min-width: 9.375rem;
+                padding: 0 2rem;
+                text-transform: uppercase;
+                background-color: global.$BandSite-Black;
+                color: global.$White;
+                border: none;
+                border-radius: 0.25rem;
+                margin-bottom: 1rem; 
+            };
+            @include global.text-bold;
+            
+
+            &:hover {
+                background-color: global.$BandSite-DarkBlack;
+                transition: color, 0.2s;
+            }
+        }
+    }    
+}
+
 
 /* Local Breakpoints */
 /* Tablet */
@@ -51,4 +105,43 @@
             line-height: 4.25rem;
         }
     }
+
+    .shows {
+        &__table {
+        
+            &--row {
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: baseline;
+                width: calc(100vw - 6rem);
+            }
+        }
+    }
+
+}
+
+/* Desktop */
+
+@media (min-width: 1280px) {
+    .hero {
+        &__soundcloud {
+            width: calc(100vw - 16rem);
+            left: 8rem;
+        }
+    }
+
+    .shows {
+        &__table {
+            
+            &--row {
+                width: 100%;
+            }
+        }
+    }
+
+    .shows > div.margin {
+        display: flex;
+        align-items: flex-start; 
+    }
+
 }

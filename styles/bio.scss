@@ -148,12 +148,14 @@
         &--button {
             @include global.label-button {
                 height: 2.5rem;
+                min-width: 9.375rem;
+                padding: 0 2rem;
                 text-transform: uppercase;
                 background-color: global.$BandSite-Black;
                 color: global.$White;
                 border: none;
                 border-radius: 0.25rem;
-            }
+            };
             @include global.text-bold;
             @include global.vertical-spacing-mobile;
 
@@ -190,14 +192,7 @@
             position: absolute;
             top: 0;
             right: 0;
-        }
-        
-    }
-
-    &--divider {
-        @include global.vertical-spacing-mobile;
-        height: 0.0625rem;
-        background-color: global.$Mercury; 
+        }   
     }
 }
 

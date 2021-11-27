@@ -15,8 +15,9 @@ function inputAtt(elem, att, value) {
 let divMargin = newElem(`div`, `margin`);
 let shows = newElem(`section`, `shows`);
 let showsTable = newElem(`table`, `shows__table`);
-let showsLocation = newElem(`p`, `text--body`);
-  showsLocation.innerText = `San Francisco, CA`;
+  //Header & Divider
+let showsHeader = newElem(`h1`, `text--section-header`);
+  showsHeader.innerText = `Shows`;
 //Reference variable 
 let hero = document.querySelector(`.hero`);
 
@@ -55,12 +56,37 @@ document.body.insertBefore(showsTitle, shows);
 //Adding the element variables declared in the 'Element Variables' section to the HTML
   //Adding container and image elements
 shows.appendChild(divMargin);
-divMargin.appendChild(showsTable);
+divMargin.append(showsHeader);
 
-function displayShowsTable() {
-    for (let i = 0; i < showsArray.length; i++) {
-        let tableRow = newElem(`tr`, `shows__table--row`);
-        let tableData = newElem(`td`, `shows__table--data`);
-        let tableButton = newElem(`button`, `shows__table--button`);
-    }
+//Function to display all shows on tablet and desktop (TD)
+function displayShowsTD(arr) {
+  let showsTable = newElem(`table`, `shows__table`);
+  divMargin.appendChild(showsTable);
+
+  for (let i = 0; i < showsArray.length; i++) {
+      let showsTableRow = newElem(`tr`, `shows__table--row`);
+      let showsTableDate = newElem(`td`, `text--show-date`);
+      let showsTableVenue = newElem(`td`, `text--show-array`);
+      let showsLocation = newElem(`td`, `text--show-array`);
+        showsLocation.innerText = `San Francisco, CA`;
+      let showsTableButton = newElem(`button`, `shows__table--button`);
+        inputAtt(showsTableButton, `type`, `button`);
+        showsTableButton.style.cursor = `pointer`;
+        showsTableButton.innerText = `BUY TICKETS`;
+      let showsTableDivider = newElem(`div`, `divider`);
+
+      showsTableDate.innerText = arr[i].date;
+      showsTableVenue.innerText = arr[i].venue;
+
+      showsTable.appendChild(showsTableRow);
+        showsTableRow.append(
+          showsTableDate,
+          showsTableVenue,
+          showsLocation,
+          showsTableButton
+        )
+      showsTable.appendChild(showsTableDivider);
+  }
 }
+
+displayShowsTD(showsArray);

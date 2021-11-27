@@ -28,7 +28,7 @@ let comments = newElem(`section`, `comments`);
 let commentsContainer = newElem(`div`, `comments__container`);
   //Header & Divider
 let commentsHeader = newElem(`h1`, `text--section-header`);
-let commentsDivider = newElem(`div`, `comments--divider`);
+let commentsDivider = newElem(`div`, `divider`);
   //Form & Inputs
 let commentsForm = newElem(`form`, `comments__form`);
 let commentsLabelName = newElem(`label`, `comments__form--label`);
@@ -111,7 +111,7 @@ function displayComment(arr) {
     let dateEl = newElem(`p`, `comments__display--date`)
     let commentEl = newElem(`p`, `text--comments`);
     let imageEl = newElem(`img`, `comments__display--image`);
-    let dividerEl = newElem(`div`, `comments--divider`);
+    let dividerEl = newElem(`div`, `divider`);
 
     nameEl.innerText = arr[i].name;
     dateEl.innerText = arr[i].date;

@@ -68,15 +68,6 @@ a:active {
   margin-top: 2.25rem;
 }
 
-.text--page-header {
-  font-family: "Avenir Next Bold";
-  color: #FFFFFF;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  position: absolute;
-  top: 45%;
-  z-index: 10;
-}
 .text--section-header {
   font-family: "Avenir Next Bold";
   color: #323232;
@@ -126,6 +117,12 @@ a:active {
 
 header > .margin {
   margin: 0;
+}
+
+.divider {
+  margin-bottom: 1rem;
+  height: 0.0625rem;
+  background-color: #E1E1E1;
 }
 
 /* Header */
@@ -180,10 +177,6 @@ header > .margin {
     margin: 0 2.25rem;
   }
 
-  .text--page-header {
-    font-size: 3.75rem;
-    line-height: 4.25rem;
-  }
   .text--section-header {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
@@ -308,6 +301,29 @@ header > .margin {
     margin-bottom: 3rem;
   }
 }
+/*Local Styling*/
+.text--page-header {
+  font-family: "Avenir Next Bold";
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  position: absolute;
+  top: 30%;
+  z-index: 10;
+}
+.text--show-date {
+  font-family: "Avenir Next Bold";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #323232;
+}
+.text--show-array {
+  font-family: "Avenir Next Regular";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #323232;
+}
+
 /* Hero */
 .hero {
   position: relative;
@@ -327,4 +343,69 @@ header > .margin {
   left: 0;
   height: 55vw;
   width: 100%;
+}
+.hero__soundcloud {
+  position: absolute;
+  top: calc(30% + 2.5rem);
+  left: 1rem;
+  z-index: 10;
+  width: calc(100% - 2rem);
+}
+
+/* Shows */
+.shows__table--row {
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 3rem);
+}
+.shows__table--button {
+  font-family: "Avenir Next Regular";
+  font-size: 1rem;
+  line-height: 1.25rem;
+  height: 2.5rem;
+  min-width: 9.375rem;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  background-color: #323232;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  font-family: "Avenir Next Bold";
+}
+.shows__table--button:hover {
+  background-color: #000000;
+  transition: color, 0.2s;
+}
+
+/* Local Breakpoints */
+/* Tablet */
+@media (min-width: 768px) {
+  .text--page-header {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+  }
+
+  .shows__table--row {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline;
+    width: calc(100vw - 6rem);
+  }
+}
+/* Desktop */
+@media (min-width: 1280px) {
+  .hero__soundcloud {
+    width: calc(100vw - 16rem);
+    left: 8rem;
+  }
+
+  .shows__table--row {
+    width: 100%;
+  }
+
+  .shows > div.margin {
+    display: flex;
+    align-items: flex-start;
+  }
 }/*# sourceMappingURL=shows.css.map */
