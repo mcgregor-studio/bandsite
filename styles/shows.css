@@ -353,12 +353,12 @@ header > .margin {
 }
 
 /* Shows */
-.shows__table--row {
+.shows__info--row {
   display: flex;
   flex-direction: column;
   width: calc(100vw - 3rem);
 }
-.shows__table--button {
+.shows__info--button {
   font-family: "Avenir Next Regular";
   font-size: 1rem;
   line-height: 1.25rem;
@@ -373,7 +373,7 @@ header > .margin {
   margin-bottom: 1rem;
   font-family: "Avenir Next Bold";
 }
-.shows__table--button:hover {
+.shows__info--button:hover {
   background-color: #000000;
   transition: color, 0.2s;
 }
@@ -386,22 +386,24 @@ header > .margin {
     line-height: 4.25rem;
   }
 
-  .shows__table--row {
+  .shows__info {
+    width: calc(100%);
+  }
+  .shows__info--row {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: baseline;
-    width: calc(100vw - 6rem);
   }
 }
 /* Desktop */
 @media (min-width: 1280px) {
   .hero__soundcloud {
-    width: calc(100vw - 16rem);
+    width: calc(100% - 16rem);
     left: 8rem;
   }
 
-  .shows__table--row {
-    width: 100%;
+  .shows__info {
+    width: calc(100%);
   }
 
   .shows > div.margin {

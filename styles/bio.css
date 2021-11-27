@@ -68,15 +68,6 @@ a:active {
   margin-top: 2.25rem;
 }
 
-.text--page-header {
-  font-family: "Avenir Next Bold";
-  color: #FFFFFF;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  position: absolute;
-  top: 45%;
-  z-index: 10;
-}
 .text--section-header {
   font-family: "Avenir Next Bold";
   color: #323232;
@@ -126,6 +117,12 @@ a:active {
 
 header > .margin {
   margin: 0;
+}
+
+.divider {
+  margin-bottom: 1rem;
+  height: 0.0625rem;
+  background-color: #E1E1E1;
 }
 
 /* Header */
@@ -180,10 +177,6 @@ header > .margin {
     margin: 0 2.25rem;
   }
 
-  .text--page-header {
-    font-size: 3.75rem;
-    line-height: 4.25rem;
-  }
   .text--section-header {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
@@ -310,6 +303,15 @@ header > .margin {
 }
 /* Local Elements */
 /* Text */
+.text--page-header {
+  font-family: "Avenir Next Bold";
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+}
 .text--quote, .text--quote-person {
   font-family: "Avenir Next Demi";
   font-size: 0.875rem;
@@ -427,6 +429,8 @@ header > .margin {
   font-size: 1rem;
   line-height: 1.25rem;
   height: 2.5rem;
+  min-width: 9.375rem;
+  padding: 0 2rem;
   text-transform: uppercase;
   background-color: #323232;
   color: #FFFFFF;
@@ -461,15 +465,14 @@ header > .margin {
   top: 0;
   right: 0;
 }
-.comments--divider {
-  margin-bottom: 1rem;
-  height: 0.0625rem;
-  background-color: #E1E1E1;
-}
 
 /* Local Breakpoints */
 /* Tablet */
 @media (min-width: 768px) {
+  .text--page-header {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+  }
   .text--body {
     font-size: 0.875rem;
     line-height: 1.375rem;

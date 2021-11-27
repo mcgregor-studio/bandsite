@@ -6,7 +6,7 @@
 .text {
     &--page-header {
         @include global.text-bold {
-            color: $White;
+            color: global.$White;
         }
         @include global.header-styling-mobile;
         position: absolute;

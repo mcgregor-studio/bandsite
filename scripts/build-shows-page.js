@@ -14,7 +14,7 @@ function inputAtt(elem, att, value) {
   //Containers
 let divMargin = newElem(`div`, `margin`);
 let shows = newElem(`section`, `shows`);
-let showsTable = newElem(`table`, `shows__table`);
+let showsInfo = newElem(`div`, `shows__info`);
   //Header & Divider
 let showsHeader = newElem(`h1`, `text--section-header`);
   showsHeader.innerText = `Shows`;
@@ -56,37 +56,37 @@ document.body.insertBefore(showsTitle, shows);
 //Adding the element variables declared in the 'Element Variables' section to the HTML
   //Adding container and image elements
 shows.appendChild(divMargin);
-divMargin.append(showsHeader);
+divMargin.append(
+  showsHeader, 
+  showsInfo);
 
-//Function to display all shows on tablet and desktop (TD)
-function displayShowsTD(arr) {
-  let showsTable = newElem(`table`, `shows__table`);
-  divMargin.appendChild(showsTable);
+  
 
-  for (let i = 0; i < showsArray.length; i++) {
-      let showsTableRow = newElem(`tr`, `shows__table--row`);
-      let showsTableDate = newElem(`td`, `text--show-date`);
-      let showsTableVenue = newElem(`td`, `text--show-array`);
-      let showsLocation = newElem(`td`, `text--show-array`);
-        showsLocation.innerText = `San Francisco, CA`;
-      let showsTableButton = newElem(`button`, `shows__table--button`);
-        inputAtt(showsTableButton, `type`, `button`);
-        showsTableButton.style.cursor = `pointer`;
-        showsTableButton.innerText = `BUY TICKETS`;
-      let showsTableDivider = newElem(`div`, `divider`);
+//Function to display all shows
+function displayShows(arr) {
 
-      showsTableDate.innerText = arr[i].date;
-      showsTableVenue.innerText = arr[i].venue;
+  for (let i = 0; i < arr.length; i++) {
+    let rowEl = newElem(`div`, `shows__info--row`);
+    let dateEl = newElem(`h5`, `text__shows--date`);
+    let venueEl = newElem(`p`, `text__shows`);
+    let locationEl = newElem(`p`, `text__shows`);
+    let buttonEl = newElem(`button`, `shows__info--button`);
+      inputAtt(buttonEl, `type`, `button`);
+   let dividerEl = newElem(`div`, `divider`);
 
-      showsTable.appendChild(showsTableRow);
-        showsTableRow.append(
-          showsTableDate,
-          showsTableVenue,
-          showsLocation,
-          showsTableButton
-        )
-      showsTable.appendChild(showsTableDivider);
+    dateEl.innerText = arr[i].date;
+    venueEl.innerText = arr[i].venue;
+    locationEl.innerText = `San Francisco, CA`
+   buttonEl.innerText = `Buy Tickets`;
+
+    showsInfo.appendChild(rowEl);
+     rowEl.append(
+       dateEl,
+       venueEl,
+       locationEl,
+       buttonEl
+      )
+    showsInfo.appendChild(dividerEl);
   }
-}
-
-displayShowsTD(showsArray);
+};
+displayShows(showsArray);

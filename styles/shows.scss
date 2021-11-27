@@ -64,7 +64,7 @@
 /* Shows */
 
 .shows {
-    &__table {
+    &__info {
     
         &--row {
             display: flex;
@@ -107,13 +107,14 @@
     }
 
     .shows {
-        &__table {
-        
+        &__info {
+            width: calc(100%);
+            
             &--row {
                 flex-direction: row;
                 justify-content: space-evenly;
                 align-items: baseline;
-                width: calc(100vw - 6rem);
+                
             }
         }
     }
@@ -125,17 +126,15 @@
 @media (min-width: 1280px) {
     .hero {
         &__soundcloud {
-            width: calc(100vw - 16rem);
+            width: calc(100% - 16rem);
             left: 8rem;
         }
     }
 
     .shows {
-        &__table {
-            
-            &--row {
-                width: 100%;
-            }
+        &__info {
+            width: calc(100%);
+           
         }
     }
 
