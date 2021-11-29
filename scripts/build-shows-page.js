@@ -14,7 +14,8 @@ function inputAtt(elem, att, value) {
   //Containers
 let divMargin = newElem(`div`, `margin`);
 let shows = newElem(`section`, `shows`);
-let showsInfo = newElem(`div`, `shows__info`);
+let showsContainer = newElem(`div`, `shows__container`)
+let showsTable = newElem(`table`, `shows__table`);
   //Header & Divider
 let showsHeader = newElem(`h1`, `text--section-header`);
   showsHeader.innerText = `Shows`;
@@ -58,7 +59,8 @@ document.body.insertBefore(showsTitle, shows);
 shows.appendChild(divMargin);
 divMargin.append(
   showsHeader, 
-  showsInfo);
+  showsContainer);
+showsContainer.appendChild(showsTable);
 
   
 
@@ -66,11 +68,11 @@ divMargin.append(
 function displayShows(arr) {
 
   for (let i = 0; i < arr.length; i++) {
-    let rowEl = newElem(`div`, `shows__info--row`);
-    let dateEl = newElem(`h5`, `text__shows--date`);
-    let venueEl = newElem(`p`, `text__shows`);
-    let locationEl = newElem(`p`, `text__shows`);
-    let buttonEl = newElem(`button`, `shows__info--button`);
+    let rowEl = newElem(`tr`, `shows__table--row`);
+    let dateEl = newElem(`td`, `text__shows--date`);
+    let venueEl = newElem(`td`, `text__shows--venue`);
+    let locationEl = newElem(`td`, `text__shows--location`);
+    let buttonEl = newElem(`button`, `shows__table--button`);
       inputAtt(buttonEl, `type`, `button`);
    let dividerEl = newElem(`div`, `divider`);
 
@@ -79,14 +81,14 @@ function displayShows(arr) {
     locationEl.innerText = `San Francisco, CA`
    buttonEl.innerText = `Buy Tickets`;
 
-    showsInfo.appendChild(rowEl);
+    showsTable.appendChild(rowEl);
      rowEl.append(
        dateEl,
        venueEl,
        locationEl,
        buttonEl
       )
-    showsInfo.appendChild(dividerEl);
+    showsTable.appendChild(dividerEl);
   }
 };
 displayShows(showsArray);

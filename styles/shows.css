@@ -311,19 +311,25 @@ header > .margin {
   top: 30%;
   z-index: 10;
 }
-.text--show-date {
-  font-family: "Avenir Next Bold";
+.text--album-header {
+  font-family: "Avenir Next Demi";
+  color: #FFFFFF;
+  position: absolute;
+  top: 20%;
+  z-index: 10;
+}
+.text__shows--date {
+  font-family: "Avenir Next Demi";
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
 }
-.text--show-array {
+.text__shows--venue, .text__shows--location {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
 }
-
 /* Hero */
 .hero {
   position: relative;
@@ -353,12 +359,17 @@ header > .margin {
 }
 
 /* Shows */
-.shows__info--row {
+.shows__container {
+  width: 100%;
+}
+.shows__table {
+  width: 100%;
+}
+.shows__table--row {
   display: flex;
   flex-direction: column;
-  width: calc(100vw - 3rem);
 }
-.shows__info--button {
+.shows__table--button {
   font-family: "Avenir Next Regular";
   font-size: 1rem;
   line-height: 1.25rem;
@@ -373,7 +384,7 @@ header > .margin {
   margin-bottom: 1rem;
   font-family: "Avenir Next Bold";
 }
-.shows__info--button:hover {
+.shows__table--button:hover {
   background-color: #000000;
   transition: color, 0.2s;
 }
@@ -384,30 +395,45 @@ header > .margin {
   .text--page-header {
     font-size: 3.75rem;
     line-height: 4.25rem;
+    max-width: 60%;
   }
 
-  .shows__info {
-    width: calc(100%);
+  .hero__soundcloud {
+    max-width: 45%;
+    top: 60%;
+    left: 2.25rem;
   }
-  .shows__info--row {
+
+  .shows__table--row {
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: baseline;
+    justify-content: space-between;
   }
 }
 /* Desktop */
 @media (min-width: 1280px) {
-  .hero__soundcloud {
-    width: calc(100% - 16rem);
-    left: 8rem;
+  .text--page-header {
+    top: 50%;
+    max-width: 38%;
+  }
+  .text--album-header {
+    top: 40%;
+  }
+  .text--section-header {
+    margin-right: 8rem;
   }
 
-  .shows__info {
-    width: calc(100%);
+  .hero__soundcloud {
+    width: 40%;
+    top: 50%;
+    left: 50%;
+  }
+
+  .shows__table {
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
   }
 
   .shows > div.margin {
     display: flex;
-    align-items: flex-start;
   }
 }/*# sourceMappingURL=shows.css.map */

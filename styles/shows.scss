@@ -12,21 +12,38 @@
         z-index: 10;
     }
 
-    &--show-date {
-        @include global.text-bold {
-            font-size: 0.8125rem;
-            line-height: 1.125rem;
-            color: global.$BandSite-Black;
-            }
+    &--album-header {
+        @include global.text-demi {
+            color: global.$White;
+        };
+        position: absolute;
+        top: 20%;
+        z-index: 10;
     }
 
-    &--show-array {
-        @include global.text-reg {
+    &__shows {
+        &--date {
+        @include global.text-demi {
             font-size: 0.8125rem;
             line-height: 1.125rem;
             color: global.$BandSite-Black;
             }
+        }
+
+        &--venue {
+            @include global.text-reg {
+                font-size: 0.8125rem;
+                line-height: 1.125rem;
+                color: global.$BandSite-Black;
+                }
+        }
+
+        &--location {
+            @extend .text__shows--venue;
+        }
     }
+
+    
 }
 
 /* Hero */
@@ -64,12 +81,15 @@
 /* Shows */
 
 .shows {
-    &__info {
-    
+    &__container {
+        width: 100%;
+    }
+
+    &__table {
+        width: 100%;
         &--row {
             display: flex;
             flex-direction: column;
-            width: calc(100vw - 3rem);
         }
 
         &--button {
@@ -86,7 +106,6 @@
             };
             @include global.text-bold;
             
-
             &:hover {
                 background-color: global.$BandSite-DarkBlack;
                 transition: color, 0.2s;
@@ -103,18 +122,23 @@
         &--page-header {
             font-size: 3.75rem;
             line-height: 4.25rem;
+            max-width: 60%;
+        }
+    }
+
+    .hero {
+        &__soundcloud {
+            max-width: 45%;
+            top: 60%;
+            left: 2.25rem;
         }
     }
 
     .shows {
-        &__info {
-            width: calc(100%);
-            
+        &__table {
             &--row {
                 flex-direction: row;
-                justify-content: space-evenly;
-                align-items: baseline;
-                
+                justify-content: space-between;
             }
         }
     }
@@ -124,23 +148,37 @@
 /* Desktop */
 
 @media (min-width: 1280px) {
+    .text {
+        &--page-header {
+            top: 50%;
+            max-width: 38%;
+        }
+
+        &--album-header {
+            top: 40%;
+        }
+
+        &--section-header {
+            margin-right: 8rem;
+        }
+    }
+
     .hero {
         &__soundcloud {
-            width: calc(100% - 16rem);
-            left: 8rem;
+            width: 40%;
+            top: 50%;
+            left: 50%;
         }
     }
 
     .shows {
-        &__info {
-            width: calc(100%);
-           
+        &__table {
+            @include global.header-spacing-desktop-tablet;
         }
     }
 
     .shows > div.margin {
         display: flex;
-        align-items: flex-start; 
     }
 
 }
