@@ -8,12 +8,13 @@
         }
         @include global.header-styling-mobile;
         position: absolute;
+        max-width: 75%;
         top: 30%;
         z-index: 10;
     }
 
     &--album-header {
-        @include global.text-demi {
+        @include global.text-reg {
             color: global.$White;
         };
         position: absolute;
@@ -27,6 +28,7 @@
             font-size: 0.8125rem;
             line-height: 1.125rem;
             color: global.$BandSite-Black;
+            margin-bottom: 1rem;
             }
         }
 
@@ -35,6 +37,7 @@
                 font-size: 0.8125rem;
                 line-height: 1.125rem;
                 color: global.$BandSite-Black;
+                margin-bottom: 1rem;
                 }
         }
 
@@ -53,7 +56,7 @@
     &__overlay {
         position: relative;
         z-index: 5;
-        height: 55vw;
+        height: 65vw;
         background: global.$BandSite-Black;
         opacity: 50%;
         } 
@@ -64,16 +67,17 @@
             z-index: 1;
             top: 0;
             left: 0;
-            height: 55vw;
+            height: 65vw;
             width: 100%;
         }
 
         &__soundcloud {
             position: absolute;
-            top: calc(30% + 2.5rem);
+            top: calc(40% + 2.5rem);
             left: 1rem;
             z-index: 10;
-            width: calc(100% - 2rem)
+            height: 80;
+            width: calc(100% - 2rem);
         }
 
 }
@@ -82,14 +86,26 @@
 
 .shows {
     &__container {
+        @include global.vertical-spacing-mobile;
         width: 100%;
     }
 
     &__table {
         width: 100%;
+        border-collapse: collapse;
+
         &--row {
             display: flex;
             flex-direction: column;
+            padding: 1rem;
+            border-bottom: 0.0625rem solid global.$Mercury;
+            transition: transform;
+
+            &:hover {
+                background-color: global.$Alabaster;
+                transform: background-color, 0.2s;
+            }
+
         }
 
         &--button {
@@ -102,7 +118,6 @@
                 color: global.$White;
                 border: none;
                 border-radius: 0.25rem;
-                margin-bottom: 1rem; 
             };
             @include global.text-bold;
             
@@ -122,7 +137,14 @@
         &--page-header {
             font-size: 3.75rem;
             line-height: 4.25rem;
-            max-width: 60%;
+        }
+
+        &__shows {
+
+            &--date {
+                padding-left: 1.125rem;
+            }
+
         }
     }
 
@@ -137,8 +159,11 @@
     .shows {
         &__table {
             &--row {
-                flex-direction: row;
-                justify-content: space-between;
+               display: table-row;           
+            }
+
+            &--button {
+                margin: 0.75rem 0;
             }
         }
     }

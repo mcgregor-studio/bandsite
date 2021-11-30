@@ -25,6 +25,15 @@
             @extend .text--quote;
         }
     }
+
+    &--comments {
+        @include global.text-reg {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: global.$BandSite-Black;
+            }
+        @include global.vertical-spacing-mobile;
+    }
 }
 
 /* Hero */
@@ -92,7 +101,7 @@
 .comments {
     &__container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: flex-start;
     }
 
@@ -175,6 +184,7 @@
             height: 3rem;
             width: 3rem;
             clip-path: circle();
+            margin-right: 1rem;
             background-color: global.$Mercury;
         }
 
@@ -196,6 +206,11 @@
     }
 }
 
+.divider {
+    @include global.vertical-spacing-mobile;
+    height: 0.0625rem;
+    background-color: global.$Mercury; 
+}
 
 /* Local Breakpoints */
 /* Tablet */
@@ -253,6 +268,18 @@
             }
         }
     }
+
+    .comments {
+        &__container {
+            padding: 0 4.5rem;
+        }
+    }
+
+    .divider {
+        width: calc(100% - 9rem);
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Desktop */
@@ -272,5 +299,15 @@
                 margin-bottom: 2rem;
             }
         }
+    }
+
+    .comments {
+        &__container {
+            padding: 0 18vw;
+        }
+    }
+
+    .divider {
+        width: calc(100% - 36vw);
     }
 }

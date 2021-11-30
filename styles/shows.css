@@ -85,7 +85,7 @@ a:active {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
-.text--body, .text--comments {
+.text--body {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -117,12 +117,6 @@ a:active {
 
 header > .margin {
   margin: 0;
-}
-
-.divider {
-  margin-bottom: 1rem;
-  height: 0.0625rem;
-  background-color: #E1E1E1;
 }
 
 /* Header */
@@ -190,7 +184,7 @@ header > .margin {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
   }
-  .text--body, .text--comments {
+  .text--body {
     margin-bottom: 2.25rem;
   }
   .text--footer-title {
@@ -308,11 +302,12 @@ header > .margin {
   font-size: 1.5rem;
   line-height: 2rem;
   position: absolute;
+  max-width: 75%;
   top: 30%;
   z-index: 10;
 }
 .text--album-header {
-  font-family: "Avenir Next Demi";
+  font-family: "Avenir Next Regular";
   color: #FFFFFF;
   position: absolute;
   top: 20%;
@@ -323,12 +318,14 @@ header > .margin {
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
+  margin-bottom: 1rem;
 }
 .text__shows--venue, .text__shows--location {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
+  margin-bottom: 1rem;
 }
 /* Hero */
 .hero {
@@ -337,7 +334,7 @@ header > .margin {
 .hero__overlay {
   position: relative;
   z-index: 5;
-  height: 55vw;
+  height: 65vw;
   background: #323232;
   opacity: 50%;
 }
@@ -347,27 +344,37 @@ header > .margin {
   z-index: 1;
   top: 0;
   left: 0;
-  height: 55vw;
+  height: 65vw;
   width: 100%;
 }
 .hero__soundcloud {
   position: absolute;
-  top: calc(30% + 2.5rem);
+  top: calc(40% + 2.5rem);
   left: 1rem;
   z-index: 10;
+  height: 80;
   width: calc(100% - 2rem);
 }
 
 /* Shows */
 .shows__container {
+  margin-bottom: 1rem;
   width: 100%;
 }
 .shows__table {
   width: 100%;
+  border-collapse: collapse;
 }
 .shows__table--row {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  border-bottom: 0.0625rem solid #E1E1E1;
+  transition: transform;
+}
+.shows__table--row:hover {
+  background-color: #FAFAFA;
+  transform: background-color, 0.2s;
 }
 .shows__table--button {
   font-family: "Avenir Next Regular";
@@ -381,7 +388,6 @@ header > .margin {
   color: #FFFFFF;
   border: none;
   border-radius: 0.25rem;
-  margin-bottom: 1rem;
   font-family: "Avenir Next Bold";
 }
 .shows__table--button:hover {
@@ -395,7 +401,9 @@ header > .margin {
   .text--page-header {
     font-size: 3.75rem;
     line-height: 4.25rem;
-    max-width: 60%;
+  }
+  .text__shows--date {
+    padding-left: 1.125rem;
   }
 
   .hero__soundcloud {
@@ -405,8 +413,10 @@ header > .margin {
   }
 
   .shows__table--row {
-    flex-direction: row;
-    justify-content: space-between;
+    display: table-row;
+  }
+  .shows__table--button {
+    margin: 0.75rem 0;
   }
 }
 /* Desktop */

@@ -85,7 +85,7 @@ a:active {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
-.text--body, .text--comments {
+.text--body {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -117,12 +117,6 @@ a:active {
 
 header > .margin {
   margin: 0;
-}
-
-.divider {
-  margin-bottom: 1rem;
-  height: 0.0625rem;
-  background-color: #E1E1E1;
 }
 
 /* Header */
@@ -190,7 +184,7 @@ header > .margin {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
   }
-  .text--body, .text--comments {
+  .text--body {
     margin-bottom: 2.25rem;
   }
   .text--footer-title {
@@ -319,6 +313,14 @@ header > .margin {
   margin-top: 0.25rem;
   color: #323232;
 }
+.text--comments {
+  font-family: "Avenir Next Regular";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #323232;
+  margin-bottom: 1rem;
+}
+
 /* Hero */
 .hero {
   position: relative;
@@ -375,7 +377,7 @@ header > .margin {
 /* Comments */
 .comments__container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
 }
 .comments__image {
@@ -451,6 +453,7 @@ header > .margin {
   width: 3rem;
   -webkit-clip-path: circle();
           clip-path: circle();
+  margin-right: 1rem;
   background-color: #E1E1E1;
 }
 .comments__display--name {
@@ -464,6 +467,12 @@ header > .margin {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.divider {
+  margin-bottom: 1rem;
+  height: 0.0625rem;
+  background-color: #E1E1E1;
 }
 
 /* Local Breakpoints */
@@ -512,6 +521,16 @@ header > .margin {
     max-width: 31%;
     margin-bottom: 1.5rem;
   }
+
+  .comments__container {
+    padding: 0 4.5rem;
+  }
+
+  .divider {
+    width: calc(100% - 9rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 /* Desktop */
 @media (min-width: 1280px) {
@@ -527,5 +546,13 @@ header > .margin {
   .gallery__container--image {
     max-width: 31%;
     margin-bottom: 2rem;
+  }
+
+  .comments__container {
+    padding: 0 18vw;
+  }
+
+  .divider {
+    width: calc(100% - 36vw);
   }
 }/*# sourceMappingURL=bio.css.map */

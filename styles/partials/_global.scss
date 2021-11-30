@@ -150,9 +150,7 @@ a {
             }
         @include vertical-spacing-mobile;
     }
-    &--comments {
-        @extend .text--body;
-    }
+   
     &--footer-title {
         @include text-bold {
         color: $White;
@@ -179,11 +177,6 @@ a {
 }
 header > .margin {
     margin: 0;
-}
-.divider {
-    @include vertical-spacing-mobile;
-    height: 0.0625rem;
-    background-color: $Mercury; 
 }
 
 /* Header */

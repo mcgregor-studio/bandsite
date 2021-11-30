@@ -136,7 +136,7 @@ commentsButton.addEventListener(`click`, function() {
     let commentsObj = {};
     commentsObj.name = commentsInputName.value;
     commentsObj.date = commentsDate;
-    commentsObj.comment = commentsInputText.value;
+    commentsObj.comment = commentsInputComment.value;
 
     let arrDelete = document.querySelector(`.comments--array`);
     arrDelete.remove();

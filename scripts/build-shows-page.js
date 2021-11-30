@@ -74,7 +74,6 @@ function displayShows(arr) {
     let locationEl = newElem(`td`, `text__shows--location`);
     let buttonEl = newElem(`button`, `shows__table--button`);
       inputAtt(buttonEl, `type`, `button`);
-   let dividerEl = newElem(`div`, `divider`);
 
     dateEl.innerText = arr[i].date;
     venueEl.innerText = arr[i].venue;
@@ -88,7 +87,6 @@ function displayShows(arr) {
        locationEl,
        buttonEl
       )
-    showsTable.appendChild(dividerEl);
   }
 };
 displayShows(showsArray);
