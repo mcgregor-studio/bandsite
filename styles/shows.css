@@ -381,8 +381,9 @@ header > .margin {
   font-size: 1rem;
   line-height: 1.25rem;
   height: 2.5rem;
-  min-width: 9.375rem;
   padding: 0 2rem;
+  min-width: 9.375rem;
+  width: 100%;
   text-transform: uppercase;
   background-color: #323232;
   color: #FFFFFF;
@@ -393,6 +394,13 @@ header > .margin {
 .shows__table--button:hover {
   background-color: #000000;
   transition: color, 0.2s;
+}
+.shows__table--button-container {
+  width: 100%;
+}
+
+.active-row {
+  background-color: #E1E1E1;
 }
 
 /* Local Breakpoints */
@@ -412,11 +420,16 @@ header > .margin {
     left: 2.25rem;
   }
 
+  td {
+    width: 25%;
+  }
+
   .shows__table--row {
     display: table-row;
   }
   .shows__table--button {
     margin: 0.75rem 0;
+    min-width: 9.375rem;
   }
 }
 /* Desktop */

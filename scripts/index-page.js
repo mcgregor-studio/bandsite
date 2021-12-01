@@ -131,7 +131,7 @@ function displayComment(arr) {
 
 displayComment(commentsArray);
 
-//Function to create new object and add it to array based on HTML input
+//Event listener to create new object and add it to array based on HTML input
 commentsButton.addEventListener(`click`, function() {
     let commentsObj = {};
     commentsObj.name = commentsInputName.value;
