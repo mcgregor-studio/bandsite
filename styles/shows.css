@@ -68,7 +68,7 @@ a:active {
   margin-top: 2.25rem;
 }
 
-.text--section-header {
+.text__header--section {
   font-family: "Avenir Next Bold";
   color: #323232;
   font-size: 1.5rem;
@@ -76,7 +76,7 @@ a:active {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
-.text--subheader {
+.text__subheader {
   font-family: "Avenir Next Regular";
   color: #000000;
   font-size: 0.875rem;
@@ -85,27 +85,27 @@ a:active {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
-.text--body {
+.text__body {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
   margin-bottom: 1rem;
 }
-.text--footer-title {
+.text__footer, .footer__email {
+  font-family: "Avenir Next Regular";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #FFFFFF;
+  margin-top: 1rem;
+}
+.text__footer--title {
   font-family: "Avenir Next Bold";
   color: #FFFFFF;
   font-size: 1.5rem;
   line-height: 2rem;
   padding-top: 1.5rem;
   padding-bottom: 1rem;
-}
-.text--footer, .footer__email {
-  font-family: "Avenir Next Regular";
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
-  color: #FFFFFF;
-  margin-top: 1rem;
 }
 
 .margin {
@@ -117,6 +117,12 @@ a:active {
 
 header > .margin {
   margin: 0;
+}
+
+.divider {
+  margin-bottom: 1rem;
+  height: 0.0625rem;
+  background-color: #E1E1E1;
 }
 
 /* Header */
@@ -171,32 +177,32 @@ header > .margin {
     margin: 0 2.25rem;
   }
 
-  .text--section-header {
+  .text__header--section {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
     font-size: 2.25rem;
     line-height: 2.75rem;
   }
-  .text--subheader {
+  .text__subheader {
     font-family: "Avenir Next Bold";
     font-size: 1.5rem;
     line-height: 2rem;
     padding-top: 3rem;
     padding-bottom: 2.25rem;
   }
-  .text--body {
+  .text__body {
     margin-bottom: 2.25rem;
   }
-  .text--footer-title {
-    padding-top: 3rem;
-    padding-bottom: 2.25rem;
-    margin-right: 1.5rem;
-  }
-  .text--footer, .footer__email {
+  .text__footer, .footer__email {
     font-size: 0.875rem;
     line-height: 1.25rem;
     margin-bottom: 1.5rem;
     margin-top: 0;
+  }
+  .text__footer--title {
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
+    margin-right: 1.5rem;
   }
 
   .header {
@@ -279,7 +285,7 @@ header > .margin {
     padding: 2.25rem 0;
   }
 
-  .text--footer-title {
+  .text__footer--title {
     margin-right: 3rem;
   }
 
@@ -296,7 +302,7 @@ header > .margin {
   }
 }
 /*Local Styling*/
-.text--page-header {
+.text__header--page {
   font-family: "Avenir Next Bold";
   color: #FFFFFF;
   font-size: 1.5rem;
@@ -306,21 +312,31 @@ header > .margin {
   top: 30%;
   z-index: 10;
 }
-.text--album-header {
+.text__header--album {
   font-family: "Avenir Next Regular";
   color: #FFFFFF;
   position: absolute;
   top: 20%;
   z-index: 10;
 }
-.text__shows--date {
+.text__header--mobile {
+  font-family: "Avenir Next Demi";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #AFAFAF;
+  text-transform: uppercase;
+}
+.text__header--table {
+  display: none;
+}
+.text--shows-date {
   font-family: "Avenir Next Demi";
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
   margin-bottom: 1rem;
 }
-.text__shows--venue, .text__shows--location {
+.text--shows-venue, .text--shows-location {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -352,7 +368,7 @@ header > .margin {
   top: calc(40% + 2.5rem);
   left: 1rem;
   z-index: 10;
-  height: 80;
+  max-height: 10rem;
   width: calc(100% - 2rem);
 }
 
@@ -362,13 +378,14 @@ header > .margin {
   width: 100%;
 }
 .shows__table {
-  width: 100%;
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
   border-collapse: collapse;
 }
 .shows__table--row {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   border-bottom: 0.0625rem solid #E1E1E1;
   transition: transform;
 }
@@ -389,7 +406,7 @@ header > .margin {
   color: #FFFFFF;
   border: none;
   border-radius: 0.25rem;
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
 }
 .shows__table--button:hover {
   background-color: #000000;
@@ -399,6 +416,10 @@ header > .margin {
   width: 100%;
 }
 
+.divider {
+  width: 100vw;
+}
+
 .active-row {
   background-color: #E1E1E1;
 }
@@ -406,11 +427,26 @@ header > .margin {
 /* Local Breakpoints */
 /* Tablet */
 @media (min-width: 768px) {
-  .text--page-header {
+  .text__header--page {
     font-size: 3.75rem;
     line-height: 4.25rem;
   }
-  .text__shows--date {
+  .text__header--mobile {
+    display: none;
+  }
+  .text__header--table {
+    font-family: "Avenir Next Demi";
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    color: #AFAFAF;
+    text-align: left;
+    text-transform: uppercase;
+    display: table-cell;
+  }
+  .text__header--table:first-child {
+    padding-left: 1.125rem;
+  }
+  .text--shows-date {
     padding-left: 1.125rem;
   }
 
@@ -429,20 +465,24 @@ header > .margin {
   }
   .shows__table--button {
     margin: 0.75rem 0;
-    min-width: 9.375rem;
+    width: calc(100% - 1.125rem);
   }
 }
 /* Desktop */
 @media (min-width: 1280px) {
-  .text--page-header {
+  .text__header--page {
     top: 50%;
     max-width: 38%;
   }
-  .text--album-header {
+  .text__header--album {
     top: 40%;
   }
-  .text--section-header {
-    margin-right: 8rem;
+  .text__header--table {
+    padding-top: 4.15rem;
+    padding-bottom: 2.25rem;
+  }
+  .text__shows--date {
+    width: 9rem;
   }
 
   .hero__soundcloud {
@@ -455,8 +495,19 @@ header > .margin {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
   }
+  .shows__table--button-container {
+    width: 23%;
+  }
+
+  td {
+    width: 21.25%;
+  }
 
   .shows > div.margin {
     display: flex;
+  }
+
+  .shows > div.margin > .text__header--section {
+    margin-right: 9rem;
   }
 }/*# sourceMappingURL=shows.css.map */

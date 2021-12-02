@@ -15,10 +15,18 @@ function inputAtt(elem, att, value) {
 let divMargin = newElem(`div`, `margin`);
 let shows = newElem(`section`, `shows`);
 let showsContainer = newElem(`div`, `shows__container`)
-let showsTable = newElem(`table`, `shows__table`);
-  //Header & Divider
-let showsHeader = newElem(`h1`, `text--section-header`);
+  //Header
+let showsHeader = newElem(`h1`, `text__header--section`);
   showsHeader.innerText = `Shows`;
+  //Table Elements
+  let showsTable = newElem(`table`, `shows__table`);
+  let showsHeaderRow = newElem(`tr`, `shows__table--header-row`);
+  let headerRowDate = newElem(`th`, `text__header--table`);
+    headerRowDate.innerText = `Date`;
+  let headerRowVenue = newElem(`th`, `text__header--table`);
+    headerRowVenue.innerText = `Venue`;
+  let headerRowLocation = newElem(`th`, `text__header--table`);
+    headerRowLocation.innerText = `Location`;
 //Reference variable 
 let hero = document.querySelector(`.hero`);
 
@@ -55,34 +63,50 @@ let showsTitle = document.createComment(` Shows `);
 document.body.insertBefore(showsTitle, shows);
 
 //Adding the element variables declared in the 'Element Variables' section to the HTML
-  //Adding container and image elements
+  //Adding container and section header
 shows.appendChild(divMargin);
 divMargin.append(
   showsHeader, 
   showsContainer);
+  //adding table and table headers
 showsContainer.appendChild(showsTable);
+showsTable.appendChild(showsHeaderRow);
+  showsHeaderRow.append(
+    headerRowDate,
+    headerRowVenue,
+    headerRowLocation
+  );
 
 //Function to display all shows
 function displayShows(arr) {
 
   for (let i = 0; i < arr.length; i++) {
     let rowEl = newElem(`tr`, `shows__table--row`);
-    let dateEl = newElem(`td`, `text__shows--date`);
-    let venueEl = newElem(`td`, `text__shows--venue`);
-    let locationEl = newElem(`td`, `text__shows--location`);
-    let buttonContainerEl = newElem(`td`, `show__table--button-container`)
+    let dateHeaderEl = newElem(`td`, `text__header--mobile`);
+    let dateEl = newElem(`td`, `text--shows-date`);
+    let venueHeaderEl = newElem(`td`, `text__header--mobile`);
+    let venueEl = newElem(`td`, `text--shows-venue`);
+    let locationHeaderEl = newElem(`td`, `text__header--mobile`)
+    let locationEl = newElem(`td`, `text--shows-location`);
+    let buttonContainerEl = newElem(`td`, `shows__table--button-container`)
     let buttonEl = newElem(`button`, `shows__table--button`);
       inputAtt(buttonEl, `type`, `button`);
 
+    dateHeaderEl.innerText = `Date`;
     dateEl.innerText = arr[i].date;
+    venueHeaderEl.innerText = `Venue`;
     venueEl.innerText = arr[i].venue;
+    locationHeaderEl.innerText = `Location`;
     locationEl.innerText = `San Francisco, CA`
     buttonEl.innerText = `Buy Tickets`;
 
     showsTable.appendChild(rowEl);
      rowEl.append(
+       dateHeaderEl,
        dateEl,
+       venueHeaderEl,
        venueEl,
+       locationHeaderEl,
        locationEl,
        buttonContainerEl
       );
@@ -90,6 +114,8 @@ function displayShows(arr) {
   }
 };
 displayShows(showsArray);
+
+
 
 //Event listener to change the colour of the table row
 showsTable.addEventListener (`click`, (event) => {
@@ -102,9 +128,9 @@ showsTable.addEventListener (`click`, (event) => {
     }
   }
 
-  if (active.className !== `shows__table--row`) {
+  if (active.nodeName === `TD`) {
     active.parentNode.classList.add(`active-row`)
-  } else {
+  } else if (active.nodeName === `TR`) {
     active.classList.add(`active-row`);
-  }
+  } else {}
 });

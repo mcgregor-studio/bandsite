@@ -27,7 +27,7 @@ let divMargin = newElem(`div`, `margin`);
 let comments = newElem(`section`, `comments`);
 let commentsContainer = newElem(`div`, `comments__container`);
   //Header & Divider
-let commentsHeader = newElem(`h1`, `text--section-header`);
+let commentsHeader = newElem(`h1`, `text__header--section`);
 let commentsDivider = newElem(`div`, `divider`);
   //Form & Inputs
 let commentsForm = newElem(`form`, `comments__form`);
@@ -37,7 +37,7 @@ let commentsInputName = newElem(`input`, `comments__form--name`);
   inputAtt(commentsInputName, `type`, `text`, `name`, `Enter your name`);
 let commentsLabelComment = newElem(`label`, `comments__form--label`);
   inputAtt(commentsLabelComment, `for`, `name`);
-let commentsInputComment = newElem(`textarea`, `comments__form--text`);
+let commentsInputComment = newElem(`textarea`, `comments__form--comment`);
   inputAtt(commentsInputComment, `type`, `text`, `comment`);
 let commentsButton = newElem(`button`, `comments__form--button`);
   inputAtt(commentsButton, `type`, `button`);
@@ -81,9 +81,9 @@ comments.appendChild(divMargin);
   divMargin.append(
     commentsHeader, 
     commentsContainer);
-
-    commentsHeader.innerText = `Join the Conversation`;
       commentsContainer.appendChild(commentsImage);
+
+    commentsHeader.innerText = `Join the Conversation`; 
   //Adding form elements
     commentsContainer.appendChild(commentsForm);
       commentsForm.append(
@@ -109,7 +109,7 @@ function displayComment(arr) {
     let displayEl = newElem(`div`, `comments__display`);
     let nameEl = newElem(`h4`, `comments__display--name`);
     let dateEl = newElem(`p`, `comments__display--date`)
-    let commentEl = newElem(`p`, `text--comments`);
+    let commentEl = newElem(`p`, `text__comments`);
     let imageEl = newElem(`img`, `comments__display--image`);
     let dividerEl = newElem(`div`, `divider`);
 
@@ -132,7 +132,7 @@ function displayComment(arr) {
 displayComment(commentsArray);
 
 //Event listener to create new object and add it to array based on HTML input
-commentsButton.addEventListener(`click`, function() {
+commentsButton.addEventListener(`click`, () => {
     let commentsObj = {};
     commentsObj.name = commentsInputName.value;
     commentsObj.date = commentsDate;

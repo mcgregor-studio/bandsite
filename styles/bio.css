@@ -68,7 +68,7 @@ a:active {
   margin-top: 2.25rem;
 }
 
-.text--section-header {
+.text__header--section {
   font-family: "Avenir Next Bold";
   color: #323232;
   font-size: 1.5rem;
@@ -76,7 +76,7 @@ a:active {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
-.text--subheader {
+.text__subheader {
   font-family: "Avenir Next Regular";
   color: #000000;
   font-size: 0.875rem;
@@ -85,27 +85,27 @@ a:active {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
 }
-.text--body {
+.text__body {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #323232;
   margin-bottom: 1rem;
 }
-.text--footer-title {
+.text__footer, .footer__email {
+  font-family: "Avenir Next Regular";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #FFFFFF;
+  margin-top: 1rem;
+}
+.text__footer--title {
   font-family: "Avenir Next Bold";
   color: #FFFFFF;
   font-size: 1.5rem;
   line-height: 2rem;
   padding-top: 1.5rem;
   padding-bottom: 1rem;
-}
-.text--footer, .footer__email {
-  font-family: "Avenir Next Regular";
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
-  color: #FFFFFF;
-  margin-top: 1rem;
 }
 
 .margin {
@@ -117,6 +117,12 @@ a:active {
 
 header > .margin {
   margin: 0;
+}
+
+.divider {
+  margin-bottom: 1rem;
+  height: 0.0625rem;
+  background-color: #E1E1E1;
 }
 
 /* Header */
@@ -171,32 +177,32 @@ header > .margin {
     margin: 0 2.25rem;
   }
 
-  .text--section-header {
+  .text__header--section {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
     font-size: 2.25rem;
     line-height: 2.75rem;
   }
-  .text--subheader {
+  .text__subheader {
     font-family: "Avenir Next Bold";
     font-size: 1.5rem;
     line-height: 2rem;
     padding-top: 3rem;
     padding-bottom: 2.25rem;
   }
-  .text--body {
+  .text__body {
     margin-bottom: 2.25rem;
   }
-  .text--footer-title {
-    padding-top: 3rem;
-    padding-bottom: 2.25rem;
-    margin-right: 1.5rem;
-  }
-  .text--footer, .footer__email {
+  .text__footer, .footer__email {
     font-size: 0.875rem;
     line-height: 1.25rem;
     margin-bottom: 1.5rem;
     margin-top: 0;
+  }
+  .text__footer--title {
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
+    margin-right: 1.5rem;
   }
 
   .header {
@@ -279,7 +285,7 @@ header > .margin {
     padding: 2.25rem 0;
   }
 
-  .text--footer-title {
+  .text__footer--title {
     margin-right: 3rem;
   }
 
@@ -297,7 +303,7 @@ header > .margin {
 }
 /* Local Elements */
 /* Text */
-.text--page-header {
+.text__header--page {
   font-family: "Avenir Next Bold";
   color: #FFFFFF;
   font-size: 1.5rem;
@@ -306,14 +312,14 @@ header > .margin {
   top: 45%;
   z-index: 10;
 }
-.text--quote, .text--quote-person {
+.text__quote, .text__quote--person {
   font-family: "Avenir Next Demi";
   font-size: 0.875rem;
   line-height: 1.375rem;
   margin-top: 0.25rem;
   color: #323232;
 }
-.text--comments {
+.text__comments {
   font-family: "Avenir Next Regular";
   font-size: 0.8125rem;
   line-height: 1.125rem;
@@ -377,7 +383,7 @@ header > .margin {
 /* Comments */
 .comments__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
 }
 .comments__image {
@@ -388,7 +394,7 @@ header > .margin {
   margin-top: 1.6rem;
 }
 .comments__form, .comments__display {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
 }
@@ -412,7 +418,7 @@ header > .margin {
 .comments__form--name:active {
   border-color: #323232;
 }
-.comments__form--text {
+.comments__form--comment {
   font-family: "Avenir Next Regular";
   font-size: 0.625rem;
   line-height: 1.25rem;
@@ -423,7 +429,7 @@ header > .margin {
   min-height: 2.25rem;
   resize: none;
 }
-.comments__form--text:active {
+.comments__form--comment:active {
   border-color: #323232;
 }
 .comments__form--button {
@@ -469,29 +475,23 @@ header > .margin {
   right: 0;
 }
 
-.divider {
-  margin-bottom: 1rem;
-  height: 0.0625rem;
-  background-color: #E1E1E1;
-}
-
 /* Local Breakpoints */
 /* Tablet */
 @media (min-width: 768px) {
-  .text--page-header {
+  .text__header--page {
     font-size: 3.75rem;
     line-height: 4.25rem;
   }
-  .text--body {
+  .text__body {
     font-size: 0.875rem;
     line-height: 1.375rem;
     max-width: 47%;
   }
-  .text--quote, .text--quote-person {
+  .text__quote, .text__quote--person {
     font-size: 1.5rem;
     line-height: 2rem;
   }
-  .text--quote-person {
+  .text__quote--person {
     font-size: 1rem;
     line-height: 1.5rem;
     margin-top: 1rem;

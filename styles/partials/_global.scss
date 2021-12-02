@@ -124,15 +124,17 @@ a {
 }
 
 .text {
-    &--section-header {
-        @include text-bold {
-        color: $BandSite-Black;
+    &__header {
+        &--section {
+            @include text-bold {
+            color: $BandSite-Black;
+            }
+            @include header-styling-mobile;
+            @include header-spacing-mobile;
         }
-        @include header-styling-mobile;
-        @include header-spacing-mobile;
     }
 
-    &--subheader {
+    &__subheader {
         @include text-reg {
             color: $BandSite-DarkBlack;
             font-size: 0.875rem;
@@ -142,7 +144,7 @@ a {
         @include header-spacing-mobile;
     }
 
-    &--body {
+    &__body {
         @include text-reg {
             font-size: 0.8125rem;
             line-height: 1.125rem;
@@ -150,22 +152,20 @@ a {
             }
         @include vertical-spacing-mobile;
     }
-   
-    &--footer-title {
-        @include text-bold {
-        color: $White;
-        }
-        @include header-styling-mobile;
-        @include header-spacing-mobile;
-    }
-
-    &--footer {
+    &__footer {
         @include text-reg {
             font-size: 0.8125rem;
             line-height: 1.125rem;
             color: $White;
             }
             margin-top: 1rem;
+            &--title {
+                @include text-bold {
+                color: $White;
+                }
+                @include header-styling-mobile;
+                @include header-spacing-mobile;
+            }
     }
 }
 .margin {
@@ -177,6 +177,11 @@ a {
 }
 header > .margin {
     margin: 0;
+}
+.divider {
+    @include vertical-spacing-mobile;
+    height: 0.0625rem;
+    background-color: $Mercury; 
 }
 
 /* Header */
@@ -221,7 +226,7 @@ header > .margin {
     }
 
     &__email {
-        @extend .text--footer;
+        @extend .text__footer;
         display: block;
         text-decoration: none;   
     }
@@ -238,48 +243,43 @@ header > .margin {
         @include horizontal-spacing-tablet;
     }
     .text {
-        &--section-header {
-            @include header-spacing-desktop-tablet;
-            font-size: 2.25rem;
-            line-height: 2.75rem;
+        &__header {
+            &--section {
+                @include header-spacing-desktop-tablet;
+                font-size: 2.25rem;
+                line-height: 2.75rem;
+            }
         }
-
-        &--subheader {
+        &__subheader {
             @include text-bold {
             font-size: 1.5rem;
             line-height: 2rem;  
             }
             @include header-spacing-desktop-tablet;
         }
-
-        &--body {
+        &__body {
             @include vertical-spacing-desktop-tablet;
-        }
-    
-        &--footer-title {
-            @include header-spacing-desktop-tablet;
-            margin-right: 1.5rem;
-        }
-
-        &--footer {
+        }  
+        &__footer {
             font-size: 0.875rem;
             line-height: 1.25rem;
             margin-bottom: 1.5rem;
             margin-top: 0;
+            &--title {
+            @include header-spacing-desktop-tablet;
+            margin-right: 1.5rem;
+            }
         }
     }
 
     .header {
         padding-top: 0;
-
         &__positioning {
             display: flex;
             align-items: center;
-            }
-            
+            }      
         &__nav {
             display: flex;
-
             &-list {
                 display: flex;
                 justify-content: space-evenly;
@@ -296,36 +296,30 @@ header > .margin {
             }
         }
     }
+
     .footer {
         padding-bottom: 0.75rem;
-
         &__container {
-
             &--desktop-tablet {
             display: flex;
             align-items: center;
             }
-
             &--positioning {
                 position: relative;
             }
         }
-
         &__text {
             &--container {
                 margin-right: 3rem;
             }
         }
-
         &__email {
             @include vertical-spacing-desktop-tablet;
         }
-
         &__image {
             @include header-spacing-desktop-tablet;
             margin-right: 1.5rem;
         }
-
     }
     .logo {
         &--header {
@@ -350,12 +344,10 @@ header > .margin {
         @include horizontal-spacing-desktop;
         width: 80vw;
     }
-
     header > .margin {
         @include horizontal-spacing-desktop;
         width: 80vw;
     }
-
     .header {
         &__nav {
             &-list {
@@ -370,8 +362,10 @@ header > .margin {
     }
 
     .text {
-        &--footer-title {
-            margin-right: 3rem;
+        &__footer {
+            &--title {
+                margin-right: 3rem;
+            }
         }
 }
     .logo {
