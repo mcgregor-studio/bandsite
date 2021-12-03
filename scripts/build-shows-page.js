@@ -4,11 +4,6 @@ function newElem(elem, className) {
     newElem.classList.add(className);
     return newElem;
   }
-  //Function to add attributes
-function inputAtt(elem, att, value) {
-    elem.setAttribute(att, value);
-   return elem;
-  }
 
 //Element Variables
   //Containers
@@ -31,7 +26,7 @@ let showsHeader = newElem(`h1`, `text__header--section`);
 let hero = document.querySelector(`.hero`);
 
 //Shows array
-let showsArray = [
+const showsArray = [
     { date: `Mon Sept 06 2021`, 
       venue: `Ronald Lane`,
     },
@@ -90,7 +85,7 @@ function displayShows(arr) {
     let locationEl = newElem(`td`, `text--shows-location`);
     let buttonContainerEl = newElem(`td`, `shows__table--button-container`)
     let buttonEl = newElem(`button`, `shows__table--button`);
-      inputAtt(buttonEl, `type`, `button`);
+      buttonEl.setAttribute(`type`, `button`);
 
     dateHeaderEl.innerText = `Date`;
     dateEl.innerText = arr[i].date;
@@ -119,18 +114,18 @@ displayShows(showsArray);
 
 //Event listener to change the colour of the table row
 showsTable.addEventListener (`click`, (event) => {
-  let active = event.target;
-  let activeRow = showsTable.children;
+  let rowTarget = event.target;
+  let tableRows = showsTable.children;
 
-  for (let i = 0; i < activeRow.length; i++) {
-    if (activeRow[i].className === `shows__table--row active-row`) {
-      activeRow[i].classList.remove(`active-row`);
+  for (let i = 0; i < tableRows.length; i++) {
+    if (tableRows[i].classList.contains(`active-row`)) {
+      tableRows[i].classList.remove(`active-row`);
     }
   }
 
-  if (active.nodeName === `TD`) {
-    active.parentNode.classList.add(`active-row`)
-  } else if (active.nodeName === `TR`) {
-    active.classList.add(`active-row`);
+  if (rowTarget.nodeName === `TD`) {
+    rowTarget.parentNode.classList.add(`active-row`)
+  } else if (rowTarget.nodeName === `TR`) {
+    rowTarget.classList.add(`active-row`);
   } else {}
 });

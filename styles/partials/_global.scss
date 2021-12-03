@@ -1,26 +1,13 @@
-/* Fonts */
-@font-face {
-    font-family: 'Avenir Next Bold';
-    src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
-}
-@font-face {
-    font-family: 'Avenir Next Demi';
-    src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
-}
-@font-face {
-    font-family: 'Avenir Next Regular';
-    src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
-}
-
-/* Variables */
+/* Global Elements */
+/* All font sizing is based on the root font size in the body element (16px) */
 $BandSite-Black: #323232;
 $BandSite-DarkBlack: #000000;
 $Silver: #AFAFAF;
 $Mercury: #E1E1E1;
 $White: #FFFFFF;
 $Alabaster: #FAFAFA;
+$Invalid: #D22D2D;
 
-/* Mixins */
 @mixin text-bold {
     font-family: 'Avenir Next Bold';
     @content;
@@ -73,8 +60,6 @@ $Alabaster: #FAFAFA;
     margin: auto;
 }
 
-/* Global Elements */
-/* All font sizing is based on the root font size in the body element (16px) */
 body {
     margin: 0;
 }
@@ -182,6 +167,20 @@ header > .margin {
     @include vertical-spacing-mobile;
     height: 0.0625rem;
     background-color: $Mercury; 
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'Avenir Next Bold';
+    src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
+}
+@font-face {
+    font-family: 'Avenir Next Demi';
+    src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
+}
+@font-face {
+    font-family: 'Avenir Next Regular';
+    src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
 }
 
 /* Header */

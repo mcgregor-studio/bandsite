@@ -28,6 +28,7 @@
                 color: global.$Silver;
             }
             text-transform: uppercase;
+            cursor: pointer;
         }
         &--table {
                 display: none;
@@ -40,6 +41,7 @@
             line-height: 1.125rem;
             color: global.$BandSite-Black;
             margin-bottom: 1rem;
+            cursor: pointer;
             }
         }
         &-venue {
@@ -48,6 +50,7 @@
                 line-height: 1.125rem;
                 color: global.$BandSite-Black;
                 margin-bottom: 1rem;
+                cursor: pointer;
                 }
         }
         &-location {
@@ -101,6 +104,7 @@
             display: flex;
             flex-direction: column;
             border-bottom: 0.0625rem solid global.$Mercury;
+            cursor: pointer;
             transition: transform;
             &:hover {
                 background-color: global.$Alabaster;
@@ -118,6 +122,7 @@
                 color: global.$White;
                 border: none;
                 border-radius: 0.25rem;
+                cursor: pointer;
             };
             @include global.text-demi;
             &:hover {

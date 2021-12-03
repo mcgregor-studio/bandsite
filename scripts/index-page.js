@@ -4,22 +4,6 @@ function newElem(elem, className) {
   newElem.classList.add(className);
   return newElem;
 }
-//Function to add attributes
-function inputAtt(elem, att, value, idName, inputText) {
-  elem.setAttribute(att, value);
-  if ((idName || inputText) !== undefined) {
-    elem.id = idName;
-    elem.setAttribute(`name`, idName);
-  } 
-  //Should I remove this and run the function multiple times?
-  if (elem.nodeName === `INPUT`){
-    elem.setAttribute(`value`, inputText);
- } else if (elem.nodeName === `TEXTAREA`) {
-   elem.setAttribute(`rows`, 4);
- }
- return elem;
-}
-
 
 //Element Variables
   //Containers
@@ -29,24 +13,32 @@ let commentsContainer = newElem(`div`, `comments__container`);
   //Header & Divider
 let commentsHeader = newElem(`h1`, `text__header--section`);
 let commentsDivider = newElem(`div`, `divider`);
-  //Form & Inputs
+  //Form
 let commentsForm = newElem(`form`, `comments__form`);
+  //Labels
 let commentsLabelName = newElem(`label`, `comments__form--label`);
-  inputAtt(commentsLabelName, `for`, `name`);
-let commentsInputName = newElem(`input`, `comments__form--name`);
-  inputAtt(commentsInputName, `type`, `text`, `name`, `Enter your name`);
+  commentsLabelName.setAttribute(`for`, `name`);
 let commentsLabelComment = newElem(`label`, `comments__form--label`);
-  inputAtt(commentsLabelComment, `for`, `name`);
+  commentsLabelComment.setAttribute(`for`, `comment`);
+  //Inputs
+let commentsInputName = newElem(`input`, `comments__form--name`);
+  commentsInputName.setAttribute(`type`, `text`);
+  commentsInputName.setAttribute(`name`, `input_name`)
+  commentsInputName.setAttribute(`placeholder`, `Enter your name`)
 let commentsInputComment = newElem(`textarea`, `comments__form--comment`);
-  inputAtt(commentsInputComment, `type`, `text`, `comment`);
-let commentsButton = newElem(`button`, `comments__form--button`);
-  inputAtt(commentsButton, `type`, `button`);
-  commentsButton.style.cursor = `pointer`;
+  commentsInputComment.setAttribute(`type`, `text`);
+  commentsInputComment.setAttribute(`name`, `input_comment`);
+  commentsInputComment.setAttribute(`placeholder`, `Add a new comment`);
+  commentsInputComment.setAttribute(`rows`, `4`);
+let commentsButton = newElem(`input`, `comments__form--button`);
+  commentsButton.setAttribute(`type`, `submit`);
+  commentsButton.setAttribute(`value`, `Comment`);
+  //Image
 let commentsImage = newElem(`img`, `comments__image`);
-  inputAtt(commentsImage,  `src`, `assets/images/Mohan-muruge.jpg`);
+  commentsImage.setAttribute(`src`, `assets/images/Mohan-muruge.jpg`);
   //Date
-let currentDate = new Date();
-let commentsDate = (currentDate.getMonth()+1) + `/` + currentDate.getDate() + `/` + currentDate.getFullYear();
+let fullDate = new Date();
+let commentsDate = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
   //References
 let gallery = document.querySelector(`.gallery`);
 
@@ -95,8 +87,6 @@ comments.appendChild(divMargin);
 
         commentsLabelName.innerText = `Name`;
         commentsLabelComment.innerText = `Comment`;
-        commentsInputComment.innerText = `Add a new comment`
-        commentsButton.innerText = `Comment`;
   //Adding divider
 divMargin.appendChild(commentsDivider);
 
@@ -131,18 +121,40 @@ function displayComment(arr) {
 
 displayComment(commentsArray);
 
+//Form validation
+function validate() {
+  let formElements = commentsForm.children;
+
+  if (commentsInputName.value === ``) { 
+    commentsInputName.classList.add(`invalid`);
+    alert (`Please enter your name.`);
+  } else if (commentsInputComment.value === ``) {
+    commentsInputComment.classList.add(`invalid`);
+    alert (`Please enter a comment.`);
+  } else {
+    for (let i = 0; i < formElements.length; i++) {
+      if (formElements[i].classList.contains(`invalid`)) {
+        formElements[i].classList.remove(`invalid`);
+      }
+    }
+  }
+}
+
+commentsForm.setAttribute(`onsubmit`, `validate()`)
+
 //Event listener to create new object and add it to array based on HTML input
-commentsButton.addEventListener(`click`, () => {
+commentsForm.addEventListener(`submit`, (event) => {
+    event.preventDefault();
     let commentsObj = {};
-    commentsObj.name = commentsInputName.value;
+    let formTarget = event.target;
+    commentsObj.name = formTarget.input_name.value;
     commentsObj.date = commentsDate;
-    commentsObj.comment = commentsInputComment.value;
+    commentsObj.comment = formTarget.input_comment.value;
 
     let arrDelete = document.querySelector(`.comments--array`);
     arrDelete.remove();
     commentsArray.unshift(commentsObj);
     displayComment(commentsArray);
     commentsForm.reset();
-    return false;
 });
 

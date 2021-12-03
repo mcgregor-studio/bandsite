@@ -1,18 +1,3 @@
-/* Fonts */
-@font-face {
-  font-family: "Avenir Next Bold";
-  src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
-}
-@font-face {
-  font-family: "Avenir Next Demi";
-  src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
-}
-@font-face {
-  font-family: "Avenir Next Regular";
-  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
-}
-/* Variables */
-/* Mixins */
 /* Global Elements */
 /* All font sizing is based on the root font size in the body element (16px) */
 body {
@@ -125,6 +110,19 @@ header > .margin {
   background-color: #E1E1E1;
 }
 
+/* Fonts */
+@font-face {
+  font-family: "Avenir Next Bold";
+  src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
+}
+@font-face {
+  font-family: "Avenir Next Demi";
+  src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
+}
+@font-face {
+  font-family: "Avenir Next Regular";
+  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
+}
 /* Header */
 .header {
   padding-top: 1rem;
@@ -325,6 +323,7 @@ header > .margin {
   line-height: 1.125rem;
   color: #AFAFAF;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .text__header--table {
   display: none;
@@ -335,6 +334,7 @@ header > .margin {
   line-height: 1.125rem;
   color: #323232;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 .text--shows-venue, .text--shows-location {
   font-family: "Avenir Next Regular";
@@ -342,6 +342,7 @@ header > .margin {
   line-height: 1.125rem;
   color: #323232;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 /* Hero */
 .hero {
@@ -387,6 +388,7 @@ header > .margin {
   display: flex;
   flex-direction: column;
   border-bottom: 0.0625rem solid #E1E1E1;
+  cursor: pointer;
   transition: transform;
 }
 .shows__table--row:hover {
@@ -406,6 +408,7 @@ header > .margin {
   color: #FFFFFF;
   border: none;
   border-radius: 0.25rem;
+  cursor: pointer;
   font-family: "Avenir Next Demi";
 }
 .shows__table--button:hover {

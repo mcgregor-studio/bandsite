@@ -31,6 +31,7 @@
             font-size: 0.8125rem;
             line-height: 1.125rem;
             color: global.$BandSite-Black;
+            word-wrap: break-word;
             }
         @include global.vertical-spacing-mobile;
     }
@@ -98,7 +99,6 @@
         justify-content: space-between;
         align-items: flex-start;
     }
-
     &__image {
         max-height: 4rem;
         max-width: 4rem;
@@ -152,6 +152,7 @@
                 color: global.$White;
                 border: none;
                 border-radius: 0.25rem;
+                cursor: pointer;
             };
             @include global.text-bold;
             @include global.vertical-spacing-mobile;
@@ -186,6 +187,12 @@
             right: 0;
         }   
     }
+}
+::placeholder, ::-webkit-input-placeholder, :-ms-input-placeholder {
+    color: global.$BandSite-DarkBlack;
+}
+.invalid {
+    border-color: global.$Invalid;
 }
 
 /* Local Breakpoints */
