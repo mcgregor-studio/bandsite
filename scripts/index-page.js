@@ -7,12 +7,12 @@ function newElem(elem, className) {
 
 //Element Variables
   //Containers
-let divMargin = newElem(`div`, `margin`);
-let comments = newElem(`section`, `comments`);
-let commentsContainer = newElem(`div`, `comments__container`);
+const divMargin = newElem(`div`, `margin`);
+const comments = newElem(`section`, `comments`);
+const commentsContainer = newElem(`div`, `comments__container`);
   //Header & Divider
-let commentsHeader = newElem(`h1`, `text__header--section`);
-let commentsDivider = newElem(`div`, `divider`);
+const commentsHeader = newElem(`h1`, `text__header--section`);
+const commentsDivider = newElem(`div`, `divider`);
   //Form
 let commentsForm = newElem(`form`, `comments__form`);
   //Labels
@@ -36,14 +36,10 @@ let commentsButton = newElem(`input`, `comments__form--button`);
   //Image
 let commentsImage = newElem(`img`, `comments__image`);
   commentsImage.setAttribute(`src`, `assets/images/Mohan-muruge.jpg`);
-  //Date
-let fullDate = new Date();
-let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
-let dynamicDate = ( `ago)` + dateValue)
   //References
-let gallery = document.querySelector(`.gallery`);
+const gallery = document.querySelector(`.gallery`);
 
-//Comments array
+  //Comments array
 let commentsArray = [
   { name: `Connor Walton`, 
     date: `02/17/2021`, 
@@ -57,6 +53,40 @@ let commentsArray = [
     date: `12/20/2020`,
     comment: `I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.`
   }];
+  //Date
+  let fullDate = new Date();
+  let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
+
+  //Dynamic date function
+    //Note: The function skips minutes and goes to seconds; this is because the date info provided 
+    //is not specific enough to measure by minutes.
+  function dynamicDate(date) {
+    let timePassedInSeconds = ((fullDate - new Date(date)) / 1000);
+    let yearInSeconds = 31536000;
+    let monthInSeconds = yearInSeconds / 12;
+    let weekInSeconds = 604800;
+    let dayInSeconds = weekInSeconds / 7;
+
+    if (timePassedInSeconds / yearInSeconds > 1) {
+      return Math.round(timePassedInSeconds / yearInSeconds) + ` years ago`;   
+    } else if ((Math.floor(timePassedInSeconds / monthInSeconds)) === 12) {
+      return `1 year ago`;
+    } else if (timePassedInSeconds / monthInSeconds > 1) {
+      return Math.round(timePassedInSeconds / monthInSeconds) + ` months ago`;
+    } else if (Math.floor(timePassedInSeconds / monthInSeconds) === 1) {
+      return `1 month ago`;
+    } else if (timePassedInSeconds / weekInSeconds > 1) {
+      return Math.round(timePassedInSeconds / weekInSeconds) + ` weeks ago`;
+    } else if (Math.floor(timePassedInSeconds / weekInSeconds) === 1) {
+      return `1 week ago`;
+    } else if (timePassedInSeconds / dayInSeconds > 1) {
+      return Math.round(timePassedInSeconds / dayInSeconds) + ` days ago`;
+    } else if (Math.floor(timePassedInSeconds / dayInSeconds) === 1) {
+      return `1 day ago`;
+    } else {
+      return `A few seconds ago`;
+    }
+  }
 
 //'insertAfter' function
 function insertAfter(ref, elem) {
@@ -65,7 +95,7 @@ function insertAfter(ref, elem) {
 
 //Adding comments section and HTML comment to demarcate it
 insertAfter(gallery, comments);
-let commentsTitle = document.createComment(` Comments `);
+const commentsTitle = document.createComment(` Comments `);
 document.body.insertBefore(commentsTitle, comments);
 
 //Adding the element variables declared in the 'Element Variables' section to the HTML
@@ -106,7 +136,7 @@ function displayComment(arr) {
     let dividerEl = newElem(`div`, `divider`);
 
     nameEl.innerText = elem.name;
-    dateEl.innerText = elem.date;
+    dateEl.innerText = dynamicDate(elem.date);
     commentEl.innerText = elem.comment;
 
     arrayEl.appendChild(containerEl);
@@ -123,12 +153,9 @@ function displayComment(arr) {
 
 displayComment(commentsArray);
 
-//Form validation function
-
 //Function to create new object and add it to array based on HTML input
   //It also validates the inputs to ensure that each one isn't empty
-  //Note: in this case, I mutated the original comments array since it seems appropriate in this scenario.
-  //
+
 let addComment = (event) => {
   event.preventDefault();
 
@@ -136,7 +163,7 @@ let addComment = (event) => {
   let nameValue = event.target.input_name.value;
   let commentValue = event.target.input_comment.value;
 
-  if ((nameValue || commentValue) === ``) {
+  if (nameValue === `` || commentValue === ``) {
     commentsInputName.classList.add(`invalid`);
     commentsInputComment.classList.add(`invalid`);
     alert (`Please fill out all fields.`);
@@ -150,7 +177,7 @@ let addComment = (event) => {
   }
   
   commentsObj.name = nameValue;
-  commentsObj.date = dateValue;
+  commentsObj.date = dynamicDate(dateValue);
   commentsObj.comment = commentValue;
 
   let arr = document.querySelector(`.comments--array`);
