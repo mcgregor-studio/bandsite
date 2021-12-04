@@ -121,40 +121,48 @@ function displayComment(arr) {
 
 displayComment(commentsArray);
 
-//Form validation
-function validate() {
+//Function to create new object and add it to array based on HTML input
+let addComment = (event) => {
+  event.preventDefault();
+  let commentsObj = {};
+  let formTarget = event.target;
+  commentsObj.name = formTarget.input_name.value;
+  commentsObj.date = commentsDate;
+  commentsObj.comment = formTarget.input_comment.value;
+
+  let arrDelete = document.querySelector(`.comments--array`);
+  arrDelete.remove();
+  commentsArray.unshift(commentsObj);
+  displayComment(commentsArray);
+  commentsForm.reset();
+}
+
+//Form validation function
+let validate = (event) => {
   let formElements = commentsForm.children;
 
   if (commentsInputName.value === ``) { 
     commentsInputName.classList.add(`invalid`);
     alert (`Please enter your name.`);
+    commentsForm.removeEventListener(`submit`, addComment);
+    return false;
   } else if (commentsInputComment.value === ``) {
     commentsInputComment.classList.add(`invalid`);
+    commentsForm.removeEventListener(`submit`, addComment);
     alert (`Please enter a comment.`);
+    return false;
   } else {
     for (let i = 0; i < formElements.length; i++) {
       if (formElements[i].classList.contains(`invalid`)) {
         formElements[i].classList.remove(`invalid`);
       }
+      commentsForm.addEventListener(`submit`, addComment);
+      return false;
     }
   }
 }
 
-commentsForm.setAttribute(`onsubmit`, `validate()`)
+//Event listener for comments form
+commentsForm.setAttribute(`onsubmit`, `return validate()`)
 
-//Event listener to create new object and add it to array based on HTML input
-commentsForm.addEventListener(`submit`, (event) => {
-    event.preventDefault();
-    let commentsObj = {};
-    let formTarget = event.target;
-    commentsObj.name = formTarget.input_name.value;
-    commentsObj.date = commentsDate;
-    commentsObj.comment = formTarget.input_comment.value;
-
-    let arrDelete = document.querySelector(`.comments--array`);
-    arrDelete.remove();
-    commentsArray.unshift(commentsObj);
-    displayComment(commentsArray);
-    commentsForm.reset();
-});
 
