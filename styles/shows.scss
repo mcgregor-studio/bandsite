@@ -1,31 +1,34 @@
+@use './partials/colors';
+@use './partials/fonts';
+@use './partials/mixins';
 @use './partials/global';
 
 /*Local Styling*/
 .text {
     &__header {      
         &--page {
-        @include global.text-bold {
-            color: global.$White;
+        @include mixins.text-bold {
+            color: colors.$White;
         }
-        @include global.header-styling-mobile;
+        @include mixins.header-styling-mobile;
         position: absolute;
         max-width: 75%;
         top: 30%;
         z-index: 10;
         }
         &--album {
-            @include global.text-reg {
-                color: global.$White;
+            @include mixins.text-reg {
+                color: colors.$White;
             };
             position: absolute;
             top: 20%;
             z-index: 10;
         }
         &--mobile {
-            @include global.text-demi {
+            @include mixins.text-demi {
                 font-size: 0.8125rem;
                 line-height: 1.125rem;
-                color: global.$Silver;
+                color: colors.$Silver;
             }
             text-transform: uppercase;
             cursor: pointer;
@@ -36,19 +39,19 @@
     }
     &--shows {
         &-date {
-        @include global.text-demi {
+        @include mixins.text-demi {
             font-size: 0.8125rem;
             line-height: 1.125rem;
-            color: global.$BandSite-Black;
+            color: colors.$BandSite-Black;
             margin-bottom: 1rem;
             cursor: pointer;
             }
         }
         &-venue {
-            @include global.text-reg {
+            @include mixins.text-reg {
                 font-size: 0.8125rem;
                 line-height: 1.125rem;
-                color: global.$BandSite-Black;
+                color: colors.$BandSite-Black;
                 margin-bottom: 1rem;
                 cursor: pointer;
                 }
@@ -66,7 +69,7 @@
         position: relative;
         z-index: 5;
         height: 65vw;
-        background: global.$BandSite-Black;
+        background: colors.$BandSite-Black;
         opacity: 50%;
         } 
         &__image {
@@ -92,7 +95,7 @@
 /* Shows */
 .shows {
     &__container {
-        @include global.vertical-spacing-mobile;
+        @include mixins.vertical-spacing-mobile;
         width: 100%;
     }
     &__table {
@@ -103,30 +106,30 @@
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            border-bottom: 0.0625rem solid global.$Mercury;
+            border-bottom: 0.0625rem solid colors.$Mercury;
             cursor: pointer;
             transition: transform;
             &:hover {
-                background-color: global.$Alabaster;
+                background-color: colors.$Alabaster;
                 transform: background-color, 0.2s;
             }
         }
         &--button {
-            @include global.label-button {
+            @include mixins.label-button {
                 height: 2.5rem;
                 padding: 0 2rem;
                 min-width: 9.375rem;
                 width: 100%;
                 text-transform: uppercase;
-                background-color: global.$BandSite-Black;
-                color: global.$White;
+                background-color: colors.$BandSite-Black;
+                color: colors.$White;
                 border: none;
                 border-radius: 0.25rem;
                 cursor: pointer;
             };
-            @include global.text-demi;
+            @include mixins.text-demi;
             &:hover {
-                background-color: global.$BandSite-DarkBlack;
+                background-color: colors.$BandSite-DarkBlack;
                 transition: color, 0.2s;
             }
             &-container {
@@ -139,7 +142,7 @@
     width: 100vw;
 }
 .active-row {
-    background-color: global.$Mercury;
+    background-color: colors.$Mercury;
 }
 
 /* Local Breakpoints */
@@ -155,10 +158,10 @@
                 display: none;
             }
             &--table {
-            @include global.text-demi {
+            @include mixins.text-demi {
                 font-size: 0.8125rem;
                 line-height: 1.125rem;
-                color: global.$Silver;
+                color: colors.$Silver;
             }
                 text-align: left;
                 text-transform: uppercase;
@@ -229,7 +232,7 @@
     }
     .shows {
         &__table {
-            @include global.header-spacing-desktop-tablet;
+            @include mixins.header-spacing-desktop-tablet;
             &--button-container {
                 width: 23%;
             }

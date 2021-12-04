@@ -38,7 +38,8 @@ let commentsImage = newElem(`img`, `comments__image`);
   commentsImage.setAttribute(`src`, `assets/images/Mohan-muruge.jpg`);
   //Date
 let fullDate = new Date();
-let commentsDate = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
+let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
+let dynamicDate = ( `ago)` + dateValue)
   //References
 let gallery = document.querySelector(`.gallery`);
 
@@ -94,7 +95,8 @@ divMargin.appendChild(commentsDivider);
 function displayComment(arr) {
   let arrayEl = newElem(`div`,`comments--array`);
   divMargin.appendChild(arrayEl);
-  for (let i = 0; i < arr.length; i++) {
+
+  arr.forEach(elem => {  
     let containerEl = newElem(`card`, `comments__container`);
     let displayEl = newElem(`div`, `comments__display`);
     let nameEl = newElem(`h4`, `comments__display--name`);
@@ -103,9 +105,9 @@ function displayComment(arr) {
     let imageEl = newElem(`img`, `comments__display--image`);
     let dividerEl = newElem(`div`, `divider`);
 
-    nameEl.innerText = arr[i].name;
-    dateEl.innerText = arr[i].date;
-    commentEl.innerText = arr[i].comment;
+    nameEl.innerText = elem.name;
+    dateEl.innerText = elem.date;
+    commentEl.innerText = elem.comment;
 
     arrayEl.appendChild(containerEl);
     containerEl.append(
@@ -116,53 +118,50 @@ function displayComment(arr) {
       dateEl, 
       commentEl);
     arrayEl.appendChild(dividerEl);
-    }
+    })
   }
 
 displayComment(commentsArray);
 
+//Form validation function
+
 //Function to create new object and add it to array based on HTML input
+  //It also validates the inputs to ensure that each one isn't empty
+  //Note: in this case, I mutated the original comments array since it seems appropriate in this scenario.
+  //
 let addComment = (event) => {
   event.preventDefault();
-  let commentsObj = {};
-  let formTarget = event.target;
-  commentsObj.name = formTarget.input_name.value;
-  commentsObj.date = commentsDate;
-  commentsObj.comment = formTarget.input_comment.value;
 
-  let arrDelete = document.querySelector(`.comments--array`);
-  arrDelete.remove();
+  let formElements = commentsForm.children;
+  let nameValue = event.target.input_name.value;
+  let commentValue = event.target.input_comment.value;
+
+  if ((nameValue || commentValue) === ``) {
+    commentsInputName.classList.add(`invalid`);
+    commentsInputComment.classList.add(`invalid`);
+    alert (`Please fill out all fields.`);
+  } else {
+  let commentsObj = {};
+
+  for (let i = 0; i < formElements.length; i++) {
+    if (formElements[i].classList.contains(`invalid`)) {
+      formElements[i].classList.remove(`invalid`);
+    }
+  }
+  
+  commentsObj.name = nameValue;
+  commentsObj.date = dateValue;
+  commentsObj.comment = commentValue;
+
+  let arr = document.querySelector(`.comments--array`);
+  arr.remove();
   commentsArray.unshift(commentsObj);
   displayComment(commentsArray);
   commentsForm.reset();
-}
-
-//Form validation function
-let validate = (event) => {
-  let formElements = commentsForm.children;
-
-  if (commentsInputName.value === ``) { 
-    commentsInputName.classList.add(`invalid`);
-    alert (`Please enter your name.`);
-    commentsForm.removeEventListener(`submit`, addComment);
-    return false;
-  } else if (commentsInputComment.value === ``) {
-    commentsInputComment.classList.add(`invalid`);
-    commentsForm.removeEventListener(`submit`, addComment);
-    alert (`Please enter a comment.`);
-    return false;
-  } else {
-    for (let i = 0; i < formElements.length; i++) {
-      if (formElements[i].classList.contains(`invalid`)) {
-        formElements[i].classList.remove(`invalid`);
-      }
-      commentsForm.addEventListener(`submit`, addComment);
-      return false;
-    }
   }
 }
 
-//Event listener for comments form
-commentsForm.setAttribute(`onsubmit`, `return validate()`)
+commentsForm.addEventListener(`submit`, addComment);
+
 
 

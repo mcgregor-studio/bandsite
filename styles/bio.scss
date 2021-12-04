@@ -1,4 +1,7 @@
-@use 'partials/global';
+@use './partials/colors';
+@use './partials/fonts';
+@use './partials/mixins';
+@use './partials/global';
 
 /* Local Elements */
 /* Text */
@@ -6,34 +9,34 @@
 .text {
     &__header {
         &--page {
-            @include global.text-bold {
-                color: global.$White;
+            @include mixins.text-bold {
+                color: colors.$White;
             }
-            @include global.header-styling-mobile;
+            @include mixins.header-styling-mobile;
             position: absolute;
             top: 45%;
             z-index: 10;
         }
     }
     &__quote {
-        @include global.text-demi {
+        @include mixins.text-demi {
         font-size: 0.875rem;
         line-height: 1.375rem;
         margin-top: 0.25rem;
-        color: global.$BandSite-Black;
+        color: colors.$BandSite-Black;
         }
         &--person {
             @extend .text__quote;
         }
     }
     &__comments {
-        @include global.text-reg {
+        @include mixins.text-reg {
             font-size: 0.8125rem;
             line-height: 1.125rem;
-            color: global.$BandSite-Black;
+            color: colors.$BandSite-Black;
             word-wrap: break-word;
             }
-        @include global.vertical-spacing-mobile;
+        @include mixins.vertical-spacing-mobile;
     }
 }
 
@@ -44,7 +47,7 @@
         position: relative;
         z-index: 5;
         height: 55vw;
-        background: global.$BandSite-Black;
+        background: colors.$BandSite-Black;
         opacity: 50%;
         } 
         &__image {
@@ -75,13 +78,13 @@
 
 /* Gallery */
 .gallery {
-    background-color: global.$Mercury;
+    background-color: colors.$Mercury;
     &__container {
         display: flex;
         flex-direction: column;
         align-items: center;
         &--image {
-            @include global.vertical-spacing-mobile;
+            @include mixins.vertical-spacing-mobile;
             max-width: 100%;
             filter: grayscale(1);
             transition: filter 0.2s;
@@ -110,54 +113,54 @@
         display: flex;
         flex-direction: column;
         &--label {
-            @include global.text-bold {
+            @include mixins.text-bold {
                 font-size: 0.625rem;
                 line-height: 1.25rem;
                 text-transform: uppercase;
-                color: global.$Silver;
+                color: colors.$Silver;
             }
             margin-bottom: 0.25rem;
         }
         &--name {
-            @include global.text-reg {
+            @include mixins.text-reg {
                 font-size: 0.625rem;
                 line-height: 1.25rem;
             }
-            @include global.form-field-border-padding;
-            @include global.vertical-spacing-mobile;
+            @include mixins.form-field-border-padding;
+            @include mixins.vertical-spacing-mobile;
             &:active {
-                border-color: global.$BandSite-Black;
+                border-color: colors.$BandSite-Black;
             }
         }
         &--comment {
-            @include global.text-reg {
+            @include mixins.text-reg {
                 font-size: 0.625rem;
                 line-height: 1.25rem;
             }
-            @include global.vertical-spacing-mobile;
-            @include global.form-field-border-padding;
+            @include mixins.vertical-spacing-mobile;
+            @include mixins.form-field-border-padding;
             min-height: 2.25rem;
             resize: none;
             &:active {
-                border-color: global.$BandSite-Black;
+                border-color: colors.$BandSite-Black;
             }
         }
         &--button {
-            @include global.label-button {
+            @include mixins.label-button {
                 height: 2.5rem;
                 min-width: 9.375rem;
                 padding: 0 2rem;
                 text-transform: uppercase;
-                background-color: global.$BandSite-Black;
-                color: global.$White;
+                background-color: colors.$BandSite-Black;
+                color: colors.$White;
                 border: none;
                 border-radius: 0.25rem;
                 cursor: pointer;
             };
-            @include global.text-bold;
-            @include global.vertical-spacing-mobile;
+            @include mixins.text-bold;
+            @include mixins.vertical-spacing-mobile;
             &:hover {
-                background-color: global.$BandSite-DarkBlack;
+                background-color: colors.$BandSite-DarkBlack;
                 transition: color, 0.2s;
             }
         }
@@ -170,17 +173,17 @@
             width: 3rem;
             clip-path: circle();
             margin-right: 1rem;
-            background-color: global.$Mercury;
+            background-color: colors.$Mercury;
         }
         &--name {
-            @include global.text-bold {
-                color: global.$BandSite-Black;
+            @include mixins.text-bold {
+                color: colors.$BandSite-Black;
             }
-            @include global.vertical-spacing-mobile;
+            @include mixins.vertical-spacing-mobile;
         }
         &--date {
-            @include global.text-reg {
-                color: global.$Mercury;
+            @include mixins.text-reg {
+                color: colors.$Mercury;
             }
             position: absolute;
             top: 0;
@@ -189,10 +192,10 @@
     }
 }
 ::placeholder, ::-webkit-input-placeholder, :-ms-input-placeholder {
-    color: global.$BandSite-DarkBlack;
+    color: colors.$BandSite-DarkBlack;
 }
 .invalid {
-    border-color: global.$Invalid;
+    border-color: colors.$Invalid;
 }
 
 /* Local Breakpoints */
@@ -262,10 +265,6 @@
     .gallery {
         padding-bottom: 1rem;
         &__container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
             &--image {
                 max-width: 31%;
                 margin-bottom: 2rem;

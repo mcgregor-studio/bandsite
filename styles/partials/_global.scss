@@ -1,71 +1,15 @@
 /* Global Elements */
 /* All font sizing is based on the root font size in the body element (16px) */
-$BandSite-Black: #323232;
-$BandSite-DarkBlack: #000000;
-$Silver: #AFAFAF;
-$Mercury: #E1E1E1;
-$White: #FFFFFF;
-$Alabaster: #FAFAFA;
-$Invalid: #D22D2D;
-
-@mixin text-bold {
-    font-family: 'Avenir Next Bold';
-    @content;
-}
-@mixin text-demi {
-    font-family: 'Avenir Next Demi';
-    @content;
-}
-@mixin text-reg {
-    font-family: 'Avenir Next Regular';
-    @content;
-}
-@mixin label-button {
-    @include text-reg {
-    font-size: 1rem;
-    line-height: 1.25rem;
-    }
-    @content;
-}
-@mixin form-field-border-padding {
-    border: 0.0625rem solid $Mercury;
-    border-radius: 0.25rem;
-    padding: 0.75rem;
-}
-@mixin header-styling-mobile {
-    font-size: 1.5rem;
-    line-height: 2rem;
-}
-@mixin header-spacing-mobile {
-    padding-top: 1.5rem;
-    padding-bottom: 1rem; 
-    }
-@mixin vertical-spacing-mobile {
-    margin-bottom: 1rem;
-}
-@mixin horizontal-spacing-mobile {
-    margin: 0 1rem;
-}
-@mixin header-spacing-desktop-tablet {
-    padding-top: 3rem;
-    padding-bottom: 2.25rem; 
-    }
-@mixin vertical-spacing-desktop-tablet {
-    margin-bottom: 2.25rem;
-}
-@mixin horizontal-spacing-tablet {
-    margin: 0 2.25rem;
-}
-@mixin horizontal-spacing-desktop {
-    margin: auto;
-}
+@use "colors.scss";
+@use "fonts.scss";
+@use "mixins.scss";
 
 body {
     margin: 0;
 }
 li {
-    @include label-button {      
-    color: $White;
+    @include mixins.label-button {      
+    color: colors.$White;
     list-style-type: none;
     }
 }
@@ -78,13 +22,13 @@ h1, h3, h4, h5, p, blockquote {
 a {
     text-decoration: none;
     &:link {
-        color: $White;
+        color: colors.$White;
     }
     &:visited {
-        color: $Silver;
+        color: colors.$Silver;
     }
     &:hover {
-        color: $White;
+        color: colors.$White;
     }
     &:active {
         margin-right: -0.33rem;
@@ -111,50 +55,50 @@ a {
 .text {
     &__header {
         &--section {
-            @include text-bold {
-            color: $BandSite-Black;
+            @include mixins.text-bold {
+            color: colors.$BandSite-Black;
             }
-            @include header-styling-mobile;
-            @include header-spacing-mobile;
+            @include mixins.header-styling-mobile;
+            @include mixins.header-spacing-mobile;
         }
     }
 
     &__subheader {
-        @include text-reg {
-            color: $BandSite-DarkBlack;
+        @include mixins.text-reg {
+            color: colors.$BandSite-DarkBlack;
             font-size: 0.875rem;
             line-height: 1.375rem;
             font-weight: bold; 
         }
-        @include header-spacing-mobile;
+        @include mixins.header-spacing-mobile;
     }
 
     &__body {
-        @include text-reg {
+        @include mixins.text-reg {
             font-size: 0.8125rem;
             line-height: 1.125rem;
-            color: $BandSite-Black;
+            color: colors.$BandSite-Black;
             }
-        @include vertical-spacing-mobile;
+        @include mixins.vertical-spacing-mobile;
     }
     &__footer {
-        @include text-reg {
+        @include mixins.text-reg {
             font-size: 0.8125rem;
             line-height: 1.125rem;
-            color: $White;
+            color: colors.$White;
             }
             margin-top: 1rem;
             &--title {
-                @include text-bold {
-                color: $White;
+                @include mixins.text-bold {
+                color: colors.$White;
                 }
-                @include header-styling-mobile;
-                @include header-spacing-mobile;
+                @include mixins.header-styling-mobile;
+                @include mixins.header-spacing-mobile;
             }
     }
 }
 .margin {
-    @include horizontal-spacing-mobile;
+    @include mixins.horizontal-spacing-mobile;
 
     &--spacer {
         margin-top: 55vw;
@@ -164,29 +108,15 @@ header > .margin {
     margin: 0;
 }
 .divider {
-    @include vertical-spacing-mobile;
+    @include mixins.vertical-spacing-mobile;
     height: 0.0625rem;
-    background-color: $Mercury; 
-}
-
-/* Fonts */
-@font-face {
-    font-family: 'Avenir Next Bold';
-    src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
-}
-@font-face {
-    font-family: 'Avenir Next Demi';
-    src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
-}
-@font-face {
-    font-family: 'Avenir Next Regular';
-    src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
+    background-color: colors.$Mercury; 
 }
 
 /* Header */
 .header {
     padding-top: 1rem;
-    background-color: $BandSite-Black;
+    background-color: colors.$BandSite-Black;
 
     &__nav {
         overflow: hidden;
@@ -202,7 +132,7 @@ header > .margin {
                 padding: 1rem 20vw;
                 
                 &:hover {
-                    border-bottom: .25rem solid $White;
+                    border-bottom: .25rem solid colors.$White;
                     transition: border-bottom 0.05s;
                 }
             }
@@ -211,17 +141,19 @@ header > .margin {
 
 }
 .active-link {
-    border-bottom: .25rem solid $White;
+    border-bottom: .25rem solid colors.$White;
 }
 
 /* Footer */
 .footer {
-    background-color: $BandSite-Black;
+    background-color: colors.$BandSite-Black;
     padding-bottom: 1rem;
 
-    &__image {
-        color: $White;
-        margin-right: 1rem;
+    &__link {
+        &--image {
+            color: colors.$White;
+            margin-right: 1rem;
+        }
     }
 
     &__email {
@@ -236,28 +168,28 @@ header > .margin {
 /* Tablet */
 @media (min-width: 768px) {
     .margin {
-        @include horizontal-spacing-tablet;
+        @include mixins.horizontal-spacing-tablet;
     }
     header > .margin {
-        @include horizontal-spacing-tablet;
+        @include mixins.horizontal-spacing-tablet;
     }
     .text {
         &__header {
             &--section {
-                @include header-spacing-desktop-tablet;
+                @include mixins.header-spacing-desktop-tablet;
                 font-size: 2.25rem;
                 line-height: 2.75rem;
             }
         }
         &__subheader {
-            @include text-bold {
+            @include mixins.text-bold {
             font-size: 1.5rem;
             line-height: 2rem;  
             }
-            @include header-spacing-desktop-tablet;
+            @include mixins.header-spacing-desktop-tablet;
         }
         &__body {
-            @include vertical-spacing-desktop-tablet;
+            @include mixins.vertical-spacing-desktop-tablet;
         }  
         &__footer {
             font-size: 0.875rem;
@@ -265,7 +197,7 @@ header > .margin {
             margin-bottom: 1.5rem;
             margin-top: 0;
             &--title {
-            @include header-spacing-desktop-tablet;
+            @include mixins.header-spacing-desktop-tablet;
             margin-right: 1.5rem;
             }
         }
@@ -313,11 +245,13 @@ header > .margin {
             }
         }
         &__email {
-            @include vertical-spacing-desktop-tablet;
+            @include mixins.vertical-spacing-desktop-tablet;
         }
-        &__image {
-            @include header-spacing-desktop-tablet;
-            margin-right: 1.5rem;
+        &__link {
+            &--image {
+                @include mixins.header-spacing-desktop-tablet;
+                margin-right: 1.5rem;
+            }
         }
     }
     .logo {
@@ -340,11 +274,11 @@ header > .margin {
 /* Desktop */
 @media (min-width: 1280px) {
     .margin {
-        @include horizontal-spacing-desktop;
+        @include mixins.horizontal-spacing-desktop;
         width: 80vw;
     }
     header > .margin {
-        @include horizontal-spacing-desktop;
+        @include mixins.horizontal-spacing-desktop;
         width: 80vw;
     }
     .header {

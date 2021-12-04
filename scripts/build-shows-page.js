@@ -75,7 +75,7 @@ showsTable.appendChild(showsHeaderRow);
 //Function to display all shows
 function displayShows(arr) {
 
-  for (let i = 0; i < arr.length; i++) {
+ arr.forEach(elem => {
     let rowEl = newElem(`tr`, `shows__table--row`);
     let dateHeaderEl = newElem(`td`, `text__header--mobile`);
     let dateEl = newElem(`td`, `text--shows-date`);
@@ -88,9 +88,9 @@ function displayShows(arr) {
       buttonEl.setAttribute(`type`, `button`);
 
     dateHeaderEl.innerText = `Date`;
-    dateEl.innerText = arr[i].date;
+    dateEl.innerText = elem.date;
     venueHeaderEl.innerText = `Venue`;
-    venueEl.innerText = arr[i].venue;
+    venueEl.innerText = elem.venue;
     locationHeaderEl.innerText = `Location`;
     locationEl.innerText = `San Francisco, CA`
     buttonEl.innerText = `Buy Tickets`;
@@ -106,11 +106,9 @@ function displayShows(arr) {
        buttonContainerEl
       );
        buttonContainerEl.appendChild(buttonEl);
-  }
+  });
 };
 displayShows(showsArray);
-
-
 
 //Event listener to change the colour of the table row
 showsTable.addEventListener (`click`, (event) => {

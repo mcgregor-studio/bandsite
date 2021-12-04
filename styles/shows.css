@@ -1,3 +1,16 @@
+/* Fonts */
+@font-face {
+  font-family: "Avenir Next Bold";
+  src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
+}
+@font-face {
+  font-family: "Avenir Next Demi";
+  src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
+}
+@font-face {
+  font-family: "Avenir Next Regular";
+  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
+}
 /* Global Elements */
 /* All font sizing is based on the root font size in the body element (16px) */
 body {
@@ -110,19 +123,6 @@ header > .margin {
   background-color: #E1E1E1;
 }
 
-/* Fonts */
-@font-face {
-  font-family: "Avenir Next Bold";
-  src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
-}
-@font-face {
-  font-family: "Avenir Next Demi";
-  src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
-}
-@font-face {
-  font-family: "Avenir Next Regular";
-  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
-}
 /* Header */
 .header {
   padding-top: 1rem;
@@ -155,7 +155,7 @@ header > .margin {
   background-color: #323232;
   padding-bottom: 1rem;
 }
-.footer__image {
+.footer__link--image {
   color: #FFFFFF;
   margin-right: 1rem;
 }
@@ -243,7 +243,7 @@ header > .margin {
   .footer__email {
     margin-bottom: 2.25rem;
   }
-  .footer__image {
+  .footer__link--image {
     padding-top: 3rem;
     padding-bottom: 2.25rem;
     margin-right: 1.5rem;
