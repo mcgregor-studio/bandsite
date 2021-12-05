@@ -117,12 +117,6 @@ header > .margin {
   margin: 0;
 }
 
-.divider {
-  margin-bottom: 1rem;
-  height: 0.0625rem;
-  background-color: #E1E1E1;
-}
-
 /* Header */
 .header {
   padding-top: 1rem;
@@ -162,6 +156,11 @@ header > .margin {
 .footer__email {
   display: block;
   text-decoration: none;
+}
+
+.logo--footer {
+  display: inline-block;
+  margin-top: 4rem;
 }
 
 /* Global Breakpoints */
@@ -398,7 +397,7 @@ header > .margin {
   flex-direction: column;
 }
 .comments__form--label {
-  font-family: "Avenir Next Bold";
+  font-family: "Avenir Next Demi";
   font-size: 0.625rem;
   line-height: 1.25rem;
   text-transform: uppercase;
@@ -469,13 +468,39 @@ header > .margin {
 }
 .comments__display--date {
   font-family: "Avenir Next Regular";
-  color: #E1E1E1;
+  color: #AFAFAF;
   position: absolute;
   top: 0;
   right: 0;
 }
 
-::placeholder, ::-webkit-input-placeholder, :-ms-input-placeholder {
+.divider {
+  margin-bottom: 1rem;
+  height: 0.0625rem;
+  background-color: #E1E1E1;
+}
+
+::-webkit-input-placeholder {
+  color: #000000;
+}
+
+::-moz-placeholder {
+  color: #000000;
+}
+
+::-ms-placeholder {
+  color: #000000;
+}
+
+::-moz-placeholder {
+  color: #000000;
+}
+
+:-ms-input-placeholder {
+  color: #000000;
+}
+
+::placeholder {
   color: #000000;
 }
 
@@ -503,6 +528,11 @@ header > .margin {
     font-size: 1rem;
     line-height: 1.5rem;
     margin-top: 1rem;
+  }
+  .text__comments {
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
   }
 
   .about__container {
@@ -533,8 +563,12 @@ header > .margin {
   .comments__container {
     padding: 0 4.5rem;
   }
+  .comments__display--name {
+    margin-bottom: 0.5rem;
+  }
 
   .divider {
+    margin-bottom: 1.5rem;
     width: calc(100% - 9rem);
     margin-left: auto;
     margin-right: auto;

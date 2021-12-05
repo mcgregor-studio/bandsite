@@ -4,6 +4,12 @@ function newElem(elem, className) {
   newElem.classList.add(className);
   return newElem;
 }
+//Function to add attributes to elements
+function addAtt(elem, att) {
+  for (key in att) {
+    elem.setAttribute(key, att[key]);
+  }
+}
 
 //Element Variables
   //Containers
@@ -17,25 +23,30 @@ const commentsDivider = newElem(`div`, `divider`);
 let commentsForm = newElem(`form`, `comments__form`);
   //Labels
 let commentsLabelName = newElem(`label`, `comments__form--label`);
-  commentsLabelName.setAttribute(`for`, `name`);
+  addAtt(commentsLabelName, {for: `name`});
 let commentsLabelComment = newElem(`label`, `comments__form--label`);
-  commentsLabelComment.setAttribute(`for`, `comment`);
+  addAtt(commentsLabelComment, {for: `comment`});
   //Inputs
 let commentsInputName = newElem(`input`, `comments__form--name`);
-  commentsInputName.setAttribute(`type`, `text`);
-  commentsInputName.setAttribute(`name`, `input_name`)
-  commentsInputName.setAttribute(`placeholder`, `Enter your name`)
+  addAtt(commentsInputName, {
+    type: `text`, 
+    name: `input_name`, 
+    placeholder: `Enter your name`
+  });
 let commentsInputComment = newElem(`textarea`, `comments__form--comment`);
-  commentsInputComment.setAttribute(`type`, `text`);
-  commentsInputComment.setAttribute(`name`, `input_comment`);
-  commentsInputComment.setAttribute(`placeholder`, `Add a new comment`);
-  commentsInputComment.setAttribute(`rows`, `4`);
+  addAtt(commentsInputComment, {
+    type: `text`,
+    name: `input_comment`,
+    placeholder: `Add a new comment`,
+    rows: `4`
+  });
 let commentsButton = newElem(`input`, `comments__form--button`);
-  commentsButton.setAttribute(`type`, `submit`);
-  commentsButton.setAttribute(`value`, `Comment`);
+  addAtt(commentsButton, {
+    type: `submit`,
+    value: `Comment`});
   //Image
 let commentsImage = newElem(`img`, `comments__image`);
-  commentsImage.setAttribute(`src`, `assets/images/Mohan-muruge.jpg`);
+  addAtt(commentsImage, {src: `assets/images/Mohan-muruge.jpg`});
   //References
 const gallery = document.querySelector(`.gallery`);
 
@@ -54,12 +65,13 @@ let commentsArray = [
     comment: `I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.`
   }];
   //Date
-  let fullDate = new Date();
+    //Note: dateValue is the original date variable that was used in lieu of the dynamic date function.
+  const fullDate = new Date();
   let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
 
   //Dynamic date function
-    //Note: The function skips minutes and goes to seconds; this is because the date info provided 
-    //is not specific enough to measure by minutes.
+    //Note: The function skips hours & minutes and goes to seconds; this is because the date info provided 
+    //is not specific enough to measure by either metric.
   function dynamicDate(date) {
     let timePassedInSeconds = ((fullDate - new Date(date)) / 1000);
     let yearInSeconds = 31536000;

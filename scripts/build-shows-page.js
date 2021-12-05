@@ -7,11 +7,11 @@ function newElem(elem, className) {
 
 //Element Variables
   //Containers
-let divMargin = newElem(`div`, `margin`);
-let shows = newElem(`section`, `shows`);
-let showsContainer = newElem(`div`, `shows__container`)
+const divMargin = newElem(`div`, `margin`);
+const shows = newElem(`section`, `shows`);
+const showsContainer = newElem(`div`, `shows__container`)
   //Header
-let showsHeader = newElem(`h1`, `text__header--section`);
+const showsHeader = newElem(`h1`, `text__header--section`);
   showsHeader.innerText = `Shows`;
   //Table Elements
   let showsTable = newElem(`table`, `shows__table`);
@@ -23,7 +23,7 @@ let showsHeader = newElem(`h1`, `text__header--section`);
   let headerRowLocation = newElem(`th`, `text__header--table`);
     headerRowLocation.innerText = `Location`;
 //Reference variable 
-let hero = document.querySelector(`.hero`);
+const hero = document.querySelector(`.hero`);
 
 //Shows array
 const showsArray = [
@@ -54,7 +54,7 @@ function insertAfter(ref, elem) {
 
 //Adding comments section and HTML comment to demarcate it
 insertAfter(hero, shows);
-let showsTitle = document.createComment(` Shows `);
+const showsTitle = document.createComment(` Shows `);
 document.body.insertBefore(showsTitle, shows);
 
 //Adding the element variables declared in the 'Element Variables' section to the HTML
@@ -74,7 +74,6 @@ showsTable.appendChild(showsHeaderRow);
 
 //Function to display all shows
 function displayShows(arr) {
-
  arr.forEach(elem => {
     let rowEl = newElem(`tr`, `shows__table--row`);
     let dateHeaderEl = newElem(`td`, `text__header--mobile`);

@@ -113,7 +113,7 @@
         display: flex;
         flex-direction: column;
         &--label {
-            @include mixins.text-bold {
+            @include mixins.text-demi {
                 font-size: 0.625rem;
                 line-height: 1.25rem;
                 text-transform: uppercase;
@@ -183,7 +183,7 @@
         }
         &--date {
             @include mixins.text-reg {
-                color: colors.$Mercury;
+                color: colors.$Silver;
             }
             position: absolute;
             top: 0;
@@ -191,7 +191,21 @@
         }   
     }
 }
-::placeholder, ::-webkit-input-placeholder, :-ms-input-placeholder {
+.divider {
+    @include mixins.vertical-spacing-mobile;
+    height: 0.0625rem;
+    background-color: colors.$Mercury; 
+}
+::-webkit-input-placeholder {
+    color: colors.$BandSite-DarkBlack;
+}
+::-moz-placeholder {
+    color: colors.$BandSite-DarkBlack;
+}
+::-ms-placeholder {
+    color: colors.$BandSite-DarkBlack;
+}
+::placeholder {
     color: colors.$BandSite-DarkBlack;
 }
 .invalid {
@@ -221,6 +235,11 @@
                 line-height: 1.5rem;
                 margin-top: 1rem;
             }
+        }
+        &__comments {
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            line-height: 1.375rem;
         }
     }
 .about {
@@ -252,8 +271,14 @@
         &__container {
             padding: 0 4.5rem;
         }
+        &__display {
+            &--name {
+                margin-bottom: 0.5rem;
+            }
+        }
     }
     .divider {
+        margin-bottom: 1.5rem;
         width: calc(100% - 9rem);
         margin-left: auto;
         margin-right: auto;

@@ -117,12 +117,6 @@ header > .margin {
   margin: 0;
 }
 
-.divider {
-  margin-bottom: 1rem;
-  height: 0.0625rem;
-  background-color: #E1E1E1;
-}
-
 /* Header */
 .header {
   padding-top: 1rem;
@@ -162,6 +156,11 @@ header > .margin {
 .footer__email {
   display: block;
   text-decoration: none;
+}
+
+.logo--footer {
+  display: inline-block;
+  margin-top: 4rem;
 }
 
 /* Global Breakpoints */
@@ -307,14 +306,14 @@ header > .margin {
   line-height: 2rem;
   position: absolute;
   max-width: 75%;
-  top: 30%;
+  top: 22.5%;
   z-index: 10;
 }
 .text__header--album {
-  font-family: "Avenir Next Regular";
+  font-family: "Avenir Next Demi";
   color: #FFFFFF;
   position: absolute;
-  top: 20%;
+  top: 10%;
   z-index: 10;
 }
 .text__header--mobile {
@@ -351,7 +350,7 @@ header > .margin {
 .hero__overlay {
   position: relative;
   z-index: 5;
-  height: 65vw;
+  height: 75vw;
   background: #323232;
   opacity: 50%;
 }
@@ -361,7 +360,7 @@ header > .margin {
   z-index: 1;
   top: 0;
   left: 0;
-  height: 65vw;
+  height: 75vw;
   width: 100%;
 }
 .hero__soundcloud {
@@ -434,6 +433,11 @@ header > .margin {
     font-size: 3.75rem;
     line-height: 4.25rem;
   }
+  .text__header--album {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    top: 15%;
+  }
   .text__header--mobile {
     display: none;
   }
@@ -453,8 +457,14 @@ header > .margin {
     padding-left: 1.125rem;
   }
 
+  .hero__overlay {
+    height: 60vw;
+  }
+  .hero__image {
+    height: 60vw;
+  }
   .hero__soundcloud {
-    max-width: 45%;
+    max-width: 50%;
     top: 60%;
     left: 2.25rem;
   }
@@ -478,7 +488,7 @@ header > .margin {
     max-width: 38%;
   }
   .text__header--album {
-    top: 40%;
+    top: 45%;
   }
   .text__header--table {
     padding-top: 4.15rem;

@@ -13,15 +13,15 @@
         @include mixins.header-styling-mobile;
         position: absolute;
         max-width: 75%;
-        top: 30%;
+        top: 22.5%;
         z-index: 10;
         }
         &--album {
-            @include mixins.text-reg {
+            @include mixins.text-demi {
                 color: colors.$White;
             };
             position: absolute;
-            top: 20%;
+            top: 10%;
             z-index: 10;
         }
         &--mobile {
@@ -68,7 +68,7 @@
     &__overlay {
         position: relative;
         z-index: 5;
-        height: 65vw;
+        height: 75vw;
         background: colors.$BandSite-Black;
         opacity: 50%;
         } 
@@ -78,7 +78,7 @@
             z-index: 1;
             top: 0;
             left: 0;
-            height: 65vw;
+            height: 75vw;
             width: 100%;
         }
         &__soundcloud {
@@ -151,9 +151,14 @@
     .text {
         &__header {
             &--page {
-            font-size: 3.75rem;
-            line-height: 4.25rem;
-        }
+                font-size: 3.75rem;
+                line-height: 4.25rem;
+            }
+            &--album {
+                font-size: 1.25rem;
+                line-height: 1.5rem;
+                top: 15%;
+            }
             &--mobile {
                 display: none;
             }
@@ -178,8 +183,14 @@
         }
     }
     .hero {
+        &__overlay {
+            height: 60vw;
+            } 
+            &__image {
+                height: 60vw;
+            }
         &__soundcloud {
-            max-width: 45%;
+            max-width: 50%;
             top: 60%;
             left: 2.25rem;
         }
@@ -210,7 +221,7 @@
                 max-width: 38%;
             }
             &--album {
-                top: 40%;
+                top: 45%;
             }
             &--table {
                 padding-top: 4.15rem;

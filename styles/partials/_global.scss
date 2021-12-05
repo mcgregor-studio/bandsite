@@ -107,11 +107,6 @@ a {
 header > .margin {
     margin: 0;
 }
-.divider {
-    @include mixins.vertical-spacing-mobile;
-    height: 0.0625rem;
-    background-color: colors.$Mercury; 
-}
 
 /* Header */
 .header {
@@ -162,9 +157,14 @@ header > .margin {
         text-decoration: none;   
     }
 }
+.logo {
+    &--footer {
+        display: inline-block;
+        margin-top: 4rem;
+    }
+}
 
 /* Global Breakpoints */
-
 /* Tablet */
 @media (min-width: 768px) {
     .margin {
