@@ -1,0 +1,262 @@
+@use './partials/colors';
+@use './partials/fonts';
+@use './partials/mixins';
+@use './partials/global';
+
+/*Local Styling*/
+.text {
+    &__header {      
+        &--page {
+        @include mixins.text-bold {
+            color: colors.$White;
+        }
+        @include mixins.header-styling-mobile;
+        position: absolute;
+        max-width: 75%;
+        top: 22.5%;
+        z-index: 10;
+        }
+        &--album {
+            @include mixins.text-demi {
+                color: colors.$White;
+            };
+            position: absolute;
+            top: 10%;
+            z-index: 10;
+        }
+        &--mobile {
+            @include mixins.text-demi {
+                font-size: 0.8125rem;
+                line-height: 1.125rem;
+                color: colors.$Silver;
+            }
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        &--table {
+                display: none;
+        }
+    }
+    &--shows {
+        &-date {
+        @include mixins.text-demi {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: colors.$BandSite-Black;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            }
+        }
+        &-venue {
+            @include mixins.text-reg {
+                font-size: 0.8125rem;
+                line-height: 1.125rem;
+                color: colors.$BandSite-Black;
+                margin-bottom: 1rem;
+                cursor: pointer;
+                }
+        }
+        &-location {
+            @extend .text--shows-venue;
+        }
+    }  
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    &__overlay {
+        position: relative;
+        z-index: 5;
+        height: 75vw;
+        background: colors.$BandSite-Black;
+        opacity: 50%;
+        } 
+        &__image {
+            background: url("../assets/images/hero-shows.jpg") center/cover no-repeat;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            height: 75vw;
+            width: 100%;
+        }
+        &__soundcloud {
+            position: absolute;
+            top: calc(40% + 2.5rem);
+            left: 1rem;
+            z-index: 10;
+            max-height: 10rem;
+            width: calc(100% - 2rem);
+        }
+
+}
+
+/* Shows */
+.shows {
+    &__container {
+        @include mixins.vertical-spacing-mobile;
+        width: 100%;
+    }
+    &__table {
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        border-collapse: collapse;
+        &--row {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 0.0625rem solid colors.$Mercury;
+            cursor: pointer;
+            transition: transform;
+            &:hover {
+                background-color: colors.$Alabaster;
+                transform: background-color, 0.2s;
+            }
+        }
+        &--button {
+            @include mixins.label-button {
+                height: 2.5rem;
+                padding: 0 2rem;
+                min-width: 9.375rem;
+                width: 100%;
+                text-transform: uppercase;
+                background-color: colors.$BandSite-Black;
+                color: colors.$White;
+                border: none;
+                border-radius: 0.25rem;
+                cursor: pointer;
+            };
+            @include mixins.text-demi;
+            &:hover {
+                background-color: colors.$BandSite-DarkBlack;
+                transition: color, 0.2s;
+            }
+            &-container {
+                width: 100%;
+            }
+        }
+    }    
+}
+.divider {
+    width: 100vw;
+}
+.active-row {
+    background-color: colors.$Mercury;
+}
+
+/* Local Breakpoints */
+/* Tablet */
+@media (min-width: 768px) {
+    .text {
+        &__header {
+            &--page {
+                font-size: 3.75rem;
+                line-height: 4.25rem;
+            }
+            &--album {
+                font-size: 1.25rem;
+                line-height: 1.5rem;
+                top: 15%;
+            }
+            &--mobile {
+                display: none;
+            }
+            &--table {
+            @include mixins.text-demi {
+                font-size: 0.8125rem;
+                line-height: 1.125rem;
+                color: colors.$Silver;
+            }
+                text-align: left;
+                text-transform: uppercase;
+                display: table-cell;
+            &:first-child {
+                padding-left: 1.125rem;
+            }
+        }
+    }
+        &--shows {
+            &-date {
+                padding-left: 1.125rem;
+            }
+        }
+    }
+    .hero {
+        &__overlay {
+            height: 60vw;
+            } 
+            &__image {
+                height: 60vw;
+            }
+        &__soundcloud {
+            max-width: 50%;
+            top: 60%;
+            left: 2.25rem;
+        }
+    }
+    td {
+        width: 25%;
+    }
+    .shows {
+        &__table {
+            &--row {
+               display: table-row;           
+            }
+            &--button {
+                margin: 0.75rem 0;
+                width: calc(100% - 1.125rem);
+            }
+        }
+    }
+
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+    .text {
+        &__header {
+            &--page {
+                top: 50%;
+                max-width: 38%;
+            }
+            &--album {
+                top: 45%;
+            }
+            &--table {
+                padding-top: 4.15rem;
+                padding-bottom: 2.25rem; 
+            }
+        }
+        &__shows {
+            &--date {
+                width: 9rem;
+            }
+        }
+    }
+    .hero {
+        &__soundcloud {
+            width: 40%;
+            top: 50%;
+            left: 50%;
+        }
+    }
+    .shows {
+        &__table {
+            @include mixins.header-spacing-desktop-tablet;
+            &--button-container {
+                width: 23%;
+            }
+        }
+    }
+    td {
+        width: 21.25%;
+    }
+    .shows > div.margin {
+        display: flex;
+    }
+    .shows > div.margin > .text__header--section {
+        margin-right: 9rem;
+    }
+
+}

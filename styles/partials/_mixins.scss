@@ -1,0 +1,54 @@
+@use 'fonts.scss';
+@use 'colors.scss';
+
+@mixin text-bold {
+    font-family: 'Avenir Next Bold';
+    @content;
+}
+@mixin text-demi {
+    font-family: 'Avenir Next Demi';
+    @content;
+}
+@mixin text-reg {
+    font-family: 'Avenir Next Regular';
+    @content;
+}
+@mixin label-button {
+    @include text-reg {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    }
+    @content;
+}
+@mixin form-field-border-padding {
+    border: 0.0625rem solid colors.$Mercury;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+}
+@mixin header-styling-mobile {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+@mixin header-spacing-mobile {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem; 
+    }
+@mixin vertical-spacing-mobile {
+    margin-bottom: 1rem;
+}
+@mixin horizontal-spacing-mobile {
+    margin: 0 1rem;
+}
+@mixin header-spacing-desktop-tablet {
+    padding-top: 3rem;
+    padding-bottom: 2.25rem; 
+    }
+@mixin vertical-spacing-desktop-tablet {
+    margin-bottom: 2.25rem;
+}
+@mixin horizontal-spacing-tablet {
+    margin: 0 2.25rem;
+}
+@mixin horizontal-spacing-desktop {
+    margin: auto;
+}

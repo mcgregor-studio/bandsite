@@ -1,34 +1,61 @@
+<<<<<<< HEAD
 @use 'partials/global';
 
 /*Local Styling */
+=======
+@use './partials/colors';
+@use './partials/fonts';
+@use './partials/mixins';
+@use './partials/global';
+
+/* Local Elements */
+>>>>>>> sprint-2
 /* Text */
 
 .text {
-    &--quote {
-        @include global.text-demi {
+    &__header {
+        &--page {
+            @include mixins.text-bold {
+                color: colors.$White;
+            }
+            @include mixins.header-styling-mobile;
+            position: absolute;
+            top: 45%;
+            z-index: 10;
+        }
+    }
+    &__quote {
+        @include mixins.text-demi {
         font-size: 0.875rem;
         line-height: 1.375rem;
         margin-top: 0.25rem;
-        color: global.$BandSite-Black;
+        color: colors.$BandSite-Black;
         }
-        &-person {
-            @extend .text--quote;
+        &--person {
+            @extend .text__quote;
         }
+    }
+    &__comments {
+        @include mixins.text-reg {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: colors.$BandSite-Black;
+            word-wrap: break-word;
+            }
+        @include mixins.vertical-spacing-mobile;
     }
 }
 
 /* Hero */
 .hero {
     position: relative;
-
     &__overlay {
         position: relative;
         z-index: 5;
         height: 55vw;
-        background: global.$BandSite-Black;
+        background: colors.$BandSite-Black;
         opacity: 50%;
         } 
-
         &__image {
             background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
             position: absolute;
@@ -46,7 +73,10 @@
     &__container {
         display: flex; 
         flex-direction: column;
+<<<<<<< HEAD
 
+=======
+>>>>>>> sprint-2
         &--image {
             max-width: 100%;
             clip-path: inset(10vw 0 5vw 0);
@@ -58,19 +88,20 @@
 
 /* Gallery */
 .gallery {
-    background-color: global.$Mercury;
-
+    background-color: colors.$Mercury;
     &__container {
         display: flex;
         flex-direction: column;
         align-items: center;
-
         &--image {
+<<<<<<< HEAD
             @include global.vertical-spacing-mobile;
+=======
+            @include mixins.vertical-spacing-mobile;
+>>>>>>> sprint-2
             max-width: 100%;
             filter: grayscale(1);
             transition: filter 0.2s;
-
             &:hover {
                 filter: grayscale(0);
             }
@@ -78,76 +109,222 @@
     }
 }
 
+<<<<<<< HEAD
+=======
+/* Comments */
+.comments {
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    &__image {
+        max-height: 4rem;
+        max-width: 4rem;
+        clip-path: circle(35% at 40% 50%);
+        margin-top: 1.6rem;
+    }
+    &__form {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        &--label {
+            @include mixins.text-demi {
+                font-size: 0.625rem;
+                line-height: 1.25rem;
+                text-transform: uppercase;
+                color: colors.$Silver;
+            }
+            margin-bottom: 0.25rem;
+        }
+        &--name {
+            @include mixins.text-reg {
+                font-size: 0.625rem;
+                line-height: 1.25rem;
+            }
+            @include mixins.form-field-border-padding;
+            @include mixins.vertical-spacing-mobile;
+            &:active {
+                border-color: colors.$BandSite-Black;
+            }
+        }
+        &--comment {
+            @include mixins.text-reg {
+                font-size: 0.625rem;
+                line-height: 1.25rem;
+            }
+            @include mixins.vertical-spacing-mobile;
+            @include mixins.form-field-border-padding;
+            min-height: 2.25rem;
+            resize: none;
+            &:active {
+                border-color: colors.$BandSite-Black;
+            }
+        }
+        &--button {
+            @include mixins.label-button {
+                height: 2.5rem;
+                min-width: 9.375rem;
+                padding: 0 2rem;
+                text-transform: uppercase;
+                background-color: colors.$BandSite-Black;
+                color: colors.$White;
+                border: none;
+                border-radius: 0.25rem;
+                cursor: pointer;
+            };
+            @include mixins.text-bold;
+            @include mixins.vertical-spacing-mobile;
+            &:hover {
+                background-color: colors.$BandSite-DarkBlack;
+                transition: color, 0.2s;
+            }
+        }
+    }
+    &__display {
+        @extend .comments__form;
+        position: relative;
+        &--image {
+            height: 3rem;
+            width: 3rem;
+            clip-path: circle();
+            margin-right: 1rem;
+            background-color: colors.$Mercury;
+        }
+        &--name {
+            @include mixins.text-bold {
+                color: colors.$BandSite-Black;
+            }
+            @include mixins.vertical-spacing-mobile;
+        }
+        &--date {
+            @include mixins.text-reg {
+                color: colors.$Silver;
+            }
+            position: absolute;
+            top: 0;
+            right: 0;
+        }   
+    }
+}
+.divider {
+    @include mixins.vertical-spacing-mobile;
+    height: 0.0625rem;
+    background-color: colors.$Mercury; 
+}
+::-webkit-input-placeholder {
+    color: colors.$BandSite-DarkBlack;
+}
+::-moz-placeholder {
+    color: colors.$BandSite-DarkBlack;
+}
+::-ms-placeholder {
+    color: colors.$BandSite-DarkBlack;
+}
+::placeholder {
+    color: colors.$BandSite-DarkBlack;
+}
+.invalid {
+    border-color: colors.$Invalid;
+}
+
+>>>>>>> sprint-2
 /* Local Breakpoints */
 /* Tablet */
 @media (min-width: 768px) {
     .text {
-
-        &--body {
+        &__header {
+            &--page {
+                font-size: 3.75rem;
+                line-height: 4.25rem;
+            }
+        }
+        &__body {
             font-size: 0.875rem;
             line-height: 1.375rem;
             max-width: 47%;
         }
-    
-        &--quote {
+        &__quote {
             font-size: 1.5rem;
             line-height: 2rem;
-            &-person {
+            &--person {
                 font-size: 1rem;
                 line-height: 1.5rem;
                 margin-top: 1rem;
             }
         }
+        &__comments {
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+        }
     }
-
 .about {
         &__container {
             padding: 0 4.5rem;
             &--image {
                 margin-bottom: calc(2.25rem - 5vw);
+<<<<<<< HEAD
             }
         
 
+=======
+            }   
+>>>>>>> sprint-2
             &--text {
                 display: flex;
                 justify-content: space-between;
             }
         }
     }
-
     .gallery {
         padding-bottom: 0.75rem;
-
         &__container {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             flex-wrap: wrap;
-    
             &--image {
                 max-width: 31%;
                 margin-bottom: 1.5rem;
             }
         }
     }
+    .comments {
+        &__container {
+            padding: 0 4.5rem;
+        }
+        &__display {
+            &--name {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+    .divider {
+        margin-bottom: 1.5rem;
+        width: calc(100% - 9rem);
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Desktop */
 @media (min-width: 1280px) {
-
     .gallery {
         padding-bottom: 1rem;
-
         &__container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-    
             &--image {
                 max-width: 31%;
                 margin-bottom: 2rem;
             }
         }
+    }
+    .comments {
+        &__container {
+            padding: 0 18vw;
+        }
+    }
+    .divider {
+        width: calc(100% - 36vw);
     }
 }

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./styles/bio.css" />
+    <script src="scripts/index-page.js" defer></script>
     <title>Band Site</title>
   </head>
   <body>
@@ -20,7 +21,11 @@
         <nav class="header__nav">
           <ul class="header__nav-list">
             <li class="header__nav-list--item active-link"><a href="index.html">Biography</a></li>
+<<<<<<< HEAD
             <li class="header__nav-list--item"><a href="#top">Shows</a></li>
+=======
+            <li class="header__nav-list--item"><a href="pages/shows.html">Shows</a></li>
+>>>>>>> sprint-2
           </ul>
         </nav>
       </div>
@@ -29,7 +34,7 @@
     <section class="hero">
       <div class="hero__overlay"></div>
       <div class="margin">
-        <h1 class="text--page-header">The Bees Knees</h1>
+        <h1 class="text__header--page">The Bees Knees</h1>
         <div class="hero__image"></div>
       </div>
     </section>
@@ -37,23 +42,23 @@
     <!-- About -->
     <section class="about">
       <div class="margin">
-        <h1 class="text--section-header about__title">About the Musicians</h1>
+        <h1 class="text__header--section about__title">About the Musicians</h1>
         <div class="about__container">
           <img
-            class="about__image"
+            class="about__container--image"
             src="assets/images/band.jpg"
             alt="Bio image"
           />
-          <blockquote class="text--quote">
+          <blockquote class="text__quote">
             “We push each other to be the best. It’s not uncommon for one of us
             to say ‘this needs to be better, back to the drawing board’”
           </blockquote>
-          <h3 class="text--quote-person">
+          <h3 class="text__quote--person">
             - Bryan Teddy, lead vocalist of The Bees Knees
           </h3>
-          <p class="text--subheader">The Bees Knees</p>
+          <p class="text__subheader">The Bees Knees</p>
           <div class="about__container--text">
-            <p class="text--body">
+            <p class="text__body">
               The Bees Knees is a pop rock band originating from San Francisco,
               California. The band consists of lead vocalist Bryan Teddy,
               guitarist Mack Tolkens, guitarist Andrew Green, bassist Kent
@@ -64,7 +69,7 @@
               confident the band could succeed even further, pushing them to
               sign with Magenta Records.
             </p>
-            <p class="text--body">
+            <p class="text__body">
               From there, the band has soared, gaining international recognition
               and ranking in the top 10 on the Poster Charts. New fans
               immediately fell in love with the band’s original and organic
@@ -83,7 +88,7 @@
     <!-- Gallery -->
     <section class="gallery">
       <div class="margin">
-        <h1 class="text--section-header">Photo Gallery</h1>
+        <h1 class="text__header--section">Photo Gallery</h1>
         <div class="gallery__container">
           <img
             class="gallery__container--image"
@@ -138,33 +143,39 @@
     <footer class="footer">
       <div class="margin footer__container--positioning">
         <div class="footer__container--desktop-tablet">
-          <h1 class="text--footer-title text--section-header">Get in Touch</h1>
+          <h1 class="text__footer--title text__header--section">Get in Touch</h1>
           <div class="footer__image--container-mobile">
+            <a class="footer__link" href="https://www.instagram.com/">
             <img
-              class="footer__image"
+              class="footer__link--image"
               src="assets/icons/SVG/Icon-instagram.svg"
               alt="Instagram icon"
             />
+            </a>
+            <a class="footer__link" href="https://www.facebook.com/">
             <img
-              class="footer__image"
+              class="footer__link--image"
               src="assets/icons/SVG/Icon-facebook.svg"
               alt="Facebook icon"
             />
+            </a>
+            <a class="footer__link" href="https://www.twitter.com/">
             <img
-              class="footer__image"
+              class="footer__link--image"
               src="assets/icons/SVG/Icon-twitter.svg"
               alt="Twitter Icon"
             />
+            </a>
           </div>
         </div>
         <div class="footer__container--desktop-tablet">
           <div class="footer__text--container">
-            <h5 class="text--footer">
+            <h5 class="text__footer">
               Cam Adams
               <br />
               The Bees Knees Management
             </h5>
-            <p class="text--footer">
+            <p class="text__footer">
               503 Broadway Penthouse,
               <br />
               New York, NY 10012, USA
@@ -174,12 +185,12 @@
             >
           </div>
           <div class="footer__text--container">
-            <h5 class="text--footer">
+            <h5 class="text__footer">
               Pearl Gregg
               <br />
               Limitless Artist Group
             </h5>
-            <p class="text--footer">
+            <p class="text__footer">
               Booking Agent for
               <br />
               US/South America/Japan
@@ -189,12 +200,12 @@
             >
           </div>
           <div class="footer__text--container remove-margin">
-            <h5 class="text--footer">
+            <h5 class="text__footer">
               Carson Whyte
               <br />
               ARCH Entertainment
             </h5>
-            <p class="text--footer">
+            <p class="text__footer">
               Booking Agent for
               <br />
               UK/EU/AU
@@ -204,12 +215,13 @@
             </a>
           </div>
         </div>
+        <a class="logo--footer" href="index.html">
         <img
-          class="logo--footer"
           src="assets/logo/Logo-bandsite.svg"
           alt="Bandsite Logo"
         />
-        <p class="text--footer">
+        </a>
+        <p class="text__footer">
           Copyright The Bees Knees &copy; 2021 All Rights Reserved
         </p>
       </div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Fonts */
 @font-face {
     font-family: 'Avenir Next Bold';
@@ -68,18 +69,24 @@ $Alabaster: #FAFAFA;
     margin: auto;
 }
 
+=======
+>>>>>>> sprint-2
 /* Global Elements */
 /* All font sizing is based on the root font size in the body element (16px) */
+@use "colors.scss";
+@use "fonts.scss";
+@use "mixins.scss";
+
 body {
     margin: 0;
 }
 li {
-    @include label-button {      
-    color: $White;
+    @include mixins.label-button {      
+    color: colors.$White;
     list-style-type: none;
     }
 }
-h1, h3, h5, p, blockquote {
+h1, h3, h4, h5, p, blockquote {
     margin-block-start: 0;
     margin-block-end: 0;
     margin-inline-start: 0;
@@ -88,6 +95,7 @@ h1, h3, h5, p, blockquote {
 a {
     text-decoration: none;
     &:link {
+<<<<<<< HEAD
         color: $White;
     }
     &:visited {
@@ -95,6 +103,15 @@ a {
     }
     &:hover {
         color: $White;
+=======
+        color: colors.$White;
+    }
+    &:visited {
+        color: colors.$Silver;
+    }
+    &:hover {
+        color: colors.$White;
+>>>>>>> sprint-2
     }
     &:active {
         margin-right: -0.33rem;
@@ -119,61 +136,56 @@ a {
 }
 
 .text {
-    &--page-header {
-        @include text-bold {
-            color: $White;
+    &__header {
+        &--section {
+            @include mixins.text-bold {
+            color: colors.$BandSite-Black;
+            }
+            @include mixins.header-styling-mobile;
+            @include mixins.header-spacing-mobile;
         }
-        @include header-styling-mobile;
-        position: absolute;
-        top: 45%;
-        z-index: 10;
     }
 
-    &--section-header {
-        @include text-bold {
-        color: $BandSite-Black;
-        }
-        @include header-styling-mobile;
-        @include header-spacing-mobile;
-    }
-
-    &--subheader {
-        @include text-reg {
-            color: $BandSite-DarkBlack;
+    &__subheader {
+        @include mixins.text-reg {
+            color: colors.$BandSite-DarkBlack;
             font-size: 0.875rem;
             line-height: 1.375rem;
             font-weight: bold; 
         }
-        @include header-spacing-mobile;
+        @include mixins.header-spacing-mobile;
     }
 
-    &--body {
-        @include text-reg {
+    &__body {
+        @include mixins.text-reg {
             font-size: 0.8125rem;
             line-height: 1.125rem;
-            color: $BandSite-Black;
+            color: colors.$BandSite-Black;
             }
+<<<<<<< HEAD
         @include vertical-spacing-mobile;
+=======
+        @include mixins.vertical-spacing-mobile;
+>>>>>>> sprint-2
     }
-    &--footer-title {
-        @include text-bold {
-        color: $White;
-        }
-        @include header-styling-mobile;
-        @include header-spacing-mobile;
-    }
-
-    &--footer {
-        @include text-reg {
+    &__footer {
+        @include mixins.text-reg {
             font-size: 0.8125rem;
             line-height: 1.125rem;
-            color: $White;
+            color: colors.$White;
             }
             margin-top: 1rem;
+            &--title {
+                @include mixins.text-bold {
+                color: colors.$White;
+                }
+                @include mixins.header-styling-mobile;
+                @include mixins.header-spacing-mobile;
+            }
     }
 }
 .margin {
-    @include horizontal-spacing-mobile;
+    @include mixins.horizontal-spacing-mobile;
 
     &--spacer {
         margin-top: 55vw;
@@ -186,7 +198,7 @@ header > .margin {
 /* Header */
 .header {
     padding-top: 1rem;
-    background-color: $BandSite-Black;
+    background-color: colors.$BandSite-Black;
 
     &__nav {
         overflow: hidden;
@@ -202,7 +214,11 @@ header > .margin {
                 padding: 1rem 20vw;
                 
                 &:hover {
+<<<<<<< HEAD
                     border-bottom: .25rem solid $White;
+=======
+                    border-bottom: .25rem solid colors.$White;
+>>>>>>> sprint-2
                     transition: border-bottom 0.05s;
                 }
             }
@@ -211,55 +227,59 @@ header > .margin {
 
 }
 .active-link {
-    border-bottom: .25rem solid $White;
+    border-bottom: .25rem solid colors.$White;
 }
 
 /* Footer */
 .footer {
-    background-color: $BandSite-Black;
+    background-color: colors.$BandSite-Black;
     padding-bottom: 1rem;
 
-    &__image {
-        color: $White;
-        margin-right: 1rem;
+    &__link {
+        &--image {
+            color: colors.$White;
+            margin-right: 1rem;
+        }
     }
 
     &__email {
-        @extend .text--footer;
+        @extend .text__footer;
         display: block;
         text-decoration: none;   
     }
 }
+.logo {
+    &--footer {
+        display: inline-block;
+        margin-top: 4rem;
+    }
+}
 
 /* Global Breakpoints */
-
 /* Tablet */
 @media (min-width: 768px) {
     .margin {
-        @include horizontal-spacing-tablet;
+        @include mixins.horizontal-spacing-tablet;
     }
     header > .margin {
-        @include horizontal-spacing-tablet;
+        @include mixins.horizontal-spacing-tablet;
     }
     .text {
-        &--page-header {
-            font-size: 3.75rem;
-            line-height: 4.25rem;
+        &__header {
+            &--section {
+                @include mixins.header-spacing-desktop-tablet;
+                font-size: 2.25rem;
+                line-height: 2.75rem;
+            }
         }
-
-        &--section-header {
-            @include header-spacing-desktop-tablet;
-            font-size: 2.25rem;
-            line-height: 2.75rem;
-        }
-
-        &--subheader {
-            @include text-bold {
+        &__subheader {
+            @include mixins.text-bold {
             font-size: 1.5rem;
             line-height: 2rem;  
             }
-            @include header-spacing-desktop-tablet;
+            @include mixins.header-spacing-desktop-tablet;
         }
+<<<<<<< HEAD
 
         &--body {
             @include vertical-spacing-desktop-tablet;
@@ -271,24 +291,31 @@ header > .margin {
         }
 
         &--footer {
+=======
+        &__body {
+            @include mixins.vertical-spacing-desktop-tablet;
+        }  
+        &__footer {
+>>>>>>> sprint-2
             font-size: 0.875rem;
             line-height: 1.25rem;
             margin-bottom: 1.5rem;
             margin-top: 0;
+            &--title {
+            @include mixins.header-spacing-desktop-tablet;
+            margin-right: 1.5rem;
+            }
         }
     }
 
     .header {
         padding-top: 0;
-
         &__positioning {
             display: flex;
             align-items: center;
-            }
-            
+            }      
         &__nav {
             display: flex;
-
             &-list {
                 display: flex;
                 justify-content: space-evenly;
@@ -305,36 +332,36 @@ header > .margin {
             }
         }
     }
+
     .footer {
         padding-bottom: 0.75rem;
-
         &__container {
-
             &--desktop-tablet {
             display: flex;
             align-items: center;
             }
-
             &--positioning {
                 position: relative;
             }
         }
-
         &__text {
             &--container {
                 margin-right: 3rem;
             }
         }
-
         &__email {
+<<<<<<< HEAD
             @include vertical-spacing-desktop-tablet;
+=======
+            @include mixins.vertical-spacing-desktop-tablet;
+>>>>>>> sprint-2
         }
-
-        &__image {
-            @include header-spacing-desktop-tablet;
-            margin-right: 1.5rem;
+        &__link {
+            &--image {
+                @include mixins.header-spacing-desktop-tablet;
+                margin-right: 1.5rem;
+            }
         }
-
     }
     .logo {
         &--header {
@@ -356,15 +383,13 @@ header > .margin {
 /* Desktop */
 @media (min-width: 1280px) {
     .margin {
-        @include horizontal-spacing-desktop;
+        @include mixins.horizontal-spacing-desktop;
         width: 80vw;
     }
-
     header > .margin {
-        @include horizontal-spacing-desktop;
+        @include mixins.horizontal-spacing-desktop;
         width: 80vw;
     }
-
     .header {
         &__nav {
             &-list {
@@ -379,8 +404,10 @@ header > .margin {
     }
 
     .text {
-        &--footer-title {
-            margin-right: 3rem;
+        &__footer {
+            &--title {
+                margin-right: 3rem;
+            }
         }
 }
     .logo {
