@@ -32,13 +32,13 @@ let commentsLabelComment = newElem(`label`, `comments__form--label`);
 let commentsInputName = newElem(`input`, `comments__form--name`);
   addAtt(commentsInputName, {
     type: `text`, 
-    name: `input_name`, 
+    name: `name`, 
     placeholder: `Enter your name`
   });
 let commentsInputComment = newElem(`textarea`, `comments__form--comment`);
   addAtt(commentsInputComment, {
     type: `text`,
-    name: `input_comment`,
+    name: `comment`,
     placeholder: `Add a new comment`,
     rows: `4`
   });
@@ -51,19 +51,30 @@ let commentsImage = newElem(`img`, `comments__image`);
   addAtt(commentsImage, {src: `assets/images/Mohan-muruge.jpg`});
   //References
 const gallery = document.querySelector(`.gallery`);
-
   //Date
 let fullDate = new Date;
+let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
+
+//Functions
   //Dynamic date function
     //Note: The function skips hours & minutes and goes to seconds; this is because the date info provided 
     //is not specific enough to measure by either metric.
   function dynamicDate(date) {
+    //variables to measure each time in seconds
     let timePassedInSeconds = ((fullDate - new Date(date)) / 1000);
     let yearInSeconds = 31536000;
     let monthInSeconds = yearInSeconds / 12;
     let weekInSeconds = 604800;
     let dayInSeconds = weekInSeconds / 7;
 
+    //if statement chain to account for:
+    //- X years ago
+    //- 1 year ago
+    //- X months ago
+    //- 1 month ago
+    //- X days ago 
+    //- 1 day ago
+    //- A few seconds ago  
     if (timePassedInSeconds / yearInSeconds > 1) {
       return Math.round(timePassedInSeconds / yearInSeconds) + ` years ago`;   
     } else if ((Math.floor(timePassedInSeconds / monthInSeconds)) === 12) {
@@ -84,13 +95,94 @@ let fullDate = new Date;
       return `A few seconds ago`;
     }
   }
+  //displayComments function
+function displayComment(arr) {
+  //declare element to hold comments array and appends it in the HTML
+  let arrayEl = newElem(`div`,`comments--array`);
+  divMargin.appendChild(arrayEl);
 
-//Building sections in HTML
+  //forEach method to display each comment
+  arr.forEach(elem => {  
+    //Declare all of the variables to use for each comment
+    let containerEl = newElem(`card`, `comments__container`);
+    let displayEl = newElem(`div`, `comments__display`);
+    let nameEl = newElem(`h4`, `comments__display--name`);
+    let dateEl = newElem(`p`, `comments__display--date`)
+    let commentEl = newElem(`p`, `text__comments`);
+    let imageEl = newElem(`img`, `comments__display--image`);
+    let dividerEl = newElem(`div`, `divider`);
+
+    //Create the innerText of the respective variables based on the GET request data
+    nameEl.innerText = elem.name;
+    dateEl.innerText = dynamicDate(elem.timestamp);
+    commentEl.innerText = elem.comment;
+
+    //Append it to the arrayEl variable declared above
+    arrayEl.appendChild(containerEl);
+    containerEl.append(
+      imageEl, 
+      displayEl);
+    displayEl.append(
+      nameEl, 
+      dateEl, 
+      commentEl);
+    arrayEl.appendChild(dividerEl);
+    })
+  }
+  //Function to create new object and add it to array based on HTML input
+  //It also validates the inputs to ensure that each one isn't empty
+let addComment = (event) => {
+  //preventDefault method to prevent page from reloading
+  event.preventDefault();
+
+  //declaring variables for all form elements and input values for the name and comment text fields
+  let formElements = commentsForm.children;
+  let nameValue = event.target.name.value;
+  let commentValue = event.target.comment.value;
+
+  //if the name value or comment value are empty strings, then add the invalid class and alert the end user
+  if (nameValue === `` || commentValue === ``) {
+    commentsInputName.classList.add(`invalid`);
+    commentsInputComment.classList.add(`invalid`);
+    alert (`Please fill out all fields.`);
+  } else {
+  //Else: 
+  //Check to see if any of the form elements have the invalid class and remove it
+  for (let i = 0; i < formElements.length; i++) {
+    if (formElements[i].classList.contains(`invalid`)) {
+      formElements[i].classList.remove(`invalid`);
+    }
+  }
+  //Declare an empty object
+  let commentsObj = {};
+  //Populate the object with keys that have the same values as their respective input values
+  commentsObj.name = nameValue;
+  commentsObj.timestamp = dynamicDate(dateValue);
+  commentsObj.comment = commentValue;
+
+  //Stringify the commentsObj object
+  JSON.stringify(commentsObj);
+
+  //Declare arr as the element with the class 'comments--array' that was created earlier
+  let arr = document.querySelector(`.comments--array`);
+  //Remove it
+  arr.remove();
+  //add the now-populated commentsObj variable to the comments array
+  commentsArray.unshift(commentsObj);
+  //run the displayComment function again with the new object
+  displayComment(commentsArray);
+  //reset the form fields
+  commentsForm.reset();
+  }
+}
+  //Add an event listener that uses the addComment function when the end user submits a form
+  commentsForm.addEventListener(`submit`, addComment);
   //'insertAfter' function
 function insertAfter(ref, elem) {
-    ref.parentNode.insertBefore(elem, ref.nextSibling);
+  ref.parentNode.insertBefore(elem, ref.nextSibling);
 };
 
+//Building sections in HTML
   //Adding comments section and HTML comment to demarcate it
 insertAfter(gallery, comments);
 const commentsTitle = document.createComment(` Comments `);
@@ -121,76 +213,9 @@ divMargin.appendChild(commentsDivider);
 
 //Promise handling
 commentsAPI.then(comment => {
-
-  let commentsArray = comment.data;
-  //displayComments function
-function displayComment(arr) {
-  let arrayEl = newElem(`div`,`comments--array`);
-  divMargin.appendChild(arrayEl);
-
-  arr.forEach(elem => {  
-    let containerEl = newElem(`card`, `comments__container`);
-    let displayEl = newElem(`div`, `comments__display`);
-    let nameEl = newElem(`h4`, `comments__display--name`);
-    let dateEl = newElem(`p`, `comments__display--date`)
-    let commentEl = newElem(`p`, `text__comments`);
-    let imageEl = newElem(`img`, `comments__display--image`);
-    let dividerEl = newElem(`div`, `divider`);
-
-    nameEl.innerText = elem.name;
-    dateEl.innerText = dynamicDate(elem.timestamp);
-    commentEl.innerText = elem.comment;
-
-    arrayEl.appendChild(containerEl);
-    containerEl.append(
-      imageEl, 
-      displayEl);
-    displayEl.append(
-      nameEl, 
-      dateEl, 
-      commentEl);
-    arrayEl.appendChild(dividerEl);
-    })
-  }
-
-//Displaying commments based on API data
-  displayComment(commentsArray)
-
-//Function to create new object and add it to array based on HTML input
-  //It also validates the inputs to ensure that each one isn't empty
-
-let addComment = (event) => {
-  event.preventDefault();
-
-  let formElements = commentsForm.children;
-  let nameValue = event.target.input_name.value;
-  let commentValue = event.target.input_comment.value;
-
-  if (nameValue === `` || commentValue === ``) {
-    commentsInputName.classList.add(`invalid`);
-    commentsInputComment.classList.add(`invalid`);
-    alert (`Please fill out all fields.`);
-  } else {
-  let commentsObj = {};
-
-  for (let i = 0; i < formElements.length; i++) {
-    if (formElements[i].classList.contains(`invalid`)) {
-      formElements[i].classList.remove(`invalid`);
-    }
-  }
-  
-  commentsObj.name = nameValue;
-  commentsObj.timestamp = dynamicDate(dateValue);
-  commentsObj.comment = commentValue;
-
-  let arr = document.querySelector(`.comments--array`);
-  arr.remove();
-  commentsArray.unshift(commentsObj);
-  displayComment(commentsArray);
-  commentsForm.reset();
-  }
-}
-
-commentsForm.addEventListener(`submit`, addComment);
+  //declare GET request data as a variable
+let commentsArray = comment.data;
+  //Displaying commments based on API data
+displayComment(commentsArray)
 })
 .catch(error => console.log(error));
