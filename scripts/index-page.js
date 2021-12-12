@@ -13,7 +13,7 @@ function addAtt(elem, att) {
 
 //Element Variables
   //Comments API
-const commentsAPI = axios.get(`https://project-1-api.herokuapp.com/comments?api_key=90e8de57-7098-4abf-a88f-1f04ceed7207`); 
+const commentsAPI = `https://project-1-api.herokuapp.com/comments?api_key=90e8de57-7098-4abf-a88f-1f04ceed7207`
   //Containers
 const divMargin = newElem(`div`, `margin`);
 const comments = newElem(`section`, `comments`);
@@ -66,7 +66,7 @@ let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullD
     let monthInSeconds = yearInSeconds / 12;
     let weekInSeconds = 604800;
     let dayInSeconds = weekInSeconds / 7;
-
+    let hourInSeconds = 3600;
     //if statement chain to account for:
     //- X years ago
     //- 1 year ago
@@ -74,49 +74,61 @@ let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullD
     //- 1 month ago
     //- X days ago 
     //- 1 day ago
+    //- X hours ago
+    //- 1 hour ago
+    //- X minutes ago
     //- A few seconds ago  
-    if (timePassedInSeconds / yearInSeconds > 1) {
+    if (timePassedInSeconds / yearInSeconds > 1.5) {
       return Math.round(timePassedInSeconds / yearInSeconds) + ` years ago`;   
     } else if ((Math.floor(timePassedInSeconds / monthInSeconds)) === 12) {
       return `1 year ago`;
-    } else if (timePassedInSeconds / monthInSeconds > 1) {
+    } else if (timePassedInSeconds / monthInSeconds > 1.5) {
       return Math.round(timePassedInSeconds / monthInSeconds) + ` months ago`;
     } else if (Math.floor(timePassedInSeconds / monthInSeconds) === 1) {
       return `1 month ago`;
-    } else if (timePassedInSeconds / weekInSeconds > 1) {
+    } else if (timePassedInSeconds / weekInSeconds > 1.5) {
       return Math.round(timePassedInSeconds / weekInSeconds) + ` weeks ago`;
     } else if (Math.floor(timePassedInSeconds / weekInSeconds) === 1) {
       return `1 week ago`;
-    } else if (timePassedInSeconds / dayInSeconds > 1) {
+    } else if (timePassedInSeconds / dayInSeconds > 1.5) {
       return Math.round(timePassedInSeconds / dayInSeconds) + ` days ago`;
     } else if (Math.floor(timePassedInSeconds / dayInSeconds) === 1) {
       return `1 day ago`;
-    } else {
+    } else if (timePassedInSeconds / hourInSeconds > 1.5) {
+      return Math.round(timePassedInSeconds / hourInSeconds) + ` hours ago`;
+    } else if (Math.floor(timePassedInSeconds / hourInSeconds) === 1) {
+      return `1 hour ago`;
+    } else if (timePassedInSeconds / 60 > 1) {
+      return Math.round(timePassedInSeconds / 60) + ` minutes ago`;
+    }
+    else {
       return `A few seconds ago`;
     }
   }
+
   //displayComments function
 function displayComment(arr) {
   //declare element to hold comments array and appends it in the HTML
   let arrayEl = newElem(`div`,`comments--array`);
   divMargin.appendChild(arrayEl);
-
   //forEach method to display each comment
   arr.forEach(elem => {  
     //Declare all of the variables to use for each comment
     let containerEl = newElem(`card`, `comments__container`);
     let displayEl = newElem(`div`, `comments__display`);
     let nameEl = newElem(`h4`, `comments__display--name`);
-    let dateEl = newElem(`p`, `comments__display--date`)
+    let dateEl = newElem(`p`, `comments__display--date`);
+    let deleteEl = newElem(`img`, `comments__display--delete-icon`);
+      addAtt(deleteEl, {src: `./assets/icons/SVG/icon-delete.svg`});
+    let likeEl = newElem(`img`, `comments__display--like-icon`);
+      addAtt(likeEl, {src: `./assets/icons/SVG/icon-like.svg`});
     let commentEl = newElem(`p`, `text__comments`);
     let imageEl = newElem(`img`, `comments__display--image`);
     let dividerEl = newElem(`div`, `divider`);
-
     //Create the innerText of the respective variables based on the GET request data
     nameEl.innerText = elem.name;
     dateEl.innerText = dynamicDate(elem.timestamp);
     commentEl.innerText = elem.comment;
-
     //Append it to the arrayEl variable declared above
     arrayEl.appendChild(containerEl);
     containerEl.append(
@@ -124,22 +136,23 @@ function displayComment(arr) {
       displayEl);
     displayEl.append(
       nameEl, 
-      dateEl, 
+      dateEl,
+      likeEl,
+      deleteEl, 
       commentEl);
     arrayEl.appendChild(dividerEl);
     })
   }
+
   //Function to create new object and add it to array based on HTML input
   //It also validates the inputs to ensure that each one isn't empty
 let addComment = (event) => {
   //preventDefault method to prevent page from reloading
   event.preventDefault();
-
   //declaring variables for all form elements and input values for the name and comment text fields
   let formElements = commentsForm.children;
   let nameValue = event.target.name.value;
   let commentValue = event.target.comment.value;
-
   //if the name value or comment value are empty strings, then add the invalid class and alert the end user
   if (nameValue === `` || commentValue === ``) {
     commentsInputName.classList.add(`invalid`);
@@ -153,30 +166,41 @@ let addComment = (event) => {
       formElements[i].classList.remove(`invalid`);
     }
   }
-  //Declare an empty object
-  let commentsObj = {};
+  //Declare an empty object variable
+  const commentsObj = {};
   //Populate the object with keys that have the same values as their respective input values
   commentsObj.name = nameValue;
-  commentsObj.timestamp = dynamicDate(dateValue);
   commentsObj.comment = commentValue;
-
-  //Stringify the commentsObj object
-  JSON.stringify(commentsObj);
-
+  //Make a POST request with the new data
+  axios.post(commentsAPI, commentsObj)
+    .then(() => {
   //Declare arr as the element with the class 'comments--array' that was created earlier
-  let arr = document.querySelector(`.comments--array`);
+      let arr = document.querySelector(`.comments--array`);
   //Remove it
-  arr.remove();
-  //add the now-populated commentsObj variable to the comments array
-  commentsArray.unshift(commentsObj);
-  //run the displayComment function again with the new object
-  displayComment(commentsArray);
+      arr.remove();
+    //Run a GET request
+      axios.get(commentsAPI)
+         .then(comment => {
+    //declare GET request data as a variable
+          let commentsArray = comment.data;
+      //Sorting data based on their timestamp
+          commentsArray.sort((a, b) => {
+            return b.timestamp - a.timestamp;
+          });
+      //Run displayComment function
+          displayComment(commentsArray)
+          })
+          .catch(error => console.log(error))
+    })
+    .catch(error => console.log(error));
+
   //reset the form fields
   commentsForm.reset();
   }
 }
   //Add an event listener that uses the addComment function when the end user submits a form
-  commentsForm.addEventListener(`submit`, addComment);
+commentsForm.addEventListener(`submit`, addComment);
+
   //'insertAfter' function
 function insertAfter(ref, elem) {
   ref.parentNode.insertBefore(elem, ref.nextSibling);
@@ -187,7 +211,6 @@ function insertAfter(ref, elem) {
 insertAfter(gallery, comments);
 const commentsTitle = document.createComment(` Comments `);
 document.body.insertBefore(commentsTitle, comments);
-
 //Adding the element variables declared in the 'Element Variables' section to the HTML
   //Adding container and image elements
 comments.appendChild(divMargin);
@@ -212,10 +235,22 @@ comments.appendChild(divMargin);
 divMargin.appendChild(commentsDivider);
 
 //Promise handling
-commentsAPI.then(comment => {
+  //GET request
+axios.get(commentsAPI)
+     .then(comment => {
   //declare GET request data as a variable
-let commentsArray = comment.data;
+        let commentsArray = comment.data;
+  //Sorting data based on their timestamp
+      commentsArray.sort((a, b) => {
+        return b.timestamp - a.timestamp;
+      });
   //Displaying commments based on API data
-displayComment(commentsArray)
-})
-.catch(error => console.log(error));
+        displayComment(commentsArray)
+      })
+      .catch(error => console.log(error));
+  //PULL request
+  //axios.pull()
+  //DELETE request
+  //axios.delete();
+
+

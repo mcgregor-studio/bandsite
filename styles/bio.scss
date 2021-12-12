@@ -187,8 +187,18 @@
             }
             position: absolute;
             top: 0;
+            right: 4rem;
+        }
+        &--like-icon {
+            position: absolute;
+            top: 0;
+            right: 2rem;
+        }
+        &--delete-icon {
+            position: absolute;
+            top: 0;
             right: 0;
-        }   
+        }
     }
 }
 .divider {

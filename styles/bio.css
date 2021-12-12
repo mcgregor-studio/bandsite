@@ -471,6 +471,16 @@ header > .margin {
   color: #AFAFAF;
   position: absolute;
   top: 0;
+  right: 4rem;
+}
+.comments__display--like-icon {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+}
+.comments__display--delete-icon {
+  position: absolute;
+  top: 0;
   right: 0;
 }
 
