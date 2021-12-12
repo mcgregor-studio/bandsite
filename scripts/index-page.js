@@ -12,6 +12,8 @@ function addAtt(elem, att) {
 }
 
 //Element Variables
+  //Comments API
+const commentsAPI = axios.get(`https://project-1-api.herokuapp.com/comments?api_key=90e8de57-7098-4abf-a88f-1f04ceed7207`); 
   //Containers
 const divMargin = newElem(`div`, `margin`);
 const comments = newElem(`section`, `comments`);
@@ -50,25 +52,8 @@ let commentsImage = newElem(`img`, `comments__image`);
   //References
 const gallery = document.querySelector(`.gallery`);
 
-  //Comments array
-let commentsArray = [
-  { name: `Connor Walton`, 
-    date: `02/17/2021`, 
-    comment: `This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.`
-  },
-  { name: `Emilie Beach`,
-    date: `01/09/2021`,
-    comment: `I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.`
-  },
-  { name: `Miles Acosta`,
-    date: `12/20/2020`,
-    comment: `I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.`
-  }];
   //Date
-    //Note: dateValue is the original date variable that was used in lieu of the dynamic date function.
-  const fullDate = new Date();
-  let dateValue = (fullDate.getMonth()+1) + `/` + fullDate.getDate() + `/` + fullDate.getFullYear();
-
+let fullDate = new Date;
   //Dynamic date function
     //Note: The function skips hours & minutes and goes to seconds; this is because the date info provided 
     //is not specific enough to measure by either metric.
@@ -100,12 +85,13 @@ let commentsArray = [
     }
   }
 
-//'insertAfter' function
+//Building sections in HTML
+  //'insertAfter' function
 function insertAfter(ref, elem) {
     ref.parentNode.insertBefore(elem, ref.nextSibling);
 };
 
-//Adding comments section and HTML comment to demarcate it
+  //Adding comments section and HTML comment to demarcate it
 insertAfter(gallery, comments);
 const commentsTitle = document.createComment(` Comments `);
 document.body.insertBefore(commentsTitle, comments);
@@ -133,7 +119,11 @@ comments.appendChild(divMargin);
   //Adding divider
 divMargin.appendChild(commentsDivider);
 
-//displayComments function
+//Promise handling
+commentsAPI.then(comment => {
+
+  let commentsArray = comment.data;
+  //displayComments function
 function displayComment(arr) {
   let arrayEl = newElem(`div`,`comments--array`);
   divMargin.appendChild(arrayEl);
@@ -148,7 +138,7 @@ function displayComment(arr) {
     let dividerEl = newElem(`div`, `divider`);
 
     nameEl.innerText = elem.name;
-    dateEl.innerText = dynamicDate(elem.date);
+    dateEl.innerText = dynamicDate(elem.timestamp);
     commentEl.innerText = elem.comment;
 
     arrayEl.appendChild(containerEl);
@@ -163,7 +153,8 @@ function displayComment(arr) {
     })
   }
 
-displayComment(commentsArray);
+//Displaying commments based on API data
+  displayComment(commentsArray)
 
 //Function to create new object and add it to array based on HTML input
   //It also validates the inputs to ensure that each one isn't empty
@@ -189,7 +180,7 @@ let addComment = (event) => {
   }
   
   commentsObj.name = nameValue;
-  commentsObj.date = dynamicDate(dateValue);
+  commentsObj.timestamp = dynamicDate(dateValue);
   commentsObj.comment = commentValue;
 
   let arr = document.querySelector(`.comments--array`);
@@ -201,6 +192,5 @@ let addComment = (event) => {
 }
 
 commentsForm.addEventListener(`submit`, addComment);
-
-
-
+})
+.catch(error => console.log(error));
