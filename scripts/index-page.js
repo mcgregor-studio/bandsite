@@ -66,8 +66,6 @@ let dateValue =
 
 //Functions
 //Dynamic date function
-//Note: The function skips hours & minutes and goes to seconds; this is because the date info provided
-//is not specific enough to measure by either metric.
 function dynamicDate(date) {
   let timePassedInSeconds = (fullDate - new Date(date)) / 1000;
   let yearInSeconds = 31536000;
