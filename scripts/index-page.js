@@ -18,9 +18,8 @@ const commentsAPI = `https://project-1-api.herokuapp.com/comments?api_key=90e8de
 const divMargin = newElem(`div`, `margin`);
 const comments = newElem(`section`, `comments`);
 const commentsContainer = newElem(`div`, `comments__container`);
-//Header & Divider
+//Header
 const commentsHeader = newElem(`h1`, `text__header--section`);
-const commentsDivider = newElem(`div`, `divider`);
 //Form
 let commentsForm = newElem(`form`, `comments__form`);
 //Labels
@@ -135,8 +134,7 @@ displayEl.append(
 );
 };
 
-//Function to create new object and add it to array based on HTML input
-//It also validates the inputs to ensure that each one isn't empty
+//Display comment function (includes function validation)
 const displayComment = (event) => {
   event.preventDefault();
   let formElements = commentsForm.children;
@@ -168,8 +166,6 @@ const displayComment = (event) => {
     commentsForm.reset();
   }
 };
-//Add an event listener that uses the addComment function when the end user submits a form
-commentsForm.addEventListener(`submit`, displayComment);
 
 //Like function
 const likeComment = (event) => {
@@ -210,8 +206,6 @@ commentsForm.append(
 
 commentsLabelName.innerText = `Name`;
 commentsLabelComment.innerText = `Comment`;
-//Adding divider
-divMargin.appendChild(commentsDivider);
 //Adding comments array
 divMargin.appendChild(commentsArray);
 
@@ -235,6 +229,9 @@ axios
 const likeIcon = document.querySelector(`.comments__display--like-icon`);
 const deleteIcon = document.querySelector(`.comments__display--delete-icon`);
 
+//Event listeners
+//Adding comments
+commentsForm.addEventListener(`submit`, displayComment);
 //PUT request
 //likeIcon.addEventListener(`click`, likeComment)
 //DELETE request
