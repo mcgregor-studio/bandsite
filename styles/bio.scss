@@ -98,9 +98,11 @@
 /* Comments */
 .comments {
     &__container {
+        @include mixins.vertical-spacing-mobile;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+        border-bottom: 0.0625rem solid colors.$Mercury; 
     }
     &__image {
         max-height: 4rem;
@@ -187,24 +189,29 @@
             }
             position: absolute;
             top: 0;
-            right: 4rem;
+            right: 8rem;
         }
         &--like-icon {
             position: absolute;
             top: 0;
             right: 2rem;
+            cursor: pointer;
+        }
+        &--like-counter {
+            @include mixins.text-reg {
+                color: colors.$Silver;
+            }
+            position: absolute;
+            top: 0;
+            right: 4rem;
         }
         &--delete-icon {
             position: absolute;
             top: 0;
             right: 0;
+            cursor: pointer;
         }
     }
-}
-.divider {
-    @include mixins.vertical-spacing-mobile;
-    height: 0.0625rem;
-    background-color: colors.$Mercury; 
 }
 ::-webkit-input-placeholder {
     color: colors.$BandSite-DarkBlack;
@@ -279,19 +286,13 @@
     }
     .comments {
         &__container {
-            padding: 0 4.5rem;
+            margin: 0 4.5rem 1.5rem 4.5rem;
         }
         &__display {
             &--name {
                 margin-bottom: 0.5rem;
             }
         }
-    }
-    .divider {
-        margin-bottom: 1.5rem;
-        width: calc(100% - 9rem);
-        margin-left: auto;
-        margin-right: auto;
     }
 }
 
@@ -308,10 +309,7 @@
     }
     .comments {
         &__container {
-            padding: 0 18vw;
+            margin: 0 18vw 1.5rem 18vw;
         }
-    }
-    .divider {
-        width: calc(100% - 36vw);
     }
 }
