@@ -13,7 +13,9 @@ function addAtt(elem, att) {
 
 //Element Variables
 //Comments API
-const commentsAPI = `https://project-1-api.herokuapp.com/comments?api_key=90e8de57-7098-4abf-a88f-1f04ceed7207`;
+const herokuURL = `https://project-1-api.herokuapp.com/comments`
+const apiKey = `?api_key=90e8de57-7098-4abf-a88f-1f04ceed7207`
+const commentsAPI = herokuURL + apiKey;
 //Containers
 const divMargin = newElem(`div`, `margin`);
 const comments = newElem(`section`, `comments`);
@@ -105,14 +107,17 @@ function dynamicDate(date) {
 //Render comments function
 function renderComment(elem) {
 let containerEl = newElem(`card`, `comments__container`);
-addAtt(containerEl, {id: elem.id});
+addAtt(containerEl, {id: elem.id})
 let displayEl = newElem(`div`, `comments__display`);
+let cornerContainerEl = newElem(`div`, `comments__display--container`)
 let nameEl = newElem(`h4`, `comments__display--name`);
 let dateEl = newElem(`p`, `comments__display--date`);
 let deleteEl = newElem(`img`, `comments__display--delete-icon`);
-addAtt(deleteEl, { src: `./assets/icons/SVG/icon-delete.svg`, id: elem.id });
+addAtt(deleteEl, { src: `./assets/icons/SVG/icon-delete.svg`});
+deleteEl.addEventListener(`click`, deleteComment);
 let likeEl = newElem(`img`, `comments__display--like-icon`);
-addAtt(likeEl, { src: `./assets/icons/SVG/icon-like.svg`, id: elem.id});
+addAtt(likeEl, { src: `./assets/icons/SVG/icon-like.svg`});
+likeEl.addEventListener(`click`, likeComment);
 let likeCounter = newElem(`p`, `comments__display--like-counter`);
 let commentEl = newElem(`p`, `text__comments`);
 let imageEl = newElem(`img`, `comments__display--image`);
@@ -126,12 +131,14 @@ commentsArray.prepend(containerEl)
 containerEl.append(imageEl, displayEl);
 displayEl.append(
   nameEl,
+  cornerContainerEl,
+  commentEl
+);
+cornerContainerEl.append(  
   dateEl,
   likeCounter,
   likeEl,
-  deleteEl,
-  commentEl,
-);
+  deleteEl)
 };
 
 //Display comment function (includes function validation)
@@ -169,12 +176,28 @@ const displayComment = (event) => {
 
 //Like function
 const likeComment = (event) => {
-  event.target
-} 
+  let comment = event.target.parentNode.parentNode.parentNode;
+  let putRequest = herokuURL + `/` + comment.id + `/like` + apiKey;
+  console.log(putRequest)
+  axios.put(putRequest)
+  .then(result => {
+     let commentToLike = document.getElementById(result.data.id) 
+     let like = commentToLike.lastChild.children[1].children[1];
+     return like.innerHTML = `Likes: ` + result.data.likes;
+  })
+  .catch(error => console.log(error));
+}  
 
 //Delete function
 const deleteComment = (event) => {
-
+  let comment = event.target.parentNode.parentNode.parentNode;
+  let deleteRequest = herokuURL + `/` + comment.id + apiKey;
+  axios.delete(deleteRequest)
+  .then(result => {
+    let commentToDelete = document.getElementById(result.data.id);
+    commentToDelete.remove();
+  })
+  .catch(error => console.log(error));
 }
 
 //'insertAfter' function
@@ -225,14 +248,6 @@ axios
   })
   .catch((error) => console.log(error));
 
-//Icons for PUT and DELETE requests
-const likeIcon = document.querySelector(`.comments__display--like-icon`);
-const deleteIcon = document.querySelector(`.comments__display--delete-icon`);
-
 //Event listeners
 //Adding comments
 commentsForm.addEventListener(`submit`, displayComment);
-//PUT request
-//likeIcon.addEventListener(`click`, likeComment)
-//DELETE request
-//deleteIcon.addEventListener(`click`, deleteComment);

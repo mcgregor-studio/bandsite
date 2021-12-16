@@ -177,6 +177,13 @@
             margin-right: 1rem;
             background-color: colors.$Mercury;
         }
+        &--container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
         &--name {
             @include mixins.text-bold {
                 color: colors.$BandSite-Black;
@@ -185,34 +192,25 @@
         }
         &--date {
             @include mixins.text-reg {
+                font-size: 0.625rem;
                 color: colors.$Silver;
+                margin-right: 0.5rem;
             }
-            position: absolute;
-            top: 0;
-            right: 8rem;
-        }
-        &--like-icon {
-            position: absolute;
-            top: 0;
-            right: 2rem;
-            cursor: pointer;
         }
         &--like-counter {
-            @include mixins.text-reg {
-                color: colors.$Silver;
-            }
-            position: absolute;
-            top: 0;
-            right: 4rem;
+           @extend .comments__display--date;
+        }
+        &--like-icon {
+            cursor: pointer;
+            margin-right: 0.5rem;
         }
         &--delete-icon {
-            position: absolute;
-            top: 0;
-            right: 0;
+            margin-right: 0.5rem;
             cursor: pointer;
         }
     }
 }
+
 ::-webkit-input-placeholder {
     color: colors.$BandSite-DarkBlack;
 }
@@ -291,6 +289,26 @@
         &__display {
             &--name {
                 margin-bottom: 0.5rem;
+            }
+            &--date {
+                @include mixins.text-reg {
+                    font-size: 1rem;
+                    color: colors.$Silver;
+                    margin-right: 1rem;
+                }
+            }
+            &--like-counter {
+               @extend .comments__display--date;
+            }
+            &--like-icon {
+                margin-top: -0.5rem;
+                margin-right: 1rem;
+                cursor: pointer;   
+            }
+            &--delete-icon {
+                margin-top: -0.5rem;
+                margin-right: 1rem;
+                cursor: pointer;               
             }
         }
     }

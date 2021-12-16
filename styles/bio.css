@@ -463,35 +463,30 @@ header > .margin {
   margin-right: 1rem;
   background-color: #E1E1E1;
 }
+.comments__display--container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .comments__display--name {
   font-family: "Avenir Next Bold";
   color: #323232;
   margin-bottom: 1rem;
 }
-.comments__display--date {
+.comments__display--date, .comments__display--like-counter {
   font-family: "Avenir Next Regular";
+  font-size: 0.625rem;
   color: #AFAFAF;
-  position: absolute;
-  top: 0;
-  right: 8rem;
+  margin-right: 0.5rem;
 }
 .comments__display--like-icon {
-  position: absolute;
-  top: 0;
-  right: 2rem;
   cursor: pointer;
-}
-.comments__display--like-counter {
-  font-family: "Avenir Next Regular";
-  color: #AFAFAF;
-  position: absolute;
-  top: 0;
-  right: 4rem;
+  margin-right: 0.5rem;
 }
 .comments__display--delete-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-right: 0.5rem;
   cursor: pointer;
 }
 
@@ -580,6 +575,22 @@ header > .margin {
   }
   .comments__display--name {
     margin-bottom: 0.5rem;
+  }
+  .comments__display--date, .comments__display--like-counter {
+    font-family: "Avenir Next Regular";
+    font-size: 1rem;
+    color: #AFAFAF;
+    margin-right: 1rem;
+  }
+  .comments__display--like-icon {
+    margin-top: -0.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  .comments__display--delete-icon {
+    margin-top: -0.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
   }
 }
 /* Desktop */
