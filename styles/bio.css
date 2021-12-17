@@ -384,9 +384,11 @@ header > .margin {
 
 /* Comments */
 .comments__container {
+  margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  border-bottom: 0.0625rem solid #E1E1E1;
 }
 .comments__image {
   max-height: 4rem;
@@ -465,23 +467,31 @@ header > .margin {
   margin-right: 1rem;
   background-color: #E1E1E1;
 }
+.comments__display--container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .comments__display--name {
   font-family: "Avenir Next Bold";
   color: #323232;
   margin-bottom: 1rem;
 }
-.comments__display--date {
+.comments__display--date, .comments__display--like-counter {
   font-family: "Avenir Next Regular";
+  font-size: 0.625rem;
   color: #AFAFAF;
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-right: 0.5rem;
 }
-
-.divider {
-  margin-bottom: 1rem;
-  height: 0.0625rem;
-  background-color: #E1E1E1;
+.comments__display--like-icon {
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+.comments__display--delete-icon {
+  margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 ::-webkit-input-placeholder {
@@ -565,17 +575,26 @@ header > .margin {
   }
 
   .comments__container {
-    padding: 0 4.5rem;
+    margin: 0 4.5rem 1.5rem 4.5rem;
   }
   .comments__display--name {
     margin-bottom: 0.5rem;
   }
-
-  .divider {
-    margin-bottom: 1.5rem;
-    width: calc(100% - 9rem);
-    margin-left: auto;
-    margin-right: auto;
+  .comments__display--date, .comments__display--like-counter {
+    font-family: "Avenir Next Regular";
+    font-size: 1rem;
+    color: #AFAFAF;
+    margin-right: 1rem;
+  }
+  .comments__display--like-icon {
+    margin-top: -0.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  .comments__display--delete-icon {
+    margin-top: -0.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
   }
 }
 /* Desktop */
@@ -589,10 +608,6 @@ header > .margin {
   }
 
   .comments__container {
-    padding: 0 18vw;
-  }
-
-  .divider {
-    width: calc(100% - 36vw);
+    margin: 0 18vw 1.5rem 18vw;
   }
 }/*# sourceMappingURL=bio.css.map */
