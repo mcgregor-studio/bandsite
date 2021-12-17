@@ -13,8 +13,8 @@ function addAtt(elem, att) {
 
 //Element Variables
 //Comments API
-const herokuURL = `https://project-1-api.herokuapp.com/comments`
-const apiKey = `?api_key=90e8de57-7098-4abf-a88f-1f04ceed7207`
+const herokuURL = `https://project-1-api.herokuapp.com/comments`;
+const apiKey = `?api_key=90e8de57-7098-4abf-a88f-1f04ceed7207`;
 const commentsAPI = herokuURL + apiKey;
 //Containers
 const divMargin = newElem(`div`, `margin`);
@@ -77,7 +77,10 @@ function dynamicDate(date) {
 
   if (timePassedInSeconds / yearInSeconds > 1.5) {
     return Math.round(timePassedInSeconds / yearInSeconds) + ` years ago`;
-  } else if (Math.floor(timePassedInSeconds / monthInSeconds) === 12) {
+  } else if (
+    Math.floor(timePassedInSeconds / monthInSeconds) === 12 ||
+    Math.round(timePassedInSeconds / monthInSeconds) === 12
+  ) {
     return `1 year ago`;
   } else if (timePassedInSeconds / monthInSeconds > 1.5) {
     return Math.round(timePassedInSeconds / monthInSeconds) + ` months ago`;
@@ -106,40 +109,32 @@ function dynamicDate(date) {
 
 //Render comments function
 function renderComment(elem) {
-let containerEl = newElem(`card`, `comments__container`);
-addAtt(containerEl, {id: elem.id})
-let displayEl = newElem(`div`, `comments__display`);
-let cornerContainerEl = newElem(`div`, `comments__display--container`)
-let nameEl = newElem(`h4`, `comments__display--name`);
-let dateEl = newElem(`p`, `comments__display--date`);
-let deleteEl = newElem(`img`, `comments__display--delete-icon`);
-addAtt(deleteEl, { src: `./assets/icons/SVG/icon-delete.svg`});
-deleteEl.addEventListener(`click`, deleteComment);
-let likeEl = newElem(`img`, `comments__display--like-icon`);
-addAtt(likeEl, { src: `./assets/icons/SVG/icon-like.svg`});
-likeEl.addEventListener(`click`, likeComment);
-let likeCounter = newElem(`p`, `comments__display--like-counter`);
-let commentEl = newElem(`p`, `text__comments`);
-let imageEl = newElem(`img`, `comments__display--image`);
+  let containerEl = newElem(`card`, `comments__container`);
+  addAtt(containerEl, { id: elem.id });
+  let displayEl = newElem(`div`, `comments__display`);
+  let cornerContainerEl = newElem(`div`, `comments__display--container`);
+  let nameEl = newElem(`h4`, `comments__display--name`);
+  let dateEl = newElem(`p`, `comments__display--date`);
+  let deleteEl = newElem(`img`, `comments__display--delete-icon`);
+  addAtt(deleteEl, { src: `./assets/icons/SVG/icon-delete.svg` });
+  deleteEl.addEventListener(`click`, deleteComment);
+  let likeEl = newElem(`img`, `comments__display--like-icon`);
+  addAtt(likeEl, { src: `./assets/icons/SVG/icon-like.svg` });
+  likeEl.addEventListener(`click`, likeComment);
+  let likeCounter = newElem(`p`, `comments__display--like-counter`);
+  let commentEl = newElem(`p`, `text__comments`);
+  let imageEl = newElem(`img`, `comments__display--image`);
 
-nameEl.innerText = elem.name;
-dateEl.innerText = dynamicDate(elem.timestamp);
-likeCounter.innerText = `Likes: ` + elem.likes;
-commentEl.innerText = elem.comment;
+  nameEl.innerText = elem.name;
+  dateEl.innerText = dynamicDate(elem.timestamp);
+  likeCounter.innerText = `Likes: ` + elem.likes;
+  commentEl.innerText = elem.comment;
 
-commentsArray.prepend(containerEl)
-containerEl.append(imageEl, displayEl);
-displayEl.append(
-  nameEl,
-  cornerContainerEl,
-  commentEl
-);
-cornerContainerEl.append(  
-  dateEl,
-  likeCounter,
-  likeEl,
-  deleteEl)
-};
+  commentsArray.prepend(containerEl);
+  containerEl.append(imageEl, displayEl);
+  displayEl.append(nameEl, cornerContainerEl, commentEl);
+  cornerContainerEl.append(dateEl, likeCounter, likeEl, deleteEl);
+}
 
 //Display comment function (includes function validation)
 const displayComment = (event) => {
@@ -178,27 +173,29 @@ const displayComment = (event) => {
 const likeComment = (event) => {
   let comment = event.target.parentNode.parentNode.parentNode;
   let putRequest = herokuURL + `/` + comment.id + `/like` + apiKey;
-  console.log(putRequest)
-  axios.put(putRequest)
-  .then(result => {
-     let commentToLike = document.getElementById(result.data.id) 
-     let like = commentToLike.lastChild.children[1].children[1];
-     return like.innerHTML = `Likes: ` + result.data.likes;
-  })
-  .catch(error => console.log(error));
-}  
+  console.log(putRequest);
+  axios
+    .put(putRequest)
+    .then((result) => {
+      let commentToLike = document.getElementById(result.data.id);
+      let like = commentToLike.lastChild.children[1].children[1];
+      return (like.innerHTML = `Likes: ` + result.data.likes);
+    })
+    .catch((error) => console.log(error));
+};
 
 //Delete function
 const deleteComment = (event) => {
   let comment = event.target.parentNode.parentNode.parentNode;
   let deleteRequest = herokuURL + `/` + comment.id + apiKey;
-  axios.delete(deleteRequest)
-  .then(result => {
-    let commentToDelete = document.getElementById(result.data.id);
-    commentToDelete.remove();
-  })
-  .catch(error => console.log(error));
-}
+  axios
+    .delete(deleteRequest)
+    .then((result) => {
+      let commentToDelete = document.getElementById(result.data.id);
+      commentToDelete.remove();
+    })
+    .catch((error) => console.log(error));
+};
 
 //'insertAfter' function
 function insertAfter(ref, elem) {
@@ -238,12 +235,14 @@ axios
   .get(commentsAPI)
   .then((comment) => {
     let arr = comment.data;
+    //sort each data element by how recently they were made
     arr
       .sort((a, b) => {
         return a.timestamp - b.timestamp;
       })
+      //renders each one in the DOM
       .forEach((elem) => {
-       renderComment(elem);
+        renderComment(elem);
       });
   })
   .catch((error) => console.log(error));
