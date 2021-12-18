@@ -185,14 +185,14 @@ const deleteComment = (event) => {
   let comment = event.target.parentNode.parentNode.parentNode;
   let deleteRequest = `${herokuURL}/${comment.id}${apiKey}`;
   let confirmDelete = confirm(`Are you sure you want to delete this comment?`);
-  if (confirmDelete) { 
-  axios
-    .delete(deleteRequest)
-    .then((result) => {
-      let commentToDelete = document.getElementById(result.data.id);
-      commentToDelete.remove();
-    })
-    .catch((error) => console.log(error));
+  if (confirmDelete) {
+    axios
+      .delete(deleteRequest)
+      .then((result) => {
+        let commentToDelete = document.getElementById(result.data.id);
+        commentToDelete.remove();
+      })
+      .catch((error) => console.log(error));
   }
 };
 
