@@ -184,8 +184,7 @@ const likeComment = (event) => {
 const deleteComment = (event) => {
   let comment = event.target.parentNode.parentNode.parentNode;
   let deleteRequest = `${herokuURL}/${comment.id}${apiKey}`;
-  let confirmDelete = confirm(`Are you sure you want to delete this comment?`);
-  if (confirmDelete) {
+  if (confirm(`Are you sure you want to delete this comment?`)) {
     axios
       .delete(deleteRequest)
       .then((result) => {
