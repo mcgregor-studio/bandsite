@@ -57,8 +57,9 @@ let commentsArray = newElem(`div`, `comments--array`);
 const gallery = document.querySelector(`.gallery`);
 //Date
 let fullDate = new Date();
-let dateValue =
-  `${fullDate.getMonth()+1}/${fullDate.getDate()}/${fullDate.getFullYear()}`;
+let dateValue = `${
+  fullDate.getMonth() + 1
+}/${fullDate.getDate()}/${fullDate.getFullYear()}`;
 
 //Functions
 //Dynamic date function
@@ -183,6 +184,8 @@ const likeComment = (event) => {
 const deleteComment = (event) => {
   let comment = event.target.parentNode.parentNode.parentNode;
   let deleteRequest = `${herokuURL}/${comment.id}${apiKey}`;
+  let confirmDelete = confirm(`Are you sure you want to delete this comment?`);
+  if (confirmDelete) { 
   axios
     .delete(deleteRequest)
     .then((result) => {
@@ -190,6 +193,7 @@ const deleteComment = (event) => {
       commentToDelete.remove();
     })
     .catch((error) => console.log(error));
+  }
 };
 
 //'insertAfter' function
