@@ -1,76 +1,3 @@
-<<<<<<< HEAD
-/* Fonts */
-@font-face {
-    font-family: 'Avenir Next Bold';
-    src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
-}
-@font-face {
-    font-family: 'Avenir Next Demi';
-    src: url(../assets/fonts/AvenirNextLTPro-Demi.otf);
-}
-@font-face {
-    font-family: 'Avenir Next Regular';
-    src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
-}
-
-/* Variables */
-$BandSite-Black: #323232;
-$BandSite-DarkBlack: #000000;
-$Silver: #AFAFAF;
-$Mercury: #E1E1E1;
-$White: #FFFFFF;
-$Alabaster: #FAFAFA;
-
-/* Mixins */
-@mixin text-bold {
-    font-family: 'Avenir Next Bold';
-    @content;
-}
-@mixin text-demi {
-    font-family: 'Avenir Next Demi';
-    @content;
-}
-@mixin text-reg {
-    font-family: 'Avenir Next Regular';
-    @content;
-}
-@mixin label-button {
-    @include text-reg() {
-    font-size: 1rem;
-    line-height: 1.25rem;
-    }
-    @content;
-}
-@mixin header-styling-mobile {
-    font-size: 1.5rem;
-    line-height: 2rem;
-}
-@mixin header-spacing-mobile {
-    padding-top: 1.5rem;
-    padding-bottom: 1rem; 
-    }
-@mixin vertical-spacing-mobile {
-    margin-bottom: 1rem;
-}
-@mixin horizontal-spacing-mobile {
-    margin: 0 1rem;
-}
-@mixin header-spacing-desktop-tablet {
-    padding-top: 3rem;
-    padding-bottom: 2.25rem; 
-    }
-@mixin vertical-spacing-desktop-tablet {
-    margin-bottom: 2.25rem;
-}
-@mixin horizontal-spacing-tablet {
-    margin: 0 2.25rem;
-}
-@mixin horizontal-spacing-desktop {
-    margin: auto;
-}
-
-=======
->>>>>>> sprint-2
 /* Global Elements */
 /* All font sizing is based on the root font size in the body element (16px) */
 @use "colors.scss";
@@ -95,15 +22,6 @@ h1, h3, h4, h5, p, blockquote {
 a {
     text-decoration: none;
     &:link {
-<<<<<<< HEAD
-        color: $White;
-    }
-    &:visited {
-        color: $Silver;
-    }
-    &:hover {
-        color: $White;
-=======
         color: colors.$White;
     }
     &:visited {
@@ -111,7 +29,6 @@ a {
     }
     &:hover {
         color: colors.$White;
->>>>>>> sprint-2
     }
     &:active {
         margin-right: -0.33rem;
@@ -162,11 +79,7 @@ a {
             line-height: 1.125rem;
             color: colors.$BandSite-Black;
             }
-<<<<<<< HEAD
-        @include vertical-spacing-mobile;
-=======
         @include mixins.vertical-spacing-mobile;
->>>>>>> sprint-2
     }
     &__footer {
         @include mixins.text-reg {
@@ -214,11 +127,7 @@ header > .margin {
                 padding: 1rem 20vw;
                 
                 &:hover {
-<<<<<<< HEAD
-                    border-bottom: .25rem solid $White;
-=======
                     border-bottom: .25rem solid colors.$White;
->>>>>>> sprint-2
                     transition: border-bottom 0.05s;
                 }
             }
@@ -279,24 +188,10 @@ header > .margin {
             }
             @include mixins.header-spacing-desktop-tablet;
         }
-<<<<<<< HEAD
-
-        &--body {
-            @include vertical-spacing-desktop-tablet;
-        }
-    
-        &--footer-title {
-            @include header-spacing-desktop-tablet;
-            margin-right: 1.5rem;
-        }
-
-        &--footer {
-=======
         &__body {
             @include mixins.vertical-spacing-desktop-tablet;
         }  
         &__footer {
->>>>>>> sprint-2
             font-size: 0.875rem;
             line-height: 1.25rem;
             margin-bottom: 1.5rem;
@@ -350,11 +245,7 @@ header > .margin {
             }
         }
         &__email {
-<<<<<<< HEAD
-            @include vertical-spacing-desktop-tablet;
-=======
             @include mixins.vertical-spacing-desktop-tablet;
->>>>>>> sprint-2
         }
         &__link {
             &--image {

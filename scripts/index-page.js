@@ -58,12 +58,7 @@ const gallery = document.querySelector(`.gallery`);
 //Date
 let fullDate = new Date();
 let dateValue =
-  fullDate.getMonth() +
-  1 +
-  `/` +
-  fullDate.getDate() +
-  `/` +
-  fullDate.getFullYear();
+  `${fullDate.getMonth()+1}/${fullDate.getDate()}/${fullDate.getFullYear()}`;
 
 //Functions
 //Dynamic date function
@@ -76,30 +71,30 @@ function dynamicDate(date) {
   let hourInSeconds = 3600;
 
   if (timePassedInSeconds / yearInSeconds > 1.5) {
-    return Math.round(timePassedInSeconds / yearInSeconds) + ` years ago`;
+    return `${Math.round(timePassedInSeconds / yearInSeconds)} years ago`;
   } else if (
     Math.floor(timePassedInSeconds / monthInSeconds) === 12 ||
     Math.round(timePassedInSeconds / monthInSeconds) === 12
   ) {
     return `1 year ago`;
   } else if (timePassedInSeconds / monthInSeconds > 1.5) {
-    return Math.round(timePassedInSeconds / monthInSeconds) + ` months ago`;
+    return `${Math.round(timePassedInSeconds / monthInSeconds)} months ago`;
   } else if (Math.floor(timePassedInSeconds / monthInSeconds) === 1) {
     return `1 month ago`;
   } else if (timePassedInSeconds / weekInSeconds > 1.5) {
-    return Math.round(timePassedInSeconds / weekInSeconds) + ` weeks ago`;
+    return `${Math.round(timePassedInSeconds / weekInSeconds)} weeks ago`;
   } else if (Math.floor(timePassedInSeconds / weekInSeconds) === 1) {
     return `1 week ago`;
   } else if (timePassedInSeconds / dayInSeconds > 1.5) {
-    return Math.round(timePassedInSeconds / dayInSeconds) + ` days ago`;
+    return `${Math.round(timePassedInSeconds / dayInSeconds)} days ago`;
   } else if (Math.floor(timePassedInSeconds / dayInSeconds) === 1) {
     return `1 day ago`;
   } else if (timePassedInSeconds / hourInSeconds > 1.5) {
-    return Math.round(timePassedInSeconds / hourInSeconds) + ` hours ago`;
+    return `${Math.round(timePassedInSeconds / hourInSeconds)} hours ago`;
   } else if (Math.floor(timePassedInSeconds / hourInSeconds) === 1) {
     return `1 hour ago`;
   } else if (timePassedInSeconds / 60 > 1.5) {
-    return Math.round(timePassedInSeconds / 60) + ` minutes ago`;
+    return `${Math.round(timePassedInSeconds / 60)} minutes ago`;
   } else if (Math.floor(timePassedInSeconds / 60) === 1) {
     return `1 minute ago`;
   } else {
@@ -127,7 +122,7 @@ function renderComment(elem) {
 
   nameEl.innerText = elem.name;
   dateEl.innerText = dynamicDate(elem.timestamp);
-  likeCounter.innerText = `Likes: ` + elem.likes;
+  likeCounter.innerText = `Likes: ${elem.likes}`;
   commentEl.innerText = elem.comment;
 
   commentsArray.prepend(containerEl);
@@ -172,14 +167,14 @@ const displayComment = (event) => {
 //Like function
 const likeComment = (event) => {
   let comment = event.target.parentNode.parentNode.parentNode;
-  let putRequest = herokuURL + `/` + comment.id + `/like` + apiKey;
+  let putRequest = `${herokuURL}/${comment.id}/like${apiKey}`;
   console.log(putRequest);
   axios
     .put(putRequest)
     .then((result) => {
       let commentToLike = document.getElementById(result.data.id);
       let like = commentToLike.lastChild.children[1].children[1];
-      return (like.innerHTML = `Likes: ` + result.data.likes);
+      return (like.innerHTML = `Likes: ${result.data.likes}`);
     })
     .catch((error) => console.log(error));
 };
@@ -187,7 +182,7 @@ const likeComment = (event) => {
 //Delete function
 const deleteComment = (event) => {
   let comment = event.target.parentNode.parentNode.parentNode;
-  let deleteRequest = herokuURL + `/` + comment.id + apiKey;
+  let deleteRequest = `${herokuURL}/${comment.id}${apiKey}`;
   axios
     .delete(deleteRequest)
     .then((result) => {
