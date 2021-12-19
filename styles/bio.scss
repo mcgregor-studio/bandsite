@@ -38,6 +38,13 @@
             }
         @include mixins.vertical-spacing-mobile;
     }
+    &__modal {
+        @include mixins.text-reg {
+            font-size: 0.8125rem;
+            line-height: 1.125rem;
+            color: colors.$Invalid;
+            }
+    }
 }
 
 /* Hero */
@@ -102,6 +109,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+        position: relative;
         border-bottom: 0.0625rem solid colors.$Mercury; 
     }
     &__image {
@@ -210,6 +218,37 @@
         }
     }
 }
+.modal {
+    z-index: 10;
+    background-color: colors.$White;
+    padding: 0.5rem;
+    box-shadow: 0 0.25rem 0.25rem colors.$Silver;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 0.25rem;
+    top: -4.75rem;
+    right: 0;
+    &__button {
+        &--yes {
+            @include mixins.label-button {
+                padding: 0.25rem 0.5rem;
+                background-color: colors.$Invalid;
+                color: colors.$White;
+                border: none;
+                border-radius: 50%;
+                margin: 0.25rem;
+                cursor: pointer;
+            }
+            @include mixins.text-bold;
+        }
+        &--no {
+            @extend .modal__button--yes;
+        }
+    }
+}
+
 
 ::-webkit-input-placeholder {
     color: colors.$BandSite-DarkBlack;

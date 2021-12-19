@@ -113,23 +113,33 @@ function renderComment(elem) {
   let dateEl = newElem(`p`, `comments__display--date`);
   let deleteEl = newElem(`img`, `comments__display--delete-icon`);
   addAtt(deleteEl, { src: `./assets/icons/SVG/icon-delete.svg` });
-  deleteEl.addEventListener(`click`, deleteComment);
+  deleteEl.addEventListener(`click`, showModal);
   let likeEl = newElem(`img`, `comments__display--like-icon`);
   addAtt(likeEl, { src: `./assets/icons/SVG/icon-like.svg` });
   likeEl.addEventListener(`click`, likeComment);
   let likeCounter = newElem(`p`, `comments__display--like-counter`);
   let commentEl = newElem(`p`, `text__comments`);
   let imageEl = newElem(`img`, `comments__display--image`);
+  let modalEl = newElem(`div`, `modal`);
+  let textEl = newElem(`p`, `text__modal`);
+  let yesEl = newElem(`input`, `modal__button--yes`);
+  addAtt(yesEl, { type: `button`, value: `\u2713` });
+  yesEl.addEventListener(`click`, deleteComment);
+  let noEl = newElem(`input`, `modal__button--no`);
+  addAtt(noEl, { type: `button`, value: `\u2715` });
+  noEl.addEventListener(`click`, showModal);
 
   nameEl.innerText = elem.name;
   dateEl.innerText = dynamicDate(elem.timestamp);
   likeCounter.innerText = `Likes: ${elem.likes}`;
   commentEl.innerText = elem.comment;
+  textEl.innerText = `Are you sure?`;
 
   commentsArray.prepend(containerEl);
-  containerEl.append(imageEl, displayEl);
+  containerEl.append(imageEl, displayEl, modalEl);
   displayEl.append(nameEl, cornerContainerEl, commentEl);
   cornerContainerEl.append(dateEl, likeCounter, likeEl, deleteEl);
+  modalEl.append(textEl, yesEl, noEl);
 }
 
 //Display comment function (includes function validation)
@@ -174,25 +184,39 @@ const likeComment = (event) => {
     .put(putRequest)
     .then((result) => {
       let commentToLike = document.getElementById(result.data.id);
-      let like = commentToLike.lastChild.children[1].children[1];
+      let like = commentToLike.children[1].children[1].children[1];
       return (like.innerHTML = `Likes: ${result.data.likes}`);
     })
     .catch((error) => console.log(error));
 };
 
+//Show & hide modal function
+const showModal = (event) => {
+  let modalPathOne = event.target.parentNode.parentNode.parentNode.children[2];
+  let modalPathTwo = event.target.parentNode.parentNode.children[2];
+
+  window.onclick = (event) => {
+    if (event.target.className === `comments__display--delete-icon`) {
+      modalPathOne.style.display = `block`;
+    } else if (event.target.className === `modal__button--no`) {
+      modalPathTwo.style.display = `none`;
+    } else {
+      modalPathOne.style.display = `none`;
+    }
+  };
+};
+
 //Delete function
 const deleteComment = (event) => {
-  let comment = event.target.parentNode.parentNode.parentNode;
+  let comment = event.target.parentNode.parentNode;
   let deleteRequest = `${herokuURL}/${comment.id}${apiKey}`;
-  if (confirm(`Are you sure you want to delete this comment?`)) {
-    axios
-      .delete(deleteRequest)
-      .then((result) => {
-        let commentToDelete = document.getElementById(result.data.id);
-        commentToDelete.remove();
-      })
-      .catch((error) => console.log(error));
-  }
+  axios
+    .delete(deleteRequest)
+    .then((result) => {
+      let commentToDelete = document.getElementById(result.data.id);
+      commentToDelete.remove();
+    })
+    .catch((error) => console.log(error));
 };
 
 //'insertAfter' function

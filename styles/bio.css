@@ -324,6 +324,12 @@ header > .margin {
   word-wrap: break-word;
   margin-bottom: 1rem;
 }
+.text__modal {
+  font-family: "Avenir Next Regular";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: #D22D2D;
+}
 
 /* Hero */
 .hero {
@@ -384,6 +390,7 @@ header > .margin {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  position: relative;
   border-bottom: 0.0625rem solid #E1E1E1;
 }
 .comments__image {
@@ -490,6 +497,32 @@ header > .margin {
   cursor: pointer;
 }
 
+.modal {
+  z-index: 10;
+  background-color: #FFFFFF;
+  padding: 0.5rem;
+  box-shadow: 0 0.25rem 0.25rem #AFAFAF;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 0.25rem;
+  top: -4.75rem;
+  right: 0;
+}
+.modal__button--yes, .modal__button--no {
+  font-family: "Avenir Next Regular";
+  font-size: 1rem;
+  line-height: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #D22D2D;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50%;
+  margin: 0.25rem;
+  cursor: pointer;
+  font-family: "Avenir Next Bold";
+}
 ::-webkit-input-placeholder {
   color: #000000;
 }
